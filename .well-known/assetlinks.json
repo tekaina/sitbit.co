@@ -5,8 +5,8 @@
       "namespace": "android_app",
       "package_name": "co.sitbit.sitbit",
       "sha256_cert_fingerprints": [
-        "REPLACE_WITH_YOUR_RELEASE_SHA256_FINGERPRINT",
-        "REPLACE_WITH_YOUR_DEBUG_SHA256_FINGERPRINT"
+        "23:A0:39:2A:8D:12:AD:7E:E2:28:BF:D3:46:9E:0F:26:C1:51:4F:C5:C4:36:D5:1C:45:43:99:50:E7:17:9A:61",
+        "23:D1:79:D0:5F:3D:7A:7E:DC:B1:1D:91:81:03:06:9A:B7:B9:C1:D2:71:D8:B2:EF:14:DE:E4:FD:15:FD:2B:54"
       ]
     }
   }
