@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SitBit — Join the Game</title>
+  <meta name="description" content="Organize group sports sessions, claim your position on the field, and play with your squad.">
+  <meta property="og:title" content="SitBit — Join the Game">
+  <meta property="og:description" content="You've been invited to play! Download SitBit to claim your position.">
+  <meta property="og:image" content="https://sitbit.co/assets/og-image.png">
+  <meta property="og:url" content="https://sitbit.co">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0a;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+    .badge {
+      background: rgba(255, 107, 43, 0.15);
+      border: 1px solid rgba(255, 107, 43, 0.3);
+      color: #FF6B2B;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
+    .emoji { font-size: 72px; margin-bottom: 20px; }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #ffffff 0%, #FF6B2B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .subtitle {
+      color: #888;
+      font-size: 17px;
+      line-height: 1.6;
+      max-width: 320px;
+      margin: 0 auto 36px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #FF6B2B;
+      color: white;
+      padding: 18px 36px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 18px;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 8px 32px rgba(255, 107, 43, 0.4);
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(255, 107, 43, 0.5);
+    }
+    .features {
+      display: flex;
+      gap: 12px;
+      margin-top: 48px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 400px;
+    }
+    .feature {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: #aaa;
+    }
+    .feature span { display: block; font-size: 20px; margin-bottom: 4px; }
+    .already-have {
+      margin-top: 32px;
+      color: #444;
+      font-size: 13px;
+    }
+    .footer {
+      position: fixed;
+      bottom: 20px;
+      color: #333;
+      font-size: 11px;
+    }
+  </style>
+</head>
+<body>
+  <div class="badge">⚡ You're invited</div>
+  <div class="emoji">⚽</div>
+  <h1>Your squad is waiting</h1>
+  <p class="subtitle">
+    Organize group sports, claim your position on the field,
+    rate games, and track your XP — all in one app.
+  </p>
+  <a class="btn" href="https://play.google.com/store/apps/details?id=co.sitbit.sitbit">
+    📲 Get SitBit — It's Free
+  </a>
+  <div class="features">
+    <div class="feature"><span>🏟️</span>Field positions</div>
+    <div class="feature"><span>⏱️</span>Waiting list</div>
+    <div class="feature"><span>⭐</span>Post-game ratings</div>
+    <div class="feature"><span>🔥</span>XP & streaks</div>
+    <div class="feature"><span>🎯</span>Daily quests</div>
+    <div class="feature"><span>📍</span>Nearby games</div>
+  </div>
+  <p class="already-have">Already have SitBit? The invitation link will open automatically.</p>
+  <div class="footer">© 2026 SitBit · <a href="/privacy" style="color:#444">Privacy</a> · <a href="/terms" style="color:#444">Terms</a></div>
+
+  <script>
+    // If user already has the app via custom scheme, try to open it
+    const sessionPath = window.location.pathname;
+    if (sessionPath.startsWith('/group-sessions/')) {
+      const sessionId = sessionPath.split('/').pop();
+      // Try custom URI scheme as fallback (for older Android)
+      setTimeout(() => {
+        window.location.href = 'sitbit://group-sessions/' + sessionId;
+      }, 300);
+    }
+  </script>
+</body>
+</html>

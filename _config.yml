@@ -1,0 +1,8 @@
+# GitHub Pages config
+title: SitBit
+description: Organize group sports sessions and track your fitness
+url: "https://sitbit.co"
+
+# Allow .well-known directory to be served
+include:
+  - .well-known
