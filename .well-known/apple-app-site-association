@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TEAM_ID.co.sitbit.sitbit",
+        "paths": [
+          "/group-sessions/*",
+          "/session/*",
+          "/invite/*"
+        ]
+      }
+    ]
+  }
+}
