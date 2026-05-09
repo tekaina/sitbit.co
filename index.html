@@ -7,188 +7,599 @@
   <meta name="description" content="SitBit turns your desk job into XP and your after-work into a game. Gamified movement breaks for desk workers + sports session organizer. Available on Android & iOS." />
   <meta name="keywords" content="desk wellness app, movement breaks, workplace fitness, sports organizer, habit tracker, posture app, SitBit" />
   <meta property="og:title" content="SitBit — Stop Sitting. Start Playing." />
-  <meta property="og:description" content="Break your sitting habits with XP-powered micro-breaks — then find a football game nearby. The app for active professionals." />
+  <meta property="og:description" content="Break your sitting habits with XP-powered micro-breaks — then find a game nearby. The app for active professionals." />
   <meta property="og:url" content="https://sitbit.co" />
   <meta property="og:type" content="website" />
   <style>
     :root{
-      --bg:#0a0a0f;
-      --card:#13131a;
-      --card2:#1a1a24;
-      --text:#f0f4ff;
-      --muted:#8892a4;
-      --primary:#00e676;
-      --primary-dark:#00c464;
+      --bg:#0e0f1a;
+      --bg2:#12131f;
+      --card:#181926;
+      --card2:#1e1f2e;
+      --card3:#22233a;
+      --text:#f0f2ff;
+      --muted:#7b859e;
+      --muted2:#a0aabe;
+      --primary:#ff6b35;
+      --primary-dark:#e85c28;
+      --primary-glow:rgba(255,107,53,0.18);
+      --primary-border:rgba(255,107,53,0.3);
+      --green:#00e676;
+      --green-glow:rgba(0,230,118,0.15);
+      --green-border:rgba(0,230,118,0.28);
       --accent:#7c6eff;
-      --border:rgba(255,255,255,0.08);
-      --shadow:0 12px 40px rgba(0,230,118,0.08);
+      --accent-glow:rgba(124,110,255,0.15);
+      --border:rgba(255,255,255,0.07);
+      --border2:rgba(255,255,255,0.12);
       --radius:18px;
       --max:1100px;
-      --orange:#ff6b35;
     }
-    *{box-sizing:border-box}
+    *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{
-      margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
       background:var(--bg);
       color:var(--text);
       line-height:1.6;
+      overflow-x:hidden;
     }
     a{text-decoration:none;color:inherit}
     img{max-width:100%;display:block}
     .container{width:min(92%,var(--max));margin:0 auto;}
-    /* NAV */
-    nav{padding:18px 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
-    .logo{font-weight:900;font-size:22px;letter-spacing:-0.5px;color:var(--text);}
+
+    /* ── BACKGROUND GLOW ── */
+    body::before{
+      content:'';
+      position:fixed;
+      top:-200px;left:-200px;
+      width:700px;height:700px;
+      background:radial-gradient(circle,rgba(255,107,53,0.07) 0%,transparent 70%);
+      pointer-events:none;z-index:0;
+    }
+    body::after{
+      content:'';
+      position:fixed;
+      bottom:-200px;right:-100px;
+      width:600px;height:600px;
+      background:radial-gradient(circle,rgba(124,110,255,0.06) 0%,transparent 70%);
+      pointer-events:none;z-index:0;
+    }
+    .container{position:relative;z-index:1}
+
+    /* ── NAV ── */
+    nav{
+      padding:20px 0;
+      display:flex;align-items:center;justify-content:space-between;
+      border-bottom:1px solid var(--border);
+      position:sticky;top:0;z-index:100;
+      background:rgba(14,15,26,0.85);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      margin:0 calc((100vw - min(92%,var(--max)))/2 * -1);
+      padding-left:max(4%,(100vw - var(--max))/2);
+      padding-right:max(4%,(100vw - var(--max))/2);
+    }
+    .logo{
+      font-weight:900;font-size:23px;letter-spacing:-0.5px;
+      color:var(--text);
+    }
     .logo span{color:var(--primary);}
-    .nav-links{display:flex;gap:20px;align-items:center;}
+    .logo-dot{display:inline-block;width:6px;height:6px;background:var(--primary);border-radius:50%;margin-left:2px;margin-bottom:8px;animation:pulse 2s infinite;}
+    @keyframes pulse{
+      0%,100%{opacity:1;transform:scale(1)}
+      50%{opacity:0.5;transform:scale(1.4)}
+    }
+    .nav-links{display:flex;gap:24px;align-items:center;}
     .nav-links a{color:var(--muted);font-size:14px;font-weight:600;transition:.2s;}
     .nav-links a:hover{color:var(--text);}
-    .nav-cta{background:var(--primary);color:#0a0a0f !important;padding:8px 16px;border-radius:10px;font-weight:800 !important;}
-    /* HERO */
-    .hero{padding:80px 0 60px;}
-    .hero-wrap{display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:center;}
-    .eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(0,230,118,0.1);color:var(--primary);border:1px solid rgba(0,230,118,0.25);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:.3px;margin-bottom:20px;}
-    h1{margin:0 0 20px;font-size:clamp(38px,6vw,68px);line-height:1.02;letter-spacing:-2px;color:var(--text);}
-    h1 .green{color:var(--primary);}
-    .hero p{font-size:18px;color:var(--muted);max-width:58ch;margin:0 0 28px;line-height:1.7;}
-    .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 20px;}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 22px;border-radius:14px;font-weight:800;font-size:15px;border:1px solid transparent;transition:.2s ease;cursor:pointer;}
+    .nav-cta{
+      background:var(--primary);
+      color:#0e0f1a !important;
+      padding:9px 18px;
+      border-radius:10px;
+      font-weight:800 !important;
+      box-shadow:0 4px 20px rgba(255,107,53,0.35);
+      transition:.2s !important;
+    }
+    .nav-cta:hover{background:var(--primary-dark) !important;transform:translateY(-1px);}
+
+    /* ── HERO ── */
+    .hero{padding:88px 0 72px;}
+    .hero-wrap{
+      display:grid;
+      grid-template-columns:1.15fr 0.85fr;
+      gap:48px;
+      align-items:center;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--primary-glow);
+      color:var(--primary);
+      border:1px solid var(--primary-border);
+      padding:8px 16px;
+      border-radius:999px;
+      font-size:13px;font-weight:700;letter-spacing:.4px;
+      margin-bottom:24px;
+    }
+    h1{
+      font-size:clamp(40px,6vw,72px);
+      line-height:1.01;
+      letter-spacing:-2.5px;
+      color:var(--text);
+      margin-bottom:22px;
+    }
+    h1 .orange{color:var(--primary);}
+    .hero-sub{
+      font-size:18px;
+      color:var(--muted2);
+      max-width:54ch;
+      margin-bottom:32px;
+      line-height:1.75;
+    }
+    .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px;}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      min-height:52px;padding:0 24px;
+      border-radius:14px;font-weight:800;font-size:15px;
+      border:1px solid transparent;
+      transition:.2s ease;cursor:pointer;
+      white-space:nowrap;
+    }
     .btn:hover{transform:translateY(-2px)}
-    .btn-primary{background:var(--primary);color:#0a0a0f;box-shadow:0 6px 24px rgba(0,230,118,0.3);}
-    .btn-primary:hover{background:var(--primary-dark);}
-    .btn-ios{background:var(--text);color:#0a0a0f;}
-    .btn-ios:hover{background:#d0d8f0;}
-    .btn-ghost{background:transparent;color:var(--text);border-color:var(--border);}
-    .btn-ghost:hover{border-color:rgba(255,255,255,0.2);}
-    .store-note{font-size:13px;color:var(--muted);margin-top:8px;}
-    /* PHONE MOCK */
-    .phone-wrap{background:var(--card);border:1px solid var(--border);border-radius:28px;padding:20px;box-shadow:0 24px 60px rgba(0,0,0,0.5);}
-    .phone-screen{background:linear-gradient(160deg,#0d1f3c 0%,#0d2a1f 100%);border-radius:20px;padding:20px;min-height:480px;display:flex;flex-direction:column;gap:14px;}
-    .screen-pill{display:inline-block;background:rgba(0,230,118,0.15);border:1px solid rgba(0,230,118,0.3);color:var(--primary);border-radius:999px;padding:6px 12px;font-size:12px;font-weight:700;width:max-content;}
-    .mini-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:14px;backdrop-filter:blur(8px);}
-    .mini-title{font-size:12px;color:rgba(255,255,255,0.6);margin-bottom:4px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;}
+    .btn-primary{
+      background:var(--primary);
+      color:#0e0f1a;
+      box-shadow:0 6px 28px rgba(255,107,53,0.38);
+    }
+    .btn-primary:hover{background:var(--primary-dark);box-shadow:0 8px 32px rgba(255,107,53,0.5);}
+    .btn-secondary{
+      background:rgba(255,255,255,0.07);
+      color:var(--text);
+      border-color:var(--border2);
+    }
+    .btn-secondary:hover{background:rgba(255,255,255,0.11);}
+    .btn-ghost{
+      background:transparent;
+      color:var(--text);
+      border-color:var(--border2);
+    }
+    .btn-ghost:hover{border-color:rgba(255,255,255,0.22);background:rgba(255,255,255,0.04);}
+    .store-note{font-size:13px;color:var(--muted);margin-top:10px;}
+    .store-note a{color:var(--primary);}
+    .tag-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px;}
+    .chip{
+      padding:6px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.05);
+      border:1px solid var(--border);
+      color:var(--muted);
+      font-size:13px;font-weight:600;
+    }
+
+    /* ── PHONE MOCK ── */
+    .phone-wrap{
+      background:linear-gradient(145deg,var(--card2),var(--card3));
+      border:1px solid var(--border2);
+      border-radius:32px;
+      padding:22px;
+      box-shadow:0 32px 80px rgba(0,0,0,0.6),0 0 0 1px rgba(255,107,53,0.08);
+    }
+    .phone-screen{
+      background:linear-gradient(160deg,#0d1030 0%,#0f1e10 100%);
+      border-radius:22px;
+      padding:20px;
+      min-height:500px;
+      display:flex;flex-direction:column;gap:14px;
+    }
+    .phone-header{
+      display:flex;align-items:center;justify-content:space-between;
+      margin-bottom:4px;
+    }
+    .phone-level{
+      display:inline-flex;align-items:center;gap:6px;
+      background:rgba(124,110,255,0.15);
+      border:1px solid rgba(124,110,255,0.3);
+      color:#a89fff;
+      border-radius:999px;padding:5px 12px;
+      font-size:12px;font-weight:700;
+    }
+    .phone-streak{
+      display:inline-flex;align-items:center;gap:5px;
+      background:rgba(255,107,53,0.15);
+      border:1px solid rgba(255,107,53,0.3);
+      color:var(--primary);
+      border-radius:999px;padding:5px 12px;
+      font-size:12px;font-weight:800;
+    }
+    .screen-pill{
+      display:inline-block;
+      background:rgba(0,230,118,0.12);
+      border:1px solid rgba(0,230,118,0.28);
+      color:var(--green);
+      border-radius:999px;padding:6px 12px;
+      font-size:12px;font-weight:700;width:max-content;
+    }
+    .mini-card{
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.09);
+      border-radius:16px;padding:14px;
+    }
+    .mini-title{
+      font-size:11px;color:rgba(255,255,255,0.5);
+      margin-bottom:5px;font-weight:700;
+      letter-spacing:.5px;text-transform:uppercase;
+    }
     .mini-big{font-size:26px;font-weight:900;line-height:1.1;color:#fff;}
     .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
-    .bridge-notif{background:rgba(0,230,118,0.12);border:1px solid rgba(0,230,118,0.3);border-radius:14px;padding:12px;}
-    .bridge-notif .notif-title{font-size:12px;color:var(--primary);font-weight:700;margin-bottom:4px;}
-    .bridge-notif .notif-body{font-size:13px;color:rgba(255,255,255,0.85);line-height:1.4;}
-    /* SECTIONS */
-    section{padding:60px 0;}
-    .section-tag{display:inline-block;background:rgba(124,110,255,0.12);color:var(--accent);border:1px solid rgba(124,110,255,0.25);padding:6px 14px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:16px;}
-    .section-title{font-size:clamp(30px,4vw,48px);line-height:1.08;margin:0 0 14px;letter-spacing:-1px;}
-    .section-sub{color:var(--muted);max-width:680px;margin:0 auto 40px;font-size:17px;text-align:center;line-height:1.7;}
+    .xp-bar-wrap{margin-top:6px;}
+    .xp-bar-bg{
+      background:rgba(255,255,255,0.08);
+      border-radius:999px;height:6px;overflow:hidden;
+    }
+    .xp-bar-fill{
+      background:linear-gradient(90deg,var(--primary),#ffaa00);
+      height:100%;border-radius:999px;
+      width:42%;
+      animation:xpfill 1.5s ease forwards;
+    }
+    @keyframes xpfill{from{width:0}to{width:42%}}
+    .quest-card{
+      background:linear-gradient(135deg,rgba(124,110,255,0.12),rgba(100,80,255,0.06));
+      border:1px solid rgba(124,110,255,0.22);
+      border-radius:16px;padding:14px;
+    }
+    .quest-label{font-size:11px;color:#a89fff;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;}
+    .quest-title{font-size:16px;font-weight:800;color:#fff;margin-bottom:4px;}
+    .quest-sub{font-size:12px;color:rgba(255,255,255,0.6);}
+    .start-mission-btn{
+      display:block;width:100%;
+      background:linear-gradient(90deg,var(--accent),#5a4ee0);
+      color:#fff;font-size:13px;font-weight:800;
+      border-radius:10px;padding:10px;
+      text-align:center;margin-top:10px;
+      letter-spacing:.5px;
+    }
+    .notif-card{
+      background:rgba(255,107,53,0.10);
+      border:1px solid rgba(255,107,53,0.25);
+      border-radius:14px;padding:12px;
+    }
+    .notif-label{font-size:11px;color:var(--primary);font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px;}
+    .notif-body{font-size:13px;color:rgba(255,255,255,0.85);line-height:1.45;}
+
+    /* ── STATS BAND ── */
+    .stats-band{
+      display:grid;grid-template-columns:repeat(4,1fr);
+      gap:1px;
+      background:var(--border);
+      border:1px solid var(--border);
+      border-radius:20px;
+      overflow:hidden;
+      margin:8px 0 0;
+    }
+    .stat-item{
+      background:var(--card);
+      text-align:center;
+      padding:32px 20px;
+      transition:.2s;
+    }
+    .stat-item:hover{background:var(--card2);}
+    .stat-num{
+      font-size:44px;font-weight:900;
+      color:var(--primary);
+      line-height:1;
+      margin-bottom:8px;
+      background:linear-gradient(135deg,var(--primary),#ffaa00);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .stat-label{color:var(--muted);font-size:14px;font-weight:600;}
+
+    /* ── SECTIONS ── */
+    section{padding:72px 0;}
+    .section-tag{
+      display:inline-block;
+      background:rgba(255,107,53,0.1);
+      color:var(--primary);
+      border:1px solid var(--primary-border);
+      padding:6px 14px;
+      border-radius:999px;
+      font-size:12px;font-weight:700;
+      letter-spacing:.5px;text-transform:uppercase;
+      margin-bottom:16px;
+    }
+    .section-tag.purple{
+      background:var(--accent-glow);
+      color:var(--accent);
+      border-color:rgba(124,110,255,0.28);
+    }
+    .section-tag.green{
+      background:var(--green-glow);
+      color:var(--green);
+      border-color:var(--green-border);
+    }
+    .section-title{
+      font-size:clamp(32px,4vw,50px);
+      line-height:1.06;margin:0 0 14px;
+      letter-spacing:-1.5px;
+    }
+    .section-sub{
+      color:var(--muted2);max-width:680px;
+      margin:0 auto 48px;
+      font-size:17px;text-align:center;line-height:1.75;
+    }
+    .text-center{text-align:center;}
+
+    /* ── CARDS ── */
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
     .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;height:100%;transition:.2s;}
-    .card:hover{border-color:rgba(255,255,255,0.14);transform:translateY(-2px);}
-    .icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;background:rgba(255,255,255,0.05);margin-bottom:16px;}
-    .card h3{margin:0 0 10px;font-size:19px;color:var(--text);}
-    .card p,.card li{color:var(--muted);font-size:15px;line-height:1.65;}
-    .feature-list{padding-left:18px;margin:10px 0 0;}
-    /* DUAL PILLAR SECTION */
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:26px;
+      transition:.25s ease;
+    }
+    .card:hover{
+      border-color:rgba(255,107,53,0.2);
+      transform:translateY(-3px);
+      box-shadow:0 12px 40px rgba(0,0,0,0.3),0 0 0 1px rgba(255,107,53,0.08);
+    }
+    .icon{
+      width:50px;height:50px;
+      border-radius:14px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:22px;
+      background:linear-gradient(135deg,rgba(255,107,53,0.12),rgba(255,107,53,0.05));
+      border:1px solid rgba(255,107,53,0.15);
+      margin-bottom:18px;
+    }
+    .card h3{margin:0 0 10px;font-size:19px;color:var(--text);font-weight:800;}
+    .card p,.card li{color:var(--muted2);font-size:15px;line-height:1.7;}
+
+    /* ── DUAL PILLAR ── */
     .dual-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-    .pillar{border-radius:24px;padding:30px;}
-    .pillar-wellness{background:linear-gradient(135deg,rgba(0,230,118,0.08) 0%,rgba(0,196,100,0.04) 100%);border:1px solid rgba(0,230,118,0.2);}
-    .pillar-sports{background:linear-gradient(135deg,rgba(124,110,255,0.08) 0%,rgba(100,80,255,0.04) 100%);border:1px solid rgba(124,110,255,0.2);}
-    .pillar-icon{font-size:40px;margin-bottom:16px;}
-    .pillar h3{font-size:24px;margin:0 0 10px;}
-    .pillar p{color:var(--muted);font-size:16px;line-height:1.65;}
-    .pillar ul{color:var(--muted);font-size:15px;padding-left:20px;margin:12px 0 0;line-height:1.8;}
-    /* BRIDGE */
-    .bridge-section{background:linear-gradient(135deg,#0d1f3c 0%,#0d2a1f 100%);border:1px solid rgba(0,230,118,0.15);border-radius:28px;padding:48px 40px;text-align:center;}
-    .bridge-section h2{font-size:clamp(28px,4vw,46px);margin:0 0 16px;letter-spacing:-1px;}
-    .bridge-section p{color:rgba(255,255,255,0.75);max-width:680px;margin:0 auto 28px;font-size:17px;line-height:1.7;}
-    .notif-demo{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:16px 20px;max-width:480px;margin:0 auto;text-align:left;}
-    .notif-demo .app-name{font-size:12px;color:var(--primary);font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;}
-    .notif-demo .notif-text{font-size:15px;color:var(--text);line-height:1.5;}
-    /* STATS BAND */
-    .stats-band{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;padding:40px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-    .stat-num{font-size:42px;font-weight:900;color:var(--primary);line-height:1;margin-bottom:8px;}
-    .stat-label{color:var(--muted);font-size:14px;font-weight:600;}
-    /* FAQ */
-    .faq{display:grid;gap:12px;}
-    .faq details{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;}
-    .faq details[open]{border-color:rgba(0,230,118,0.25);}
-    summary{cursor:pointer;font-weight:700;font-size:16px;color:var(--text);list-style:none;}
-    summary::after{content:" +";color:var(--primary);float:right;}
-    details[open] summary::after{content:" −";}
-    .faq p{color:var(--muted);margin:12px 0 0;font-size:15px;line-height:1.65;}
-    /* CTA BAND */
-    .cta-band{margin-top:20px;background:linear-gradient(135deg,#0d1f3c 0%,#0d2a1f 100%);border:1px solid rgba(0,230,118,0.15);border-radius:28px;padding:48px 32px;text-align:center;}
-    .cta-band h2{margin:0 0 14px;font-size:clamp(28px,4vw,46px);letter-spacing:-1px;}
-    .cta-band p{color:rgba(255,255,255,0.75);max-width:620px;margin:0 auto 32px;font-size:17px;line-height:1.7;}
-    /* FOOTER */
-    footer{padding:40px 0 60px;border-top:1px solid var(--border);margin-top:60px;}
-    .footer-inner{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;}
-    .footer-brand{font-weight:900;font-size:20px;}
+    .pillar{border-radius:24px;padding:32px;transition:.25s;}
+    .pillar:hover{transform:translateY(-3px);}
+    .pillar-wellness{
+      background:linear-gradient(135deg,rgba(255,107,53,0.09) 0%,rgba(255,80,0,0.04) 100%);
+      border:1px solid rgba(255,107,53,0.22);
+    }
+    .pillar-sports{
+      background:linear-gradient(135deg,rgba(0,230,118,0.08) 0%,rgba(0,180,90,0.04) 100%);
+      border:1px solid rgba(0,230,118,0.2);
+    }
+    .pillar-icon{font-size:42px;margin-bottom:18px;}
+    .pillar h3{font-size:25px;margin:0 0 12px;font-weight:900;}
+    .pillar-wellness h3{color:var(--primary);}
+    .pillar-sports h3{color:var(--green);}
+    .pillar p{color:var(--muted2);font-size:16px;line-height:1.7;}
+    .pillar ul{
+      color:var(--muted2);font-size:15px;
+      padding-left:20px;margin:14px 0 0;line-height:1.9;
+    }
+    .pillar li::marker{color:var(--primary);}
+    .pillar-sports li::marker{color:var(--green);}
+
+    /* ── BRIDGE ── */
+    .bridge-section{
+      background:linear-gradient(135deg,#0d1535 0%,#0d2014 50%,#150d25 100%);
+      border:1px solid rgba(255,107,53,0.15);
+      border-radius:28px;
+      padding:56px 48px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .bridge-section::before{
+      content:'';
+      position:absolute;top:-100px;left:50%;
+      transform:translateX(-50%);
+      width:500px;height:300px;
+      background:radial-gradient(ellipse,rgba(255,107,53,0.1) 0%,transparent 70%);
+      pointer-events:none;
+    }
+    .bridge-section h2{
+      font-size:clamp(28px,4vw,48px);
+      margin:0 0 16px;letter-spacing:-1px;
+      position:relative;
+    }
+    .bridge-section p{
+      color:rgba(255,255,255,0.72);
+      max-width:640px;margin:0 auto 28px;
+      font-size:17px;line-height:1.75;
+      position:relative;
+    }
+    .notif-demo{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:18px;
+      padding:18px 24px;
+      max-width:480px;
+      margin:0 auto;
+      text-align:left;
+      position:relative;
+      backdrop-filter:blur(8px);
+    }
+    .notif-demo::before{
+      content:'';
+      position:absolute;inset:0;
+      border-radius:18px;
+      border:1px solid rgba(255,107,53,0.2);
+      pointer-events:none;
+    }
+    .notif-app{font-size:12px;color:var(--primary);font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;}
+    .notif-text{font-size:15px;color:var(--text);line-height:1.55;}
+    .bridge-foot{margin-top:24px;font-size:15px;color:rgba(255,255,255,0.4);}
+
+    /* ── FAQ ── */
+    .faq{display:grid;gap:10px;}
+    .faq details{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:18px 22px;
+      transition:.2s;
+    }
+    .faq details:hover{border-color:rgba(255,107,53,0.18);}
+    .faq details[open]{border-color:rgba(255,107,53,0.28);background:var(--card2);}
+    summary{
+      cursor:pointer;font-weight:700;
+      font-size:16px;color:var(--text);
+      list-style:none;
+      display:flex;justify-content:space-between;align-items:center;
+    }
+    summary::-webkit-details-marker{display:none}
+    .faq-icon{color:var(--primary);font-size:20px;font-weight:300;line-height:1;}
+    details[open] .faq-icon::before{content:'−'}
+    .faq-icon::before{content:'+'}
+    .faq p{color:var(--muted2);margin:14px 0 0;font-size:15px;line-height:1.7;}
+
+    /* ── CTA BAND ── */
+    .cta-band{
+      background:linear-gradient(135deg,#150d25 0%,#0d1535 50%,#0d2014 100%);
+      border:1px solid rgba(255,107,53,0.2);
+      border-radius:28px;
+      padding:56px 40px;
+      text-align:center;
+      position:relative;overflow:hidden;
+    }
+    .cta-band::before{
+      content:'';
+      position:absolute;bottom:-80px;right:-80px;
+      width:400px;height:400px;
+      background:radial-gradient(circle,rgba(255,107,53,0.08) 0%,transparent 70%);
+      pointer-events:none;
+    }
+    .cta-band h2{
+      margin:0 0 16px;
+      font-size:clamp(28px,4vw,48px);
+      letter-spacing:-1px;
+      position:relative;
+    }
+    .cta-band p{
+      color:rgba(255,255,255,0.7);
+      max-width:580px;margin:0 auto 36px;
+      font-size:17px;line-height:1.75;
+      position:relative;
+    }
+    .cta-fine{margin-top:20px;color:rgba(255,255,255,0.35);font-size:13px;}
+
+    /* ── FOOTER ── */
+    footer{
+      padding:48px 0 56px;
+      border-top:1px solid var(--border);
+      margin-top:80px;
+    }
+    .footer-inner{
+      display:flex;justify-content:space-between;
+      align-items:flex-start;flex-wrap:wrap;gap:28px;
+    }
+    .footer-brand{font-weight:900;font-size:22px;color:var(--text);}
     .footer-brand span{color:var(--primary);}
-    .footer-brand p{color:var(--muted);font-size:14px;font-weight:400;margin:6px 0 0;max-width:280px;}
-    .footer-links{display:flex;gap:20px;flex-wrap:wrap;align-items:center;}
+    .footer-tagline{color:var(--muted);font-size:14px;margin:8px 0 0;max-width:280px;line-height:1.6;}
+    .footer-links{display:flex;gap:22px;flex-wrap:wrap;align-items:center;}
     .footer-links a{color:var(--muted);font-size:14px;transition:.2s;}
     .footer-links a:hover{color:var(--text);}
-    .footer-bottom{margin-top:28px;color:var(--muted);font-size:13px;text-align:center;padding-top:20px;border-top:1px solid var(--border);}
+    .footer-bottom{
+      margin-top:32px;color:var(--muted);font-size:13px;
+      text-align:center;padding-top:24px;
+      border-top:1px solid var(--border);
+    }
+
+    /* ── DIVIDER ── */
+    .divider{
+      height:1px;
+      background:linear-gradient(90deg,transparent,rgba(255,107,53,0.2),transparent);
+      margin:0;
+    }
+
+    /* ── RESPONSIVE ── */
     @media(max-width:900px){
-      .hero-wrap,.grid-3,.grid-2,.dual-wrap,.stats-band{grid-template-columns:1fr;}
-      .hero{padding-top:48px;}
+      .hero-wrap,.grid-3,.grid-2,.dual-wrap{
+        grid-template-columns:1fr;
+      }
       .stats-band{grid-template-columns:repeat(2,1fr);}
+      .hero{padding-top:52px;}
       nav .nav-links{display:none;}
-      .bridge-section{padding:32px 20px;}
+      .bridge-section,.cta-band{padding:36px 24px;}
+      nav{
+        margin:0 -4%;
+        padding-left:4%;padding-right:4%;
+      }
+    }
+    @media(max-width:480px){
+      .stats-band{grid-template-columns:repeat(2,1fr);}
+      h1{letter-spacing:-1.5px;}
     }
   </style>
 </head>
 <body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Sit<span>Bit</span><span class="logo-dot"></span></div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="https://play.google.com/store/apps/details?id=co.sitbit.sitbit" target="_blank" class="nav-cta">▶ Download</a>
+    </div>
+  </nav>
+
   <div class="container">
-    <nav>
-      <div class="logo">Sit<span>Bit</span></div>
-      <div class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#how">How it works</a>
-        <a href="#faq">FAQ</a>
-        <a href="/privacy.html">Privacy</a>
-        <a href="https://play.google.com/store/apps/details?id=co.sitbit.sitbit" target="_blank" class="nav-cta">Download</a>
-      </div>
-    </nav>
 
     <!-- HERO -->
     <section class="hero">
       <div class="hero-wrap">
         <div>
-          <span class="eyebrow">🏃 The app for active professionals</span>
-          <h1>Stop sitting.<br><span class="green">Start playing.</span></h1>
-          <p>SitBit turns your desk job into XP and your after-work into a game. Gamified micro-breaks for desk workers — plus a sports session organizer to find and join local games nearby.</p>
+          <span class="eyebrow">🔥 The app for active professionals</span>
+          <h1>Stop sitting.<br><span class="orange">Start playing.</span></h1>
+          <p class="hero-sub">SitBit turns your desk job into XP and your after-work into a game. Gamified micro-breaks for desk workers — plus a sports session organizer to find and join local games nearby.</p>
           <div class="cta-row">
             <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=co.sitbit.sitbit" target="_blank">▶ Google Play</a>
-            <a class="btn btn-ios" href="#ios-soon">🍎 App Store — Coming Soon</a>
+            <a class="btn btn-secondary" href="#ios-soon">🍎 App Store — Coming Soon</a>
           </div>
-          <p class="store-note" id="ios-soon">iOS version is in review. <a href="mailto:support@sitbit.co" style="color:var(--primary);">Get notified</a> when it launches.</p>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;">
-            <span style="padding:7px 14px;border-radius:999px;background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--muted);font-size:13px;font-weight:600;">18+ adults</span>
-            <span style="padding:7px 14px;border-radius:999px;background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--muted);font-size:13px;font-weight:600;">Desk wellness</span>
-            <span style="padding:7px 14px;border-radius:999px;background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--muted);font-size:13px;font-weight:600;">Sports organizer</span>
-            <span style="padding:7px 14px;border-radius:999px;background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--muted);font-size:13px;font-weight:600;">Free to download</span>
+          <p class="store-note" id="ios-soon">iOS is in review. <a href="mailto:support@sitbit.co">Get notified</a> when it launches.</p>
+          <div class="tag-chips">
+            <span class="chip">18+ adults</span>
+            <span class="chip">Desk wellness</span>
+            <span class="chip">Sports organizer</span>
+            <span class="chip">Free to download</span>
           </div>
         </div>
+
+        <!-- PHONE MOCK -->
         <div class="phone-wrap">
           <div class="phone-screen">
-            <span class="screen-pill">Today's Progress</span>
+            <div class="phone-header">
+              <span class="phone-level">⚔️ Lv.4 postureMonk</span>
+              <span class="phone-streak">🔥 12</span>
+            </div>
+            <div class="screen-pill">⚡ Post-lunch power hour</div>
             <div class="mini-card">
               <div class="mini-title">Movement Goal</div>
               <div class="mini-big">5 / 8 breaks ✓</div>
+              <div class="xp-bar-wrap">
+                <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:4px;">420 XP · 80 to next level</div>
+                <div class="xp-bar-bg"><div class="xp-bar-fill"></div></div>
+              </div>
             </div>
             <div class="stats-row">
-              <div class="mini-card"><div class="mini-title">Streak</div><div class="mini-big">12 🔥</div></div>
+              <div class="mini-card"><div class="mini-title">Streak</div><div class="mini-big" style="color:var(--primary);">12🔥</div></div>
               <div class="mini-card"><div class="mini-title">XP</div><div class="mini-big">420</div></div>
-              <div class="mini-card"><div class="mini-title">Fuel</div><div class="mini-big">84</div></div>
+              <div class="mini-card"><div class="mini-title">Fuel</div><div class="mini-big" style="color:var(--green);">84</div></div>
             </div>
-            <div class="mini-card">
-              <div class="mini-title">Today's Quest</div>
-              <div style="font-size:17px;font-weight:800;color:#fff;margin-bottom:6px;">Neck Relief Sprint</div>
-              <div style="font-size:13px;color:rgba(255,255,255,0.7);">3 neck breaks before 4 PM. Keep the streak alive.</div>
+            <div class="quest-card">
+              <div class="quest-label">⚡ Today's Quest</div>
+              <div class="quest-title">Neck Relief Sprint</div>
+              <div class="quest-sub">3 neck breaks before 4 PM · 0/3 done · +50 XP</div>
+              <div class="start-mission-btn">START MISSION ⚡</div>
             </div>
-            <div class="bridge-notif">
-              <div class="notif-title">⚽ SitBit — Nearby Game Alert</div>
+            <div class="notif-card">
+              <div class="notif-label">⚽ Nearby Game Alert</div>
               <div class="notif-body">You've been sitting 3h. Football 5v5 @ Prater — 48 min away. 3 spots left. Join?</div>
             </div>
           </div>
@@ -196,20 +607,22 @@
       </div>
     </section>
 
-    <!-- STATS -->
+    <!-- STATS BAND -->
     <div class="stats-band">
-      <div><div class="stat-num">8+</div><div class="stat-label">Exercise categories</div></div>
-      <div><div class="stat-num">6</div><div class="stat-label">Sport types supported</div></div>
-      <div><div class="stat-num">40s</div><div class="stat-label">Average break duration</div></div>
-      <div><div class="stat-num">🌍</div><div class="stat-label">Available worldwide</div></div>
+      <div class="stat-item"><div class="stat-num">8+</div><div class="stat-label">Exercise categories</div></div>
+      <div class="stat-item"><div class="stat-num">6</div><div class="stat-label">Sport types</div></div>
+      <div class="stat-item"><div class="stat-num">40s</div><div class="stat-label">Avg. break duration</div></div>
+      <div class="stat-item"><div class="stat-num">🌍</div><div class="stat-label">Available worldwide</div></div>
     </div>
+
+    <div class="divider" style="margin:64px 0 0;"></div>
 
     <!-- DUAL PILLAR -->
     <section id="features">
-      <div style="text-align:center;">
+      <div class="text-center">
         <span class="section-tag">Two pillars. One app.</span>
         <h2 class="section-title">From your desk to the pitch.</h2>
-        <p class="section-sub">SitBit is the only app built for the complete journey — breaking bad sitting habits during the day, then organizing sports with friends after work.</p>
+        <p class="section-sub">SitBit is built for the complete journey — breaking bad sitting habits during the day, then organizing sports with friends after work.</p>
       </div>
       <div class="dual-wrap">
         <div class="pillar pillar-wellness">
@@ -229,7 +642,7 @@
           <h3>Sports Session Organizer</h3>
           <p>Stop chasing 10 people on WhatsApp for a game that never happens. Create a session in 2 minutes, auto-shuffle teams, and send one link that fills every spot.</p>
           <ul>
-            <li>Create &amp; join football, basketball, tennis, padel, running and more</li>
+            <li>Football, basketball, tennis, padel, volleyball, running</li>
             <li>Visual field position picker — claim your spot before the game</li>
             <li>Auto team shuffle with animated reveal</li>
             <li>Waiting list — auto-join when a spot opens</li>
@@ -239,51 +652,56 @@
       </div>
     </section>
 
-    <!-- BRIDGE SECTION -->
+    <div class="divider"></div>
+
+    <!-- BRIDGE -->
     <section id="how">
       <div class="bridge-section">
-        <span class="section-tag" style="background:rgba(0,230,118,0.1);color:var(--primary);border-color:rgba(0,230,118,0.25);">The Bridge</span>
+        <span class="section-tag green">The Bridge</span>
         <h2>The notification that changes everything.</h2>
         <p>SitBit connects your desk life to your active life. After hours of sitting, it nudges you toward real movement — not just a stretch, but a game with other people nearby.</p>
         <div class="notif-demo">
-          <div class="app-name">⚽ SitBit — nearby game alert</div>
+          <div class="notif-app">⚽ SitBit — nearby game alert</div>
           <div class="notif-text">You've been sitting for 3 hours. There's a football game 2.3km away starting in 48 min — 3 spots left. Join?</div>
         </div>
-        <p style="margin-top:24px;font-size:15px;color:rgba(255,255,255,0.5);">This is SitBit's promise: from couch to pitch, one notification at a time.</p>
+        <p class="bridge-foot">From desk to pitch, one notification at a time.</p>
       </div>
     </section>
 
     <!-- CORE FEATURES -->
     <section>
-      <div style="text-align:center;">
-        <span class="section-tag">Everything included</span>
+      <div class="text-center">
+        <span class="section-tag purple">Everything included</span>
         <h2 class="section-title">Built for real life.</h2>
-        <p class="section-sub">Every feature is designed around one question: will a desk worker actually use this every day?</p>
+        <p class="section-sub">Every feature is designed around one question: will a desk worker actually use this every single day?</p>
       </div>
       <div class="grid-3">
-        <div class="card"><div class="icon">💪</div><h3>Exercise library</h3><p>Neck, back, shoulders, wrists, core, eyes, and cardio. Short sessions designed to fit inside your workday.</p></div>
-        <div class="card"><div class="icon">🔥</div><h3>Streak system</h3><p>Movement and fuel streaks, XP, levels, badges, and adaptive daily quests keep you consistent week after week.</p></div>
+        <div class="card"><div class="icon">💪</div><h3>Exercise library</h3><p>Neck, back, shoulders, wrists, core, eyes, and cardio. Short sessions built to fit inside your workday without leaving your desk.</p></div>
+        <div class="card"><div class="icon">🔥</div><h3>Streak &amp; XP system</h3><p>Movement and fuel streaks, XP, levels, badges, and adaptive daily quests keep you consistent week after week.</p></div>
         <div class="card"><div class="icon">🥗</div><h3>Fuel tracking</h3><p>Log healthy and unhealthy snacks, track water intake, and build nutrition awareness as part of your daily routine.</p></div>
-        <div class="card"><div class="icon">🏟️</div><h3>Field visualization</h3><p>Pick your position on an interactive pitch before the game. Know your role before you arrive.</p></div>
-        <div class="card"><div class="icon">🔀</div><h3>Team shuffle</h3><p>Auto-randomize balanced teams with an animated reveal. No more arguing about who picks first.</p></div>
-        <div class="card"><div class="icon">📲</div><h3>One-tap invites</h3><p>Share a deep link via WhatsApp, Instagram, or any platform. Recipients see the full game details before downloading.</p></div>
+        <div class="card"><div class="icon">🏟️</div><h3>Field visualization</h3><p>Pick your position on an interactive pitch before the game. Know your role, your team, your spot — before you arrive.</p></div>
+        <div class="card"><div class="icon">🔀</div><h3>Team shuffle</h3><p>Auto-randomize balanced teams with a cinematic animated reveal. No more arguing about who picks first.</p></div>
+        <div class="card"><div class="icon">📲</div><h3>One-tap invites</h3><p>Share a deep link via WhatsApp, Instagram, or any platform. Recipients see full game details before even downloading.</p></div>
       </div>
     </section>
 
+    <div class="divider"></div>
+
     <!-- FAQ -->
     <section id="faq">
-      <div style="text-align:center;">
+      <div class="text-center">
+        <span class="section-tag">Got questions?</span>
         <h2 class="section-title">Frequently asked questions</h2>
       </div>
       <div class="faq">
-        <details><summary>Who is SitBit for?</summary><p>SitBit is for adults 18+ who sit for long hours and want gamified movement breaks during the day — plus an easy way to organize or join local sports sessions after work.</p></details>
-        <details><summary>Is SitBit free?</summary><p>Yes. SitBit is free to download on Google Play. The iOS App Store version is coming soon.</p></details>
-        <details><summary>Do I need gym equipment?</summary><p>No. All desk exercises are designed to be done at your desk, in your office chair, or standing at your workstation. No equipment required.</p></details>
-        <details><summary>Is SitBit available on iPhone?</summary><p>The iOS version is currently in review on the Apple App Store. <a href="mailto:support@sitbit.co" style="color:var(--primary);">Email us</a> to be notified the moment it goes live.</p></details>
-        <details><summary>Can I use the sports organizer without the wellness features?</summary><p>Yes. Both pillars work independently. You can use SitBit purely as a sports session organizer or purely as a desk wellness tracker — or both together.</p></details>
-        <details><summary>Does SitBit store my data?</summary><p>Yes. SitBit stores progress and account data needed for features like streaks, quests, and session history. See our <a href="/privacy.html" style="color:var(--primary);">Privacy Policy</a> for full details.</p></details>
-        <details><summary>How do I delete my account?</summary><p>Go to Settings → Delete Account inside the app. If you no longer have the app installed, email <a href="mailto:support@sitbit.co" style="color:var(--primary);">support@sitbit.co</a> with the subject "Delete my SitBit account".</p></details>
-        <details><summary>How do I contact support?</summary><p>Email: <a href="mailto:support@sitbit.co" style="color:var(--primary);">support@sitbit.co</a> — we aim to reply within 48 hours.</p></details>
+        <details><summary>Who is SitBit for? <span class="faq-icon"></span></summary><p>SitBit is for adults 18+ who sit for long hours and want gamified movement breaks during the day — plus an easy way to organize or join local sports sessions after work.</p></details>
+        <details><summary>Is SitBit free? <span class="faq-icon"></span></summary><p>Yes. SitBit is free to download on Google Play. The iOS App Store version is coming soon.</p></details>
+        <details><summary>Do I need gym equipment? <span class="faq-icon"></span></summary><p>No. All desk exercises are designed to be done at your desk, in your office chair, or standing at your workstation. No equipment required.</p></details>
+        <details><summary>Is SitBit available on iPhone? <span class="faq-icon"></span></summary><p>The iOS version is currently in review on the Apple App Store. <a href="mailto:support@sitbit.co" style="color:var(--primary);">Email us</a> to be notified the moment it goes live.</p></details>
+        <details><summary>Can I use the sports organizer without the wellness features? <span class="faq-icon"></span></summary><p>Yes. Both pillars work independently. Use SitBit purely as a sports organizer, purely as a desk wellness tracker — or both together.</p></details>
+        <details><summary>Does SitBit store my data? <span class="faq-icon"></span></summary><p>Yes. SitBit stores progress and account data needed for streaks, quests, and session history. See our <a href="/privacy.html" style="color:var(--primary);">Privacy Policy</a> for full details.</p></details>
+        <details><summary>How do I delete my account? <span class="faq-icon"></span></summary><p>Go to Settings → Delete Account inside the app. If the app is uninstalled, email <a href="mailto:support@sitbit.co" style="color:var(--primary);">support@sitbit.co</a> with the subject "Delete my SitBit account".</p></details>
+        <details><summary>How do I contact support? <span class="faq-icon"></span></summary><p>Email: <a href="mailto:support@sitbit.co" style="color:var(--primary);">support@sitbit.co</a> — we aim to reply within 48 hours.</p></details>
       </div>
     </section>
 
@@ -296,7 +714,7 @@
           <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=co.sitbit.sitbit" target="_blank">▶ Download on Google Play</a>
           <a class="btn btn-ghost" href="mailto:support@sitbit.co">🍎 iOS — Notify Me</a>
         </div>
-        <p style="margin-top:16px;color:rgba(255,255,255,0.4);font-size:13px;">Free to download · No credit card · Available worldwide</p>
+        <p class="cta-fine">Free to download · No credit card · Available worldwide</p>
       </div>
     </section>
 
@@ -304,7 +722,7 @@
       <div class="footer-inner">
         <div>
           <div class="footer-brand">Sit<span>Bit</span></div>
-          <p style="color:var(--muted);font-size:14px;margin:8px 0 0;max-width:280px;">Stop sitting. Start playing. The operating system for active professionals.</p>
+          <p class="footer-tagline">Stop sitting. Start playing. The operating system for active professionals.</p>
         </div>
         <div class="footer-links">
           <a href="/privacy.html">Privacy Policy</a>
@@ -317,6 +735,7 @@
         © 2026 SitBit · Desk wellness &amp; sports organizer for adults 18+ · Available worldwide
       </div>
     </footer>
+
   </div>
 </body>
 </html>
