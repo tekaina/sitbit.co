@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ─── FAVICONS ─────────────────────────────────────── -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SitBit — Stop Sitting. Start Playing. Get Coached.</title>
@@ -11,6 +19,12 @@
   <meta property="og:url" content="https://sitbit.co" />
   <meta property="og:type" content="website" />
   <style>
+    .logo-link { display: inline-block; text-decoration: none; }
+    .sitbit-logo { height: 40px; width: auto; display: block; }
+    @media (max-width: 768px) {
+      .sitbit-logo { height: 32px; }
+    }
+
     /* ─── DESIGN TOKENS ─────────────────────────────────── */
     :root {
       /* backgrounds */
@@ -492,7 +506,7 @@
   <!-- ── NAV ─────────────────────────────────────────────── -->
   <nav>
     <div class="nav-inner">
-      <div class="logo">Sit<span>Bit</span><span class="logo-dot"></span></div>
+      <a href="/" class="logo-link"><img src="/SitBit%20Logo.png" alt="SitBit Logo" class="sitbit-logo" /></a>
       <div class="nav-links">
         <a href="#features">Features</a>
         <a href="#how">How it works</a>
