@@ -4,1343 +4,187 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#ff6b35" />
-  <meta name="color-scheme" content="light dark" />
-  
-  <!-- Primary Meta Tags -->
   <title>SitBit — Gamified Wellness & Sports Coaching Platform</title>
-  <meta name="title" content="SitBit — Gamified Wellness & Sports Coaching Platform" />
   <meta name="description" content="Turn your desk job into XP, organize local sports games in 2 minutes, and book verified coaches. The complete active-life platform for professionals 18+." />
-  <meta name="keywords" content="desk wellness, sports coaching, gamified fitness, local sports, verified coaches, movement breaks, sports organizer, personal trainer, SitBit" />
-  <meta name="author" content="SitBit" />
-  <meta name="robots" content="index, follow" />
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://sitbit.co/" />
   <meta property="og:title" content="SitBit — Stop Sitting. Start Playing. Get Coached." />
-  <meta property="og:description" content="Gamified desk breaks. Local sports sessions. Verified coaching. The complete active-life platform." />
-  <meta property="og:image" content="https://sitbit.co/SitBit%20Logo.png" />
-  <meta property="og:site_name" content="SitBit" />
-  <meta property="og:locale" content="en_US" />
-  
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://sitbit.co/" />
-  <meta property="twitter:title" content="SitBit — Stop Sitting. Start Playing. Get Coached." />
-  <meta property="twitter:description" content="Gamified desk breaks. Local sports sessions. Verified coaching." />
-  <meta property="twitter:image" content="https://sitbit.co/SitBit%20Logo.png" />
-  
-  <!-- Favicon & Icons -->
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <meta property="og:description" content="Gamified desk breaks. Local sports sessions. Verified coaching." />
+  <meta property="og:image" content="https://sitbit.co/SitBit_Logo-removebg-preview.png" />
+  <link rel="icon" href="/favicon.ico" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-  
-  <!-- Preconnect to external resources -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "SitBit",
-    "applicationCategory": "HealthApplication",
-    "operatingSystem": "Android, iOS",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "ratingCount": "127"
-    },
-    "description": "Gamified desk breaks, local sports organizer, and verified coaching marketplace",
-    "screenshot": "https://sitbit.co/SitBit%20Logo.png",
-    "url": "https://sitbit.co"
-  }
-  </script>
-  
   <style>
-    /* ─── CSS RESET & BASE ───────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; line-height: 1.6; color: #0f1117; background: #ffffff; overflow-x: hidden; }
-    img, picture, video, canvas, svg { display: block; max-width: 100%; }
-    input, button, textarea, select { font: inherit; }
-    a { color: inherit; text-decoration: none; }
-    ul, ol { list-style: none; }
-    
-    /* ─── DESIGN TOKENS ──────────────────────────────────── */
-    :root {
-      /* Colors */
-      --color-primary: #ff6b35;
-      --color-primary-dark: #e85c28;
-      --color-primary-light: #fff3ef;
-      --color-primary-border: #ffc9b5;
-      
-      --color-secondary: #7c3aed;
-      --color-secondary-light: #f5f3ff;
-      --color-secondary-border: #ddd6fe;
-      
-      --color-accent: #d97706;
-      --color-accent-light: #fffbeb;
-      --color-accent-border: #fde68a;
-      
-      --color-success: #16a34a;
-      --color-success-light: #f0fdf4;
-      --color-success-border: #bbf7d0;
-      
-      --color-bg: #ffffff;
-      --color-bg-alt: #f7f8fc;
-      --color-bg-alt2: #f0f2f8;
-      
-      --color-text: #0f1117;
-      --color-text-secondary: #2d3142;
-      --color-text-muted: #6b7280;
-      --color-text-light: #9ca3af;
-      
-      --color-border: #e5e7eb;
-      --color-border-dark: #d1d5db;
-      
-      /* Shadows */
-      --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
-      --shadow-md: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
-      --shadow-lg: 0 12px 40px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.05);
-      --shadow-xl: 0 24px 64px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06);
-      --shadow-2xl: 0 40px 80px rgba(0,0,0,0.14), 0 12px 32px rgba(0,0,0,0.08);
-      
-      /* Spacing */
-      --space-xs: 4px;
-      --space-sm: 8px;
-      --space-md: 16px;
-      --space-lg: 24px;
-      --space-xl: 32px;
-      --space-2xl: 48px;
-      --space-3xl: 64px;
-      --space-4xl: 96px;
-      
-      /* Typography */
-      --font-xs: 12px;
-      --font-sm: 14px;
-      --font-base: 16px;
-      --font-lg: 18px;
-      --font-xl: 20px;
-      --font-2xl: 24px;
-      --font-3xl: 30px;
-      --font-4xl: 36px;
-      --font-5xl: 48px;
-      --font-6xl: 64px;
-      
-      /* Border Radius */
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 16px;
-      --radius-xl: 24px;
-      --radius-2xl: 32px;
-      --radius-full: 9999px;
-      
-      /* Layout */
-      --container-max: 1200px;
-      --header-height: 72px;
-      
-      /* Transitions */
-      --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    /* ─── UTILITIES ──────────────────────────────────────── */
-    .container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-lg); }
-    .section { padding: var(--space-4xl) 0; }
-    .text-center { text-align: center; }
-    .flex { display: flex; }
-    .flex-col { flex-direction: column; }
-    .items-center { align-items: center; }
-    .justify-center { justify-content: center; }
-    .justify-between { justify-content: space-between; }
-    .gap-sm { gap: var(--space-sm); }
-    .gap-md { gap: var(--space-md); }
-    .gap-lg { gap: var(--space-lg); }
-    .gap-xl { gap: var(--space-xl); }
-    .grid { display: grid; }
-    .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
-    .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
-    .grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
-    
-    /* ─── HEADER & NAVIGATION ──────────────────────────── */
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--color-border);
-      box-shadow: var(--shadow-xs);
-      transition: box-shadow var(--transition-base);
-    }
-    .header.scrolled { box-shadow: var(--shadow-md); }
-    
-    .nav {
-      height: var(--header-height);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-      font-weight: 700;
-      font-size: var(--font-xl);
-      color: var(--color-text);
-      transition: opacity var(--transition-fast);
-    }
-    .logo:hover { opacity: 0.8; }
-    .logo img { height: 40px; width: auto; }
-    
-    .nav-menu {
-      display: flex;
-      align-items: center;
-      gap: var(--space-xl);
-    }
-    
-    .nav-link {
-      font-size: var(--font-sm);
-      font-weight: 500;
-      color: var(--color-text-muted);
-      transition: color var(--transition-fast);
-      position: relative;
-    }
-    .nav-link:hover { color: var(--color-text); }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--color-primary);
-      transition: width var(--transition-base);
-    }
-    .nav-link:hover::after { width: 100%; }
-    
-    .nav-link-accent {
-      background: var(--color-accent-light);
-      color: var(--color-accent) !important;
-      padding: var(--space-xs) var(--space-md);
-      border-radius: var(--radius-full);
-      border: 1px solid var(--color-accent-border);
-      font-weight: 600 !important;
-    }
-    .nav-link-accent::after { display: none; }
-    
-    .nav-cta {
-      background: var(--color-primary);
-      color: #fff !important;
-      padding: var(--space-sm) var(--space-lg);
-      border-radius: var(--radius-md);
-      font-weight: 600 !important;
-      font-size: var(--font-sm) !important;
-      box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
-      transition: all var(--transition-fast);
-    }
-    .nav-cta:hover {
-      background: var(--color-primary-dark);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
-    }
-    .nav-cta::after { display: none; }
-    
-    /* Mobile menu toggle */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 4px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: var(--space-sm);
-    }
-    .menu-toggle span {
-      width: 24px;
-      height: 2px;
-      background: var(--color-text);
-      transition: all var(--transition-fast);
-    }
-    
-    /* ─── HERO SECTION ─────────────────────────────────── */
-    .hero {
-      padding: var(--space-4xl) 0 var(--space-3xl);
-      background: linear-gradient(135deg, #fff 0%, #f7f8fc 50%, #fff3ef 100%);
-      border-bottom: 1px solid var(--color-border);
-      overflow: hidden;
-    }
-    
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: var(--space-3xl);
-      align-items: center;
-    }
-    
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-xs);
-      background: var(--color-primary-light);
-      color: var(--color-primary);
-      padding: var(--space-xs) var(--space-md);
-      border-radius: var(--radius-full);
-      font-size: var(--font-xs);
-      font-weight: 600;
-      letter-spacing: 0.3px;
-      text-transform: uppercase;
-      margin-bottom: var(--space-lg);
-      border: 1px solid var(--color-primary-border);
-    }
-    
-    .hero-title {
-      font-size: clamp(40px, 5vw, 64px);
-      line-height: 1.05;
-      font-weight: 800;
-      letter-spacing: -2px;
-      color: var(--color-text);
-      margin-bottom: var(--space-lg);
-    }
-    .hero-title .highlight {
-      background: linear-gradient(135deg, var(--color-primary), #f59e0b);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    .hero-subtitle {
-      font-size: var(--font-lg);
-      line-height: 1.7;
-      color: var(--color-text-muted);
-      max-width: 540px;
-      margin-bottom: var(--space-xl);
-    }
-    
-    .hero-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-md);
-      margin-bottom: var(--space-lg);
-    }
-    
-    .hero-note {
-      font-size: var(--font-xs);
-      color: var(--color-text-light);
-      margin-top: var(--space-sm);
-    }
-    .hero-note a {
-      color: var(--color-primary);
-      font-weight: 600;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-    
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-sm);
-      margin-top: var(--space-lg);
-    }
-    
-    .tag {
-      padding: var(--space-xs) var(--space-md);
-      background: var(--color-bg-alt2);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-full);
-      font-size: var(--font-xs);
-      font-weight: 600;
-      color: var(--color-text-muted);
-    }
-    .tag.highlight {
-      background: var(--color-success-light);
-      border-color: var(--color-success-border);
-      color: var(--color-success);
-    }
-    .tag.accent {
-      background: var(--color-accent-light);
-      border-color: var(--color-accent-border);
-      color: var(--color-accent);
-    }
-    
-    /* Hero visual */
-    .hero-visual { position: relative; }
-    
-    .phone-mockup {
-      background: #fff;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-2xl);
-      padding: var(--space-lg);
-      box-shadow: var(--shadow-xl), 0 0 0 1px rgba(255, 107, 53, 0.06);
-      position: relative;
-      z-index: 1;
-    }
-    
-    .phone-screen {
-      background: linear-gradient(160deg, #0a0d28 0%, #0f1a12 100%);
-      border-radius: var(--radius-xl);
-      padding: var(--space-md);
-      min-height: 520px;
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-sm);
-    }
-    
-    .phone-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xs); }
-    
-    .phone-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-xs);
-      background: rgba(124, 110, 255, 0.18);
-      border: 1px solid rgba(124, 110, 255, 0.35);
-      color: #c4b8ff;
-      padding: var(--space-xs) var(--space-sm);
-      border-radius: var(--radius-full);
-      font-size: 11px;
-      font-weight: 700;
-    }
-    
-    .phone-pill {
-      display: inline-block;
-      background: rgba(22, 163, 74, 0.15);
-      border: 1px solid rgba(22, 163, 74, 0.3);
-      color: #4ade80;
-      padding: var(--space-xs) var(--space-sm);
-      border-radius: var(--radius-full);
-      font-size: 11px;
-      font-weight: 700;
-      margin-bottom: var(--space-sm);
-    }
-    
-    .mini-card {
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: var(--radius-md);
-      padding: var(--space-md);
-    }
-    
-    .mini-label {
-      font-size: 10px;
-      color: rgba(255, 255, 255, 0.45);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: var(--space-xs);
-    }
-    
-    .mini-value {
-      font-size: 22px;
-      font-weight: 900;
-      line-height: 1.1;
-      color: #fff;
-    }
-    
-    .xp-bar {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: var(--radius-full);
-      height: 5px;
-      overflow: hidden;
-      margin-top: var(--space-xs);
-    }
-    .xp-fill {
-      background: linear-gradient(90deg, #ff6b35, #ffaa00);
-      height: 100%;
-      border-radius: var(--radius-full);
-      width: 42%;
-      animation: xpFill 1.6s ease forwards;
-    }
-    @keyframes xpFill { from { width: 0; } to { width: 42%; } }
-    
-    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-sm); margin-top: var(--space-sm); }
-    
-    .quest-card {
-      background: linear-gradient(135deg, rgba(124, 110, 255, 0.16), rgba(100, 80, 255, 0.06));
-      border: 1px solid rgba(124, 110, 255, 0.28);
-      border-radius: var(--radius-md);
-      padding: var(--space-md);
-      margin-top: var(--space-sm);
-    }
-    
-    .quest-label {
-      font-size: 10px;
-      color: #c4b8ff;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: var(--space-xs);
-    }
-    
-    .quest-title {
-      font-size: 14px;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: var(--space-xs);
-    }
-    
-    .quest-sub {
-      font-size: 11px;
-      color: rgba(255, 255, 255, 0.55);
-      line-height: 1.4;
-    }
-    
-    .coach-pill {
-      background: linear-gradient(90deg, rgba(217, 119, 6, 0.16), rgba(217, 119, 6, 0.06));
-      border: 1px solid rgba(217, 119, 6, 0.28);
-      border-radius: var(--radius-md);
-      padding: var(--space-md);
-      margin-top: var(--space-sm);
-    }
-    
-    .coach-pill-label {
-      font-size: 10px;
-      color: #fbbf24;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: var(--space-xs);
-    }
-    
-    .coach-pill-body {
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.82);
-      line-height: 1.45;
-    }
-    
-    /* ─── BUTTONS ──────────────────────────────────────── */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--space-sm);
-      min-height: 50px;
-      padding: var(--space-md) var(--space-lg);
-      border-radius: var(--radius-md);
-      font-weight: 600;
-      font-size: var(--font-sm);
-      border: 1.5px solid transparent;
-      transition: all var(--transition-fast);
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    
-    .btn-primary {
-      background: var(--color-primary);
-      color: #fff;
-      box-shadow: 0 4px 20px rgba(255, 107, 53, 0.35);
-    }
-    .btn-primary:hover {
-      background: var(--color-primary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 28px rgba(255, 107, 53, 0.45);
-    }
-    
-    .btn-secondary {
-      background: #fff;
-      color: var(--color-text);
-      border-color: var(--color-border-dark);
-      box-shadow: var(--shadow-sm);
-    }
-    .btn-secondary:hover {
-      border-color: var(--color-border-dark);
-      background: var(--color-bg-alt);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-    
-    .btn-accent {
-      background: var(--color-accent);
-      color: #fff;
-      box-shadow: 0 4px 18px rgba(217, 119, 6, 0.3);
-    }
-    .btn-accent:hover {
-      background: #b45309;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(217, 119, 6, 0.4);
-    }
-    
-    .btn-outline {
-      background: transparent;
-      color: var(--color-text-muted);
-      border-color: var(--color-border);
-    }
-    .btn-outline:hover {
-      background: var(--color-bg-alt);
-      color: var(--color-text);
-    }
-    
-    /* ─── STATS BAND ───────────────────────────────────── */
-    .stats-band {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      background: var(--color-border);
-      gap: 1px;
-      margin-top: var(--space-2xl);
-    }
-    
-    .stat-item {
-      background: var(--color-bg);
-      text-align: center;
-      padding: var(--space-xl) var(--space-md);
-      transition: background var(--transition-base);
-    }
-    .stat-item:hover { background: var(--color-bg-alt); }
-    
-    .stat-value {
-      font-size: 42px;
-      font-weight: 900;
-      line-height: 1;
-      margin-bottom: var(--space-xs);
-      background: linear-gradient(135deg, var(--color-primary), #f59e0b);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    .stat-label {
-      color: var(--color-text-muted);
-      font-size: var(--font-xs);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    
-    /* ─── SECTION HEADERS ──────────────────────────────── */
-    .section-header {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto var(--space-3xl);
-    }
-    
-    .section-tag {
-      display: inline-block;
-      background: var(--color-primary-light);
-      color: var(--color-primary);
-      padding: var(--space-xs) var(--space-md);
-      border-radius: var(--radius-full);
-      font-size: var(--font-xs);
-      font-weight: 700;
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-      margin-bottom: var(--space-md);
-      border: 1px solid var(--color-primary-border);
-    }
-    .section-tag.accent {
-      background: var(--color-accent-light);
-      color: var(--color-accent);
-      border-color: var(--color-accent-border);
-    }
-    .section-tag.success {
-      background: var(--color-success-light);
-      color: var(--color-success);
-      border-color: var(--color-success-border);
-    }
-    .section-tag.secondary {
-      background: var(--color-secondary-light);
-      color: var(--color-secondary);
-      border-color: var(--color-secondary-border);
-    }
-    
-    .section-title {
-      font-size: clamp(32px, 4vw, 48px);
-      line-height: 1.1;
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      color: var(--color-text);
-      margin-bottom: var(--space-md);
-    }
-    
-    .section-subtitle {
-      color: var(--color-text-muted);
-      font-size: var(--font-lg);
-      line-height: 1.7;
-    }
-    
-    /* ─── FEATURE CARDS ────────────────────────────────── */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-lg);
-    }
-    
-    .feature-card {
-      background: var(--color-bg);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      padding: var(--space-xl);
-      box-shadow: var(--shadow-sm);
-      transition: all var(--transition-base);
-    }
-    .feature-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--color-primary-border);
-    }
-    
-    .feature-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-      background: var(--color-primary-light);
-      border: 1px solid var(--color-primary-border);
-      margin-bottom: var(--space-lg);
-    }
-    
-    .feature-title {
-      font-size: var(--font-xl);
-      font-weight: 700;
-      color: var(--color-text);
-      margin-bottom: var(--space-sm);
-    }
-    
-    .feature-desc {
-      color: var(--color-text-muted);
-      font-size: var(--font-sm);
-      line-height: 1.7;
-    }
-    
-    /* ─── PILLARS ──────────────────────────────────────── */
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--space-lg);
-    }
-    
-    .pillar-card {
-      border-radius: var(--radius-lg);
-      padding: var(--space-xl);
-      transition: all var(--transition-base);
-      box-shadow: var(--shadow-sm);
-    }
-    .pillar-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .pillar-wellness {
-      background: #fff8f5;
-      border: 1.5px solid var(--color-primary-border);
-    }
-    .pillar-sports {
-      background: #f0fdf6;
-      border: 1.5px solid var(--color-success-border);
-    }
-    
-    .pillar-icon {
-      font-size: 40px;
-      margin-bottom: var(--space-lg);
-    }
-    
-    .pillar-title {
-      font-size: var(--font-2xl);
-      font-weight: 800;
-      margin-bottom: var(--space-md);
-    }
-    .pillar-wellness .pillar-title { color: var(--color-primary); }
-    .pillar-sports .pillar-title { color: var(--color-success); }
-    
-    .pillar-desc {
-      color: var(--color-text-muted);
-      font-size: var(--font-base);
-      line-height: 1.7;
-      margin-bottom: var(--space-lg);
-    }
-    
-    .pillar-list {
-      color: var(--color-text-muted);
-      font-size: var(--font-sm);
-      padding-left: var(--space-lg);
-      line-height: 2;
-    }
-    .pillar-wellness .pillar-list { list-style-type: disc; }
-    .pillar-sports .pillar-list { list-style-type: disc; }
-    .pillar-wellness li::marker { color: var(--color-primary); }
-    .pillar-sports li::marker { color: var(--color-success); }
-    
-    /* ─── BRIDGE SECTION ───────────────────────────────── */
-    .bridge-section {
-      background: linear-gradient(135deg, #0f1117 0%, #1a2e1a 50%, #1a1228 100%);
-      border-radius: var(--radius-lg);
-      padding: var(--space-3xl) var(--space-2xl);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-xl);
-    }
-    .bridge-section::before {
-      content: '';
-      position: absolute;
-      top: -80px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 500px;
-      height: 280px;
-      background: radial-gradient(ellipse, rgba(255, 107, 53, 0.14) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    
-    .bridge-title {
-      font-size: clamp(26px, 3.5vw, 42px);
-      font-weight: 800;
-      letter-spacing: -1px;
-      color: #fff;
-      margin-bottom: var(--space-md);
-      position: relative;
-    }
-    
-    .bridge-desc {
-      color: rgba(255, 255, 255, 0.68);
-      max-width: 600px;
-      margin: 0 auto var(--space-xl);
-      font-size: var(--font-lg);
-      line-height: 1.8;
-      position: relative;
-    }
-    
-    .notif-demo {
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: var(--radius-lg);
-      padding: var(--space-lg) var(--space-xl);
-      max-width: 480px;
-      margin: 0 auto;
-      text-align: left;
-      backdrop-filter: blur(8px);
-    }
-    
-    .notif-app {
-      font-size: 11px;
-      color: #ff9a70;
-      font-weight: 700;
-      margin-bottom: var(--space-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    
-    .notif-text {
-      font-size: var(--font-base);
-      color: rgba(255, 255, 255, 0.9);
-      line-height: 1.6;
-    }
-    
-    .bridge-foot {
-      margin-top: var(--space-lg);
-      font-size: var(--font-sm);
-      color: rgba(255, 255, 255, 0.35);
-      position: relative;
-    }
-    
-    /* ─── COACHING HERO ────────────────────────────────── */
-    .coaching-hero {
-      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fffbeb 100%);
-      border: 1.5px solid var(--color-accent-border);
-      border-radius: var(--radius-lg);
-      padding: var(--space-3xl) var(--space-2xl);
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-    }
-    .coaching-hero::before {
-      content: '';
-      position: absolute;
-      top: -60px;
-      right: -60px;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(217, 119, 6, 0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    
-    .coaching-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-2xl);
-      align-items: center;
-      position: relative;
-    }
-    
-    .coaching-title {
-      font-size: clamp(28px, 3.5vw, 44px);
-      line-height: 1.1;
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      color: var(--color-text);
-      margin-bottom: var(--space-md);
-    }
-    .coaching-title .highlight { color: var(--color-accent); }
-    
-    .coaching-desc {
-      color: var(--color-text-muted);
-      font-size: var(--font-base);
-      line-height: 1.8;
-      margin-bottom: var(--space-xl);
-    }
-    
-    .coach-cards {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-md);
-    }
-    
-    .coach-card {
-      background: #fff;
-      border: 1px solid var(--color-accent-border);
-      border-radius: var(--radius-md);
-      padding: var(--space-md) var(--space-lg);
-      display: flex;
-      align-items: center;
-      gap: var(--space-md);
-      box-shadow: var(--shadow-sm);
-      transition: all var(--transition-fast);
-    }
-    .coach-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-    
-    .coach-avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #f59e0b, #d97706);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      flex-shrink: 0;
-      border: 2px solid var(--color-accent-border);
-    }
-    
-    .coach-info { flex: 1; }
-    
-    .coach-name {
-      font-weight: 700;
-      font-size: var(--font-sm);
-      color: var(--color-text);
-      margin-bottom: var(--space-xs);
-    }
-    
-    .coach-meta {
-      font-size: var(--font-xs);
-      color: var(--color-text-muted);
-    }
-    
-    .coach-rate {
-      font-size: var(--font-base);
-      font-weight: 800;
-      color: var(--color-accent);
-    }
-    
-    .coach-stars {
-      font-size: 11px;
-      color: #f59e0b;
-      margin-top: var(--space-xs);
-    }
-    
-    .verified-badge {
-      display: inline-block;
-      background: #d1fae5;
-      border: 1px solid #6ee7b7;
-      color: #065f46;
-      font-size: 10px;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: var(--radius-full);
-      margin-left: var(--space-xs);
-    }
-    
-    /* ─── COACHING FEATURES ────────────────────────────── */
-    .coaching-features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-lg);
-    }
-    
-    .cf-card {
-      background: var(--color-bg);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      padding: var(--space-lg);
-      box-shadow: var(--shadow-sm);
-      transition: all var(--transition-base);
-    }
-    .cf-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--color-accent-border);
-    }
-    
-    .cf-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      background: var(--color-accent-light);
-      border: 1px solid var(--color-accent-border);
-      margin-bottom: var(--space-md);
-    }
-    
-    .cf-title {
-      font-size: var(--font-base);
-      font-weight: 700;
-      color: var(--color-text);
-      margin-bottom: var(--space-xs);
-    }
-    
-    .cf-desc {
-      font-size: var(--font-sm);
-      color: var(--color-text-muted);
-      line-height: 1.7;
-    }
-    
-    /* ─── FAQ ──────────────────────────────────────────── */
-    .faq {
-      display: grid;
-      gap: var(--space-sm);
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .faq-item {
-      background: var(--color-bg);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      transition: all var(--transition-fast);
-    }
-    .faq-item:hover {
-      border-color: var(--color-primary-border);
-      box-shadow: var(--shadow-sm);
-    }
-    
-    .faq-summary {
-      width: 100%;
-      padding: var(--space-lg) var(--space-xl);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: var(--space-md);
-      background: none;
-      border: none;
-      cursor: pointer;
-      text-align: left;
-      font-weight: 600;
-      font-size: var(--font-base);
-      color: var(--color-text);
-    }
-    
-    .faq-icon {
-      color: var(--color-primary);
-      font-size: 20px;
-      font-weight: 300;
-      flex-shrink: 0;
-      transition: transform var(--transition-fast);
-    }
-    .faq-item[open] .faq-icon { transform: rotate(45deg); }
-    
-    .faq-content {
-      padding: 0 var(--space-xl) var(--space-lg);
-      color: var(--color-text-muted);
-      font-size: var(--font-sm);
-      line-height: 1.7;
-    }
-    
-    .faq-content a {
-      color: var(--color-primary);
-      font-weight: 600;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-    
-    /* ─── CTA BAND ─────────────────────────────────────── */
-    .cta-band {
-      background: linear-gradient(135deg, #0f1117 0%, #1a1a2e 50%, #0f1a12 100%);
-      border-radius: var(--radius-lg);
-      padding: var(--space-3xl) var(--space-2xl);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-xl);
-    }
-    .cta-band::before {
-      content: '';
-      position: absolute;
-      bottom: -60px;
-      right: -60px;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(255, 107, 53, 0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    
-    .cta-title {
-      font-size: clamp(28px, 3.5vw, 44px);
-      font-weight: 800;
-      letter-spacing: -1px;
-      color: #fff;
-      margin-bottom: var(--space-md);
-      position: relative;
-    }
-    
-    .cta-desc {
-      color: rgba(255, 255, 255, 0.65);
-      max-width: 540px;
-      margin: 0 auto var(--space-xl);
-      font-size: var(--font-lg);
-      line-height: 1.8;
-      position: relative;
-    }
-    
-    .cta-fine {
-      margin-top: var(--space-lg);
-      color: rgba(255, 255, 255, 0.3);
-      font-size: var(--font-xs);
-      position: relative;
-    }
-    
-    /* ─── FOOTER ───────────────────────────────────────── */
-    .footer {
-      padding: var(--space-3xl) 0 var(--space-2xl);
-      border-top: 1px solid var(--color-border);
-      background: var(--color-bg-alt);
-      margin-top: var(--space-4xl);
-    }
-    
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: var(--space-2xl);
-      margin-bottom: var(--space-2xl);
-    }
-    
-    .footer-brand .logo {
-      margin-bottom: var(--space-md);
-    }
-    
-    .footer-tagline {
-      color: var(--color-text-muted);
-      font-size: var(--font-sm);
-      line-height: 1.7;
-      max-width: 300px;
-    }
-    
-    .footer-title {
-      font-size: var(--font-xs);
-      font-weight: 700;
-      color: var(--color-text-light);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: var(--space-md);
-    }
-    
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-sm);
-    }
-    
-    .footer-link {
-      color: var(--color-text-muted);
-      font-size: var(--font-sm);
-      transition: color var(--transition-fast);
-    }
-    .footer-link:hover { color: var(--color-text); }
-    
-    .footer-bottom {
-      padding-top: var(--space-xl);
-      border-top: 1px solid var(--color-border);
-      text-align: center;
-      color: var(--color-text-light);
-      font-size: var(--font-xs);
-    }
-    
-    /* ─── RESPONSIVE ───────────────────────────────────── */
-    @media (max-width: 1024px) {
-      .hero-grid, .coaching-grid { grid-template-columns: 1fr; gap: var(--space-2xl); }
-      .features-grid, .coaching-features { grid-template-columns: repeat(2, 1fr); }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .hero-title { font-size: 48px; }
-    }
-    
-    @media (max-width: 768px) {
-      .nav-menu { display: none; }
-      .menu-toggle { display: flex; }
-      .features-grid, .coaching-features, .pillars-grid { grid-template-columns: 1fr; }
-      .stats-band { grid-template-columns: repeat(2, 1fr); }
-      .footer-grid { grid-template-columns: 1fr; gap: var(--space-xl); }
-      .section { padding: var(--space-3xl) 0; }
-      .hero { padding: var(--space-3xl) 0 var(--space-2xl); }
-      .bridge-section, .coaching-hero, .cta-band { padding: var(--space-2xl) var(--space-lg); }
-    }
-    
-    @media (max-width: 480px) {
-      .hero-title { font-size: 36px; letter-spacing: -1.5px; }
-      .section-title { font-size: 32px; }
-      .stats-band { grid-template-columns: 1fr; }
-      .hero-cta { flex-direction: column; }
-      .btn { width: 100%; }
-    }
-    
-    /* ─── ANIMATIONS ───────────────────────────────────── */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .animate-in {
-      animation: fadeInUp 0.6s ease forwards;
-    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#0f1117;background:#fff;overflow-x:hidden}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    :root{
+      --primary:#ff6b35;--primary-dark:#e85c28;--primary-light:#fff3ef;
+      --accent:#d97706;--accent-light:#fffbeb;
+      --success:#16a34a;--success-light:#f0fdf4;
+      --bg-alt:#f7f8fc;--text-muted:#6b7280;--border:#e5e7eb;
+      --shadow-sm:0 1px 3px rgba(0,0,0,0.08);--shadow-md:0 4px 16px rgba(0,0,0,0.08);
+      --shadow-lg:0 12px 40px rgba(0,0,0,0.10);--radius:16px;--container:1200px
+    }
+    .container{max-width:var(--container);margin:0 auto;padding:0 24px}
+    .section{padding:96px 0}
+    .header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);box-shadow:var(--shadow-sm)}
+    .nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+    .logo img{height:40px;width:auto}
+    .nav-menu{display:flex;gap:32px;align-items:center}
+    .nav-link{font-size:14px;font-weight:500;color:var(--text-muted);transition:color 0.15s}
+    .nav-link:hover{color:#0f1117}
+    .nav-cta{background:var(--primary);color:#fff!important;padding:8px 24px;border-radius:10px;font-weight:600;font-size:14px!important;box-shadow:0 2px 8px rgba(255,107,53,0.3)}
+    .nav-cta:hover{background:var(--primary-dark);transform:translateY(-1px)}
+    .hero{padding:96px 0;background:linear-gradient(135deg,#fff 0%,#f7f8fc 50%,#fff3ef 100%);border-bottom:1px solid var(--border)}
+    .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:64px;align-items:center}
+    .hero-title{font-size:clamp(40px,5vw,64px);line-height:1.05;font-weight:800;letter-spacing:-2px;margin-bottom:24px}
+    .hero-title .highlight{background:linear-gradient(135deg,var(--primary),#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .hero-subtitle{font-size:18px;line-height:1.7;color:var(--text-muted);max-width:540px;margin-bottom:32px}
+    .hero-cta{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:24px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:16px 32px;border-radius:10px;font-weight:600;font-size:14px;transition:all 0.15s;cursor:pointer}
+    .btn-primary{background:var(--primary);color:#fff;box-shadow:0 4px 20px rgba(255,107,53,0.35)}
+    .btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 6px 28px rgba(255,107,53,0.45)}
+    .btn-accent{background:var(--accent);color:#fff;box-shadow:0 4px 18px rgba(217,119,6,0.3)}
+    .btn-accent:hover{background:#b45309;transform:translateY(-2px)}
+    .btn-outline{background:transparent;color:var(--text-muted);border:1.5px solid var(--border)}
+    .btn-outline:hover{background:var(--bg-alt);color:#0f1117}
+    .stats-band{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-top:48px}
+    .stat-item{background:#fff;text-align:center;padding:32px 16px}
+    .stat-value{font-size:42px;font-weight:900;line-height:1;margin-bottom:4px;background:linear-gradient(135deg,var(--primary),#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .stat-label{color:var(--text-muted);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+    .section-header{text-align:center;max-width:700px;margin:0 auto 64px}
+    .section-tag{display:inline-block;background:var(--primary-light);color:var(--primary);padding:4px 16px;border-radius:999px;font-size:12px;font-weight:700;text-transform:uppercase;margin-bottom:16px;border:1px solid var(--primary-light)}
+    .section-title{font-size:clamp(32px,4vw,48px);line-height:1.1;font-weight:800;letter-spacing:-1.5px;margin-bottom:16px}
+    .section-subtitle{color:var(--text-muted);font-size:18px;line-height:1.7}
+    .pillars-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+    .pillar-card{border-radius:var(--radius);padding:32px;box-shadow:var(--shadow-sm);transition:all 0.25s}
+    .pillar-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+    .pillar-wellness{background:#fff8f5;border:1.5px solid #ffc9b5}
+    .pillar-sports{background:#f0fdf6;border:1.5px solid #bbf7d0}
+    .pillar-icon{font-size:40px;margin-bottom:24px}
+    .pillar-title{font-size:24px;font-weight:800;margin-bottom:16px}
+    .pillar-wellness .pillar-title{color:var(--primary)}
+    .pillar-sports .pillar-title{color:var(--success)}
+    .pillar-desc{color:var(--text-muted);font-size:16px;line-height:1.7;margin-bottom:24px}
+    .pillar-list{color:var(--text-muted);font-size:14px;padding-left:24px;line-height:2;list-style:disc}
+    .pillar-wellness li::marker{color:var(--primary)}
+    .pillar-sports li::marker{color:var(--success)}
+    .bridge-section{background:linear-gradient(135deg,#0f1117 0%,#1a2e1a 50%,#1a1228 100%);border-radius:var(--radius);padding:64px 48px;text-align:center;box-shadow:var(--shadow-lg)}
+    .bridge-title{font-size:clamp(26px,3.5vw,42px);font-weight:800;color:#fff;margin-bottom:16px}
+    .bridge-desc{color:rgba(255,255,255,0.68);max-width:600px;margin:0 auto 32px;font-size:18px;line-height:1.8}
+    .notif-demo{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);border-radius:16px;padding:24px 32px;max-width:480px;margin:0 auto;text-align:left}
+    .notif-app{font-size:11px;color:#ff9a70;font-weight:700;margin-bottom:4px;text-transform:uppercase}
+    .notif-text{font-size:16px;color:rgba(255,255,255,0.9);line-height:1.6}
+    .coaching-hero{background:linear-gradient(135deg,#fffbeb 0%,#fef3c7 50%,#fffbeb 100%);border:1.5px solid #fde68a;border-radius:var(--radius);padding:64px 48px;box-shadow:var(--shadow-lg)}
+    .coaching-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+    .coaching-title{font-size:clamp(28px,3.5vw,44px);line-height:1.1;font-weight:800;margin-bottom:16px}
+    .coaching-title .highlight{color:var(--accent)}
+    .coaching-desc{color:var(--text-muted);font-size:16px;line-height:1.8;margin-bottom:32px}
+    .coach-cards{display:flex;flex-direction:column;gap:16px}
+    .coach-card{background:#fff;border:1px solid #fde68a;border-radius:10px;padding:16px 24px;display:flex;align-items:center;gap:16px;box-shadow:var(--shadow-sm);transition:all 0.15s}
+    .coach-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+    .coach-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#d97706);display:flex;align-items:center;justify-content:center;font-size:20px;border:2px solid #fde68a}
+    .coach-info{flex:1}
+    .coach-name{font-weight:700;font-size:14px;margin-bottom:4px}
+    .coach-meta{font-size:12px;color:var(--text-muted)}
+    .coach-rate{font-size:16px;font-weight:800;color:var(--accent)}
+    .verified-badge{display:inline-block;background:#d1fae5;border:1px solid #6ee7b7;color:#065f46;font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;margin-left:8px}
+    .cf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .cf-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:24px;box-shadow:var(--shadow-sm);transition:all 0.25s}
+    .cf-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:#fde68a}
+    .cf-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;background:var(--accent-light);border:1px solid #fde68a;margin-bottom:16px}
+    .cf-title{font-size:16px;font-weight:700;margin-bottom:8px}
+    .cf-desc{font-size:14px;color:var(--text-muted);line-height:1.7}
+    .faq{display:grid;gap:8px;max-width:800px;margin:0 auto}
+    .faq-item{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+    .faq-summary{width:100%;padding:24px 32px;display:flex;justify-content:space-between;align-items:center;background:none;border:none;cursor:pointer;text-align:left;font-weight:600;font-size:16px}
+    .faq-icon{color:var(--primary);font-size:20px;transition:transform 0.15s}
+    .faq-item[open] .faq-icon{transform:rotate(45deg)}
+    .faq-content{padding:0 32px 24px;color:var(--text-muted);font-size:14px;line-height:1.7}
+    .faq-content a{color:var(--primary);font-weight:600;text-decoration:underline}
+    .cta-band{background:linear-gradient(135deg,#0f1117 0%,#1a1a2e 50%,#0f1a12 100%);border-radius:var(--radius);padding:64px 48px;text-align:center;box-shadow:var(--shadow-lg)}
+    .cta-title{font-size:clamp(28px,3.5vw,44px);font-weight:800;color:#fff;margin-bottom:16px}
+    .cta-desc{color:rgba(255,255,255,0.65);max-width:540px;margin:0 auto 32px;font-size:18px;line-height:1.8}
+    .cta-fine{margin-top:24px;color:rgba(255,255,255,0.3);font-size:12px}
+    .footer{padding:64px 0 48px;border-top:1px solid var(--border);background:var(--bg-alt);margin-top:96px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+    .footer-brand .logo{margin-bottom:16px}
+    .footer-tagline{color:var(--text-muted);font-size:14px;line-height:1.7;max-width:300px}
+    .footer-title{font-size:12px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:16px}
+    .footer-links{display:flex;flex-direction:column;gap:8px}
+    .footer-link{color:var(--text-muted);font-size:14px;transition:color 0.15s}
+    .footer-link:hover{color:#0f1117}
+    .footer-bottom{padding-top:32px;border-top:1px solid var(--border);text-align:center;color:#9ca3af;font-size:12px}
+    @media(max-width:1024px){.hero-grid,.coaching-grid{grid-template-columns:1fr;gap:48px}.cf-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:768px){.nav-menu{display:none}.pillars-grid,.cf-grid{grid-template-columns:1fr}.stats-band{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr}.section{padding:64px 0}}
+    @media(max-width:480px){.hero-title{font-size:36px}.stats-band{grid-template-columns:1fr}.hero-cta{flex-direction:column}.btn{width:100%}}
   </style>
 </head>
 <body>
-  <!-- Skip to content for accessibility -->
-  <a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to content</a>
-  
-  <!-- ── HEADER ────────────────────────────────────────── -->
-  <header class="header" role="banner">
+  <header class="header">
     <div class="container">
-      <nav class="nav" role="navigation" aria-label="Main navigation">
-        <a href="/" class="logo" aria-label="SitBit home">
-          <img src="/SitBit%20Logo.png" alt="SitBit" width="160" height="40" />
-        </a>
-        
+      <nav class="nav">
+        <a href="/" class="logo"><img src="/SitBit_Logo-removebg-preview.png" alt="SitBit" width="160" height="40" /></a>
         <div class="nav-menu">
           <a href="#features" class="nav-link">Features</a>
           <a href="#how" class="nav-link">How it works</a>
-          <a href="#coaching" class="nav-link nav-link-accent">🏅 Coaching</a>
+          <a href="#coaching" class="nav-link" style="background:var(--accent-light);color:var(--accent)!important;padding:4px 16px;border-radius:999px;border:1px solid #fde68a;font-weight:600">🏅 Coaching</a>
           <a href="#faq" class="nav-link">FAQ</a>
           <a href="https://play.google.com/store/apps/details?id=co.sitbit.sitbit" target="_blank" rel="noopener" class="nav-cta">▶ Download Free</a>
         </div>
-        
-        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
       </nav>
     </div>
   </header>
-  
-  <main id="main-content">
-    <!-- ── HERO ────────────────────────────────────────── -->
-    <section class="hero" aria-labelledby="hero-title">
+  <main>
+    <section class="hero">
       <div class="container">
         <div class="hero-grid">
           <div>
-            <div class="hero-badge">🔥 The platform for active professionals</div>
-            <h1 id="hero-title" class="hero-title">
-              Stop sitting.<br>
-              Start playing.<br>
-              <span class="highlight">Get coached.</span>
-            </h1>
-            <p class="hero-subtitle">
-              SitBit turns your desk job into XP, your after-work into a game, and your ambition into real skills — with gamified breaks, local sports sessions, and verified coaching in one app.
-            </p>
+            <div style="display:inline-flex;align-items:center;gap:4px;background:var(--primary-light);color:var(--primary);padding:4px 16px;border-radius:999px;font-size:12px;font-weight:600;margin-bottom:24px;border:1px solid var(--primary-light)">🔥 The platform for active professionals</div>
+            <h1 class="hero-title">Stop sitting.<br>Start playing.<br><span class="highlight">Get coached.</span></h1>
+            <p class="hero-subtitle">SitBit turns your desk job into XP, your after-work into a game, and your ambition into real skills — with gamified breaks, local sports sessions, and verified coaching in one app.</p>
             <div class="hero-cta">
-              <a href="https://play.google.com/store/apps/details?id=co.sitbit.sitbit" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Download SitBit on Google Play">
-                ▶ Download on Google Play
-              </a>
+              <a href="https://play.google.com/store/apps/details?id=co.sitbit.sitbit" target="_blank" rel="noopener" class="btn btn-primary">▶ Download on Google Play</a>
               <a href="#coaching" class="btn btn-accent">🏅 Explore Coaching</a>
               <a href="#ios" class="btn btn-outline">🍎 iOS — Coming Soon</a>
             </div>
-            <p class="hero-note" id="ios">
-              iOS is in App Store review. <a href="mailto:support@sitbit.co">Notify me</a> when it's live.
-            </p>
-            <div class="hero-tags">
-              <span class="tag">18+ adults</span>
-              <span class="tag">Desk wellness</span>
-              <span class="tag highlight">Sports organizer</span>
-              <span class="tag accent">🏅 Coaching marketplace</span>
-              <span class="tag">Free to download</span>
-            </div>
-            
+            <p id="ios" style="font-size:12px;color:#9ca3af;margin-top:8px">iOS is in App Store review. <a href="mailto:support@sitbit.co" style="color:var(--primary);font-weight:600;text-decoration:underline">Notify me</a> when it's live.</p>
             <div class="stats-band">
-              <div class="stat-item">
-                <div class="stat-value">8+</div>
-                <div class="stat-label">Exercise categories</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-value">6</div>
-                <div class="stat-label">Sport types</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-value">40s</div>
-                <div class="stat-label">Avg. break duration</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-value">🌍</div>
-                <div class="stat-label">Available worldwide</div>
-              </div>
+              <div class="stat-item"><div class="stat-value">8+</div><div class="stat-label">Exercise categories</div></div>
+              <div class="stat-item"><div class="stat-value">6</div><div class="stat-label">Sport types</div></div>
+              <div class="stat-item"><div class="stat-value">40s</div><div class="stat-label">Avg. break duration</div></div>
+              <div class="stat-item"><div class="stat-value">🌍</div><div class="stat-label">Available worldwide</div></div>
             </div>
           </div>
-          
-          <div class="hero-visual">
-            <div class="phone-mockup">
-              <div class="phone-screen">
-                <div class="phone-header">
-                  <span class="phone-badge">⚔️ Lv.4 postureMonk</span>
-                  <span class="phone-badge">🔥 12</span>
+          <div>
+            <div style="background:#fff;border:1px solid var(--border);border-radius:32px;padding:24px;box-shadow:var(--shadow-lg)">
+              <div style="background:linear-gradient(160deg,#0a0d28 0%,#0f1a12 100%);border-radius:20px;padding:16px;min-height:520px">
+                <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+                  <span style="display:inline-flex;background:rgba(124,110,255,0.18);border:1px solid rgba(124,110,255,0.35);color:#c4b8ff;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:700">⚔️ Lv.4 postureMonk</span>
+                  <span style="display:inline-flex;background:rgba(255,107,53,0.18);border:1px solid rgba(255,107,53,0.35);color:#ff9a70;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:700">🔥 12</span>
                 </div>
-                <span class="phone-pill">⚡ Post-lunch power hour</span>
-                <div class="mini-card">
-                  <div class="mini-label">Movement Goal</div>
-                  <div class="mini-value">5 / 8 breaks ✓</div>
-                  <div style="font-size:10px;color:rgba(255,255,255,0.38);margin-top:4px;">420 XP · 80 to next level</div>
-                  <div class="xp-bar"><div class="xp-fill"></div></div>
+                <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px;margin-top:16px">
+                  <div style="font-size:10px;color:rgba(255,255,255,0.45);font-weight:700;text-transform:uppercase;margin-bottom:4px">Movement Goal</div>
+                  <div style="font-size:22px;font-weight:900;color:#fff">5 / 8 breaks ✓</div>
+                  <div style="background:rgba(255,255,255,0.1);border-radius:999px;height:5px;margin-top:8px;overflow:hidden"><div style="background:linear-gradient(90deg,#ff6b35,#ffaa00);height:100%;border-radius:999px;width:42%"></div></div>
                 </div>
-                <div class="stats-grid">
-                  <div class="mini-card">
-                    <div class="mini-label">Streak</div>
-                    <div class="mini-value" style="color:#ff9a70;">12🔥</div>
-                  </div>
-                  <div class="mini-card">
-                    <div class="mini-label">XP</div>
-                    <div class="mini-value">420</div>
-                  </div>
-                  <div class="mini-card">
-                    <div class="mini-label">Fuel</div>
-                    <div class="mini-value" style="color:#4ade80;">84</div>
-                  </div>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px">
+                  <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px;text-align:center"><div style="font-size:10px;color:rgba(255,255,255,0.45);font-weight:700;margin-bottom:4px">Streak</div><div style="font-size:20px;font-weight:900;color:#ff9a70">12🔥</div></div>
+                  <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px;text-align:center"><div style="font-size:10px;color:rgba(255,255,255,0.45);font-weight:700;margin-bottom:4px">XP</div><div style="font-size:20px;font-weight:900;color:#fff">420</div></div>
+                  <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px;text-align:center"><div style="font-size:10px;color:rgba(255,255,255,0.45);font-weight:700;margin-bottom:4px">Fuel</div><div style="font-size:20px;font-weight:900;color:#4ade80">84</div></div>
                 </div>
-                <div class="quest-card">
-                  <div class="quest-label">⚡ Today's Quest</div>
-                  <div class="quest-title">Neck Relief Sprint</div>
-                  <div class="quest-sub">3 neck breaks before 4 PM · 0/3 done · +50 XP</div>
+                <div style="background:linear-gradient(135deg,rgba(124,110,255,0.16),rgba(100,80,255,0.06));border:1px solid rgba(124,110,255,0.28);border-radius:10px;padding:16px;margin-top:16px">
+                  <div style="font-size:10px;color:#c4b8ff;font-weight:700;text-transform:uppercase;margin-bottom:4px">⚡ Today's Quest</div>
+                  <div style="font-size:14px;font-weight:800;color:#fff;margin-bottom:4px">Neck Relief Sprint</div>
+                  <div style="font-size:11px;color:rgba(255,255,255,0.55)">3 neck breaks before 4 PM · 0/3 done · +50 XP</div>
                 </div>
-                <div class="coach-pill">
-                  <div class="coach-pill-label">🏅 Coaching Match</div>
-                  <div class="coach-pill-body">Ahmed M. — Football, Padel · ⭐ 4.9 · €35/hr · 2km away</div>
+                <div style="background:linear-gradient(90deg,rgba(217,119,6,0.16),rgba(217,119,6,0.06));border:1px solid rgba(217,119,6,0.28);border-radius:10px;padding:16px;margin-top:16px">
+                  <div style="font-size:10px;color:#fbbf24;font-weight:700;text-transform:uppercase;margin-bottom:4px">🏅 Coaching Match</div>
+                  <div style="font-size:12px;color:rgba(255,255,255,0.82)">Ahmed M. — Football, Padel · ⭐ 4.9 · €35/hr · 2km away</div>
                 </div>
               </div>
             </div>
@@ -1348,81 +192,51 @@
         </div>
       </div>
     </section>
-    
-    <!-- ── FEATURES ────────────────────────────────────── -->
-    <section id="features" class="section" aria-labelledby="features-title">
+    <section id="features" class="section">
       <div class="container">
         <div class="section-header">
           <span class="section-tag">Three pillars. One app.</span>
-          <h2 id="features-title" class="section-title">From your desk to the pitch to the coach.</h2>
-          <p class="section-subtitle">
-            SitBit is built for the complete journey — breaking bad sitting habits during the day, organizing real games after work, and leveling up your skills with verified coaches.
-          </p>
+          <h2 class="section-title">From your desk to the pitch to the coach.</h2>
+          <p class="section-subtitle">SitBit is built for the complete journey — breaking bad sitting habits during the day, organizing real games after work, and leveling up your skills with verified coaches.</p>
         </div>
-        
         <div class="pillars-grid">
           <div class="pillar-card pillar-wellness">
             <div class="pillar-icon">🧘</div>
             <h3 class="pillar-title">Desk Wellness</h3>
-            <p class="pillar-desc">
-              Your desk is quietly hurting your body. SitBit gives you a 40-second mission every hour, earns you XP for completing it, and turns your workday into a game you actually want to play.
-            </p>
-            <ul class="pillar-list">
-              <li>Guided micro-breaks for neck, back, shoulders, wrists, eyes</li>
-              <li>Streaks, XP, levels, badges & daily quests</li>
-              <li>Healthy snack & water tracking (Fuel score)</li>
-              <li>Smart reminders that adapt to your schedule</li>
-              <li>postureMonk — your desk wellness companion</li>
-            </ul>
+            <p class="pillar-desc">Your desk is quietly hurting your body. SitBit gives you a 40-second mission every hour, earns you XP for completing it, and turns your workday into a game you actually want to play.</p>
+            <ul class="pillar-list"><li>Guided micro-breaks for neck, back, shoulders, wrists, eyes</li><li>Streaks, XP, levels, badges & daily quests</li><li>Healthy snack & water tracking (Fuel score)</li><li>Smart reminders that adapt to your schedule</li></ul>
           </div>
-          
           <div class="pillar-card pillar-sports">
             <div class="pillar-icon">⚽</div>
             <h3 class="pillar-title">Sports Session Organizer</h3>
-            <p class="pillar-desc">
-              Stop chasing 10 people on WhatsApp for a game that never happens. Create a session in 2 minutes, auto-shuffle teams, and send one link that fills every spot.
-            </p>
-            <ul class="pillar-list">
-              <li>Football, basketball, tennis, padel, volleyball, running</li>
-              <li>Visual field position picker — claim your spot before the game</li>
-              <li>Auto team shuffle with animated reveal</li>
-              <li>Waiting list — auto-join when a spot opens</li>
-              <li>Deep link invites — one tap to join from any platform</li>
-            </ul>
+            <p class="pillar-desc">Stop chasing 10 people on WhatsApp for a game that never happens. Create a session in 2 minutes, auto-shuffle teams, and send one link that fills every spot.</p>
+            <ul class="pillar-list"><li>Football, basketball, tennis, padel, volleyball, running</li><li>Visual field position picker — claim your spot before the game</li><li>Auto team shuffle with animated reveal</li><li>Waiting list — auto-join when a spot opens</li></ul>
           </div>
         </div>
       </div>
     </section>
-    
-    <!-- ── BRIDGE ──────────────────────────────────────── -->
-    <section id="how" class="section" aria-labelledby="how-title">
+    <section id="how" class="section">
       <div class="container">
         <div class="bridge-section">
-          <span class="section-tag success" style="background:rgba(22,163,74,0.15);color:#4ade80;border-color:rgba(74,222,128,0.3);">The Bridge</span>
-          <h2 id="how-title" class="bridge-title">The notification that changes everything.</h2>
-          <p class="bridge-desc">
-            SitBit connects your desk life to your active life. After hours of sitting, it nudges you toward real movement — not just a stretch, but a real game nearby or a session with a coach.
-          </p>
+          <span class="section-tag" style="background:rgba(22,163,74,0.15);color:#4ade80;border-color:rgba(74,222,128,0.3)">The Bridge</span>
+          <h2 class="bridge-title">The notification that changes everything.</h2>
+          <p class="bridge-desc">SitBit connects your desk life to your active life. After hours of sitting, it nudges you toward real movement — not just a stretch, but a real game nearby or a session with a coach.</p>
           <div class="notif-demo">
             <div class="notif-app">⚽ SitBit — nearby game alert</div>
             <div class="notif-text">You've been sitting for 3 hours. There's a football game 2.3km away starting in 48 min — 3 spots left. Join?</div>
           </div>
-          <p class="bridge-foot">From desk to pitch — one notification at a time.</p>
+          <p style="margin-top:24px;font-size:14px;color:rgba(255,255,255,0.35)">From desk to pitch — one notification at a time.</p>
         </div>
       </div>
     </section>
-    
-    <!-- ── COACHING ────────────────────────────────────── -->
-    <section id="coaching" class="section" aria-labelledby="coaching-title">
+    <section id="coaching" class="section">
       <div class="container">
         <div class="coaching-hero">
           <div class="coaching-grid">
             <div>
-              <span class="section-tag accent">🏅 Coaching Marketplace</span>
-              <h2 id="coaching-title" class="coaching-title">Level up with a <span class="highlight">verified coach.</span></h2>
-              <p class="coaching-desc">
-                Find trusted, verified sports coaches near you. Browse by sport, budget, and rating. Book a session directly in the app. Whether you want to sharpen your football, master padel, or get personalized training — your coach is a tap away.
-              </p>
+              <span class="section-tag" style="background:var(--accent-light);color:var(--accent);border-color:#fde68a">🏅 Coaching Marketplace</span>
+              <h2 class="coaching-title">Level up with a <span class="highlight">verified coach.</span></h2>
+              <p class="coaching-desc">Find trusted, verified sports coaches near you. Browse by sport, budget, and rating. Book a session directly in the app. Whether you want to sharpen your football, master padel, or get personalized training — your coach is a tap away.</p>
               <div class="hero-cta">
                 <a href="https://play.google.com/store/apps/details?id=co.sitbit.sitbit" target="_blank" rel="noopener" class="btn btn-accent">🏅 Find a Coach</a>
                 <a href="#become-trainer" class="btn btn-outline">Become a Trainer →</a>
@@ -1433,8 +247,7 @@
                 <div class="coach-avatar">⚽</div>
                 <div class="coach-info">
                   <div class="coach-name">Ahmed M. <span class="verified-badge">✓ Verified</span></div>
-                  <div class="coach-meta">Football · Padel · Vienna</div>
-                  <div class="coach-stars">⭐⭐⭐⭐⭐ 4.9 (38 reviews)</div>
+                  <div class="coach-meta">Football · Padel · Vienna · ⭐ 4.9 (38 reviews)</div>
                 </div>
                 <div class="coach-rate">€35/hr</div>
               </div>
@@ -1442,8 +255,7 @@
                 <div class="coach-avatar">🎾</div>
                 <div class="coach-info">
                   <div class="coach-name">Sofia R. <span class="verified-badge">✓ Verified</span></div>
-                  <div class="coach-meta">Tennis · Padel · Barcelona</div>
-                  <div class="coach-stars">⭐⭐⭐⭐⭐ 4.8 (52 reviews)</div>
+                  <div class="coach-meta">Tennis · Padel · Barcelona · ⭐ 4.8 (52 reviews)</div>
                 </div>
                 <div class="coach-rate">€45/hr</div>
               </div>
@@ -1451,8 +263,7 @@
                 <div class="coach-avatar">🏀</div>
                 <div class="coach-info">
                   <div class="coach-name">Marcus T. <span class="verified-badge">✓ Verified</span></div>
-                  <div class="coach-meta">Basketball · Running · Berlin</div>
-                  <div class="coach-stars">⭐⭐⭐⭐⭐ 4.7 (29 reviews)</div>
+                  <div class="coach-meta">Basketball · Running · Berlin · ⭐ 4.7 (29 reviews)</div>
                 </div>
                 <div class="coach-rate">€30/hr</div>
               </div>
@@ -1461,253 +272,74 @@
         </div>
       </div>
     </section>
-    
-    <!-- ── COACHING FEATURES ───────────────────────────── -->
-    <section class="section" aria-labelledby="cf-title">
+    <section class="section">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag accent">For players</span>
-          <h2 id="cf-title" class="section-title">Everything you need to find the right coach.</h2>
-          <p class="section-subtitle">
-            The SitBit coaching marketplace is built around trust, transparency, and results — so you always know who you're booking and what to expect.
-          </p>
+          <span class="section-tag" style="background:var(--accent-light);color:var(--accent);border-color:#fde68a">For players</span>
+          <h2 class="section-title">Everything you need to find the right coach.</h2>
+          <p class="section-subtitle">The SitBit coaching marketplace is built around trust, transparency, and results.</p>
         </div>
-        
-        <div class="coaching-features">
-          <div class="cf-card">
-            <div class="cf-icon">🏅</div>
-            <h3 class="cf-title">Verified profiles</h3>
-            <p class="cf-desc">Every coach is manually reviewed and verified. Credentials, experience, and reviews are all transparent — no fake profiles.</p>
-          </div>
-          <div class="cf-card">
-            <div class="cf-icon">📍</div>
-            <h3 class="cf-title">Find coaches near you</h3>
-            <p class="cf-desc">Browse by location, sport, and distance. Filter by budget and availability. Book the session that fits your schedule.</p>
-          </div>
-          <div class="cf-card">
-            <div class="cf-icon">💬</div>
-            <h3 class="cf-title">Reviews & ratings</h3>
-            <p class="cf-desc">Every session ends with a review. Real feedback from real players — pick the coach who fits your style and goals.</p>
-          </div>
-          <div class="cf-card">
-            <div class="cf-icon">📅</div>
-            <h3 class="cf-title">Direct booking</h3>
-            <p class="cf-desc">No back-and-forth. Request a session, get confirmed, show up. Simple booking built for busy people.</p>
-          </div>
-          <div class="cf-card">
-            <div class="cf-icon">💰</div>
-            <h3 class="cf-title">Transparent pricing</h3>
-            <p class="cf-desc">Coaches set their own rates and you see them upfront. No hidden fees. Pay only for what you book.</p>
-          </div>
-          <div class="cf-card">
-            <div class="cf-icon">🏆</div>
-            <h3 class="cf-title">All sports covered</h3>
-            <p class="cf-desc">Football, basketball, tennis, padel, volleyball, running — and more. Whatever you want to improve, there's a coach for it.</p>
-          </div>
+        <div class="cf-grid">
+          <div class="cf-card"><div class="cf-icon">🏅</div><h3 class="cf-title">Verified profiles</h3><p class="cf-desc">Every coach is manually reviewed and verified. Credentials, experience, and reviews are all transparent.</p></div>
+          <div class="cf-card"><div class="cf-icon">📍</div><h3 class="cf-title">Find coaches near you</h3><p class="cf-desc">Browse by location, sport, and distance. Filter by budget and availability.</p></div>
+          <div class="cf-card"><div class="cf-icon">💬</div><h3 class="cf-title">Reviews & ratings</h3><p class="cf-desc">Every session ends with a review. Real feedback from real players.</p></div>
+          <div class="cf-card"><div class="cf-icon">📅</div><h3 class="cf-title">Direct booking</h3><p class="cf-desc">No back-and-forth. Request a session, get confirmed, show up.</p></div>
+          <div class="cf-card"><div class="cf-icon">💰</div><h3 class="cf-title">Transparent pricing</h3><p class="cf-desc">Coaches set their own rates and you see them upfront. No hidden fees.</p></div>
+          <div class="cf-card"><div class="cf-icon">🏆</div><h3 class="cf-title">All sports covered</h3><p class="cf-desc">Football, basketball, tennis, padel, volleyball, running — and more.</p></div>
         </div>
       </div>
     </section>
-    
-    <!-- ── FAQ ─────────────────────────────────────────── -->
-    <section id="faq" class="section" aria-labelledby="faq-title">
+    <section id="faq" class="section">
       <div class="container">
         <div class="section-header">
           <span class="section-tag">Got questions?</span>
-          <h2 id="faq-title" class="section-title">Frequently asked questions</h2>
+          <h2 class="section-title">Frequently asked questions</h2>
         </div>
-        
         <div class="faq">
-          <details class="faq-item">
-            <summary class="faq-summary">
-              Who is SitBit for?
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-content">
-              SitBit is for adults 18+ who sit for long hours and want gamified movement breaks, an easy way to organize local sports sessions, and access to verified sports coaches to help them improve.
-            </div>
-          </details>
-          
-          <details class="faq-item">
-            <summary class="faq-summary">
-              What is the coaching marketplace?
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-content">
-              It connects players with verified local sports coaches. Browse by sport, location, rating, and price — then book a session directly in the app. Available for football, basketball, tennis, padel, volleyball, and running.
-            </div>
-          </details>
-          
-          <details class="faq-item">
-            <summary class="faq-summary">
-              How do I become a SitBit coach?
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-content">
-              Email <a href="mailto:coaches@sitbit.co">coaches@sitbit.co</a> with your sports background and credentials. Our team reviews all applications before listing coaches on the platform.
-            </div>
-          </details>
-          
-          <details class="faq-item">
-            <summary class="faq-summary">
-              Is SitBit free?
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-content">
-              Yes. SitBit is free to download on Google Play. iOS App Store version is coming soon. Coaching sessions are paid separately at the coach's listed rate.
-            </div>
-          </details>
-          
-          <details class="faq-item">
-            <summary class="faq-summary">
-              Do I need any gym equipment?
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-content">
-              No. All desk exercises are designed to be done at your desk, in your office chair, or standing at your workstation. No equipment required.
-            </div>
-          </details>
-          
-          <details class="faq-item">
-            <summary class="faq-summary">
-              Is SitBit available on iPhone?
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-content">
-              The iOS version is currently in review on the Apple App Store. <a href="mailto:support@sitbit.co">Email us</a> to be notified the moment it goes live.
-            </div>
-          </details>
-          
-          <details class="faq-item">
-            <summary class="faq-summary">
-              Can I use just the sports organizer without the wellness features?
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-content">
-              Yes. All three pillars work independently. Use SitBit purely as a sports organizer, purely as a desk wellness tracker, purely to find a coach — or all three together.
-            </div>
-          </details>
-          
-          <details class="faq-item">
-            <summary class="faq-summary">
-              How do I delete my account?
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-content">
-              Go to Settings → Delete Account inside the app. If the app is uninstalled, email <a href="mailto:support@sitbit.co">support@sitbit.co</a> with the subject "Delete my SitBit account".
-            </div>
-          </details>
-          
-          <details class="faq-item">
-            <summary class="faq-summary">
-              How do I contact support?
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-content">
-              Email: <a href="mailto:support@sitbit.co">support@sitbit.co</a> — we aim to reply within 48 hours.
-            </div>
-          </details>
+          <details class="faq-item"><summary class="faq-summary">Who is SitBit for?<span class="faq-icon">+</span></summary><div class="faq-content">SitBit is for adults 18+ who sit for long hours and want gamified movement breaks, an easy way to organize local sports sessions, and access to verified sports coaches.</div></details>
+          <details class="faq-item"><summary class="faq-summary">What is the coaching marketplace?<span class="faq-icon">+</span></summary><div class="faq-content">It connects players with verified local sports coaches. Browse by sport, location, rating, and price — then book a session directly in the app.</div></details>
+          <details class="faq-item"><summary class="faq-summary">How do I become a SitBit coach?<span class="faq-icon">+</span></summary><div class="faq-content">Email <a href="mailto:coaches@sitbit.co">coaches@sitbit.co</a> with your sports background and credentials. Our team reviews all applications.</div></details>
+          <details class="faq-item"><summary class="faq-summary">Is SitBit free?<span class="faq-icon">+</span></summary><div class="faq-content">Yes. SitBit is free to download on Google Play. iOS App Store version is coming soon. Coaching sessions are paid separately at the coach's listed rate.</div></details>
+          <details class="faq-item"><summary class="faq-summary">Do I need any gym equipment?<span class="faq-icon">+</span></summary><div class="faq-content">No. All desk exercises are designed to be done at your desk, in your office chair, or standing at your workstation.</div></details>
+          <details class="faq-item"><summary class="faq-summary">Is SitBit available on iPhone?<span class="faq-icon">+</span></summary><div class="faq-content">The iOS version is currently in review on the Apple App Store. <a href="mailto:support@sitbit.co">Email us</a> to be notified the moment it goes live.</div></details>
+          <details class="faq-item"><summary class="faq-summary">Can I use just the sports organizer?<span class="faq-icon">+</span></summary><div class="faq-content">Yes. All three pillars work independently. Use SitBit purely as a sports organizer, purely as a desk wellness tracker, purely to find a coach — or all three together.</div></details>
+          <details class="faq-item"><summary class="faq-summary">How do I contact support?<span class="faq-icon">+</span></summary><div class="faq-content">Email: <a href="mailto:support@sitbit.co">support@sitbit.co</a> — we aim to reply within 48 hours.</div></details>
         </div>
       </div>
     </section>
-    
-    <!-- ── CTA ─────────────────────────────────────────── -->
-    <section class="section" aria-labelledby="cta-title">
+    <section class="section">
       <div class="container">
         <div class="cta-band">
-          <h2 id="cta-title" class="cta-title">Start today. First break in 2 minutes.</h2>
-          <p class="cta-desc">
-            Download SitBit free. Take your first movement break, find a game tonight, or book a coach this week — all from one app.
-          </p>
-          <div class="hero-cta" style="justify-content:center;">
+          <h2 class="cta-title">Start today. First break in 2 minutes.</h2>
+          <p class="cta-desc">Download SitBit free. Take your first movement break, find a game tonight, or book a coach this week — all from one app.</p>
+          <div class="hero-cta" style="justify-content:center">
             <a href="https://play.google.com/store/apps/details?id=co.sitbit.sitbit" target="_blank" rel="noopener" class="btn btn-primary">▶ Download on Google Play</a>
             <a href="#coaching" class="btn btn-accent">🏅 Explore Coaching</a>
-            <a href="mailto:support@sitbit.co" class="btn btn-outline" style="color:rgba(255,255,255,0.6);border-color:rgba(255,255,255,0.2);">🍎 iOS — Notify Me</a>
+            <a href="mailto:support@sitbit.co" class="btn btn-outline" style="color:rgba(255,255,255,0.6);border-color:rgba(255,255,255,0.2)">🍎 iOS — Notify Me</a>
           </div>
           <p class="cta-fine">Free to download · No credit card · Available worldwide</p>
         </div>
       </div>
     </section>
   </main>
-  
-  <!-- ── FOOTER ────────────────────────────────────────── -->
-  <footer class="footer" role="contentinfo">
+  <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="/" class="logo" aria-label="SitBit home">
-            <img src="/SitBit%20Logo.png" alt="SitBit" width="160" height="40" />
-          </a>
+          <a href="/" class="logo"><img src="/SitBit_Logo-removebg-preview.png" alt="SitBit" width="160" height="40" /></a>
           <p class="footer-tagline">Stop sitting. Start playing. Get coached. The complete platform for active professionals.</p>
         </div>
-        
-        <div>
-          <h3 class="footer-title">Product</h3>
-          <div class="footer-links">
-            <a href="#features" class="footer-link">Features</a>
-            <a href="#how" class="footer-link">How it works</a>
-            <a href="#coaching" class="footer-link">Coaching</a>
-            <a href="#faq" class="footer-link">FAQ</a>
-          </div>
-        </div>
-        
-        <div>
-          <h3 class="footer-title">Legal</h3>
-          <div class="footer-links">
-            <a href="/privacy.html" class="footer-link">Privacy Policy</a>
-            <a href="/terms.html" class="footer-link">Terms of Service</a>
-          </div>
-        </div>
-        
-        <div>
-          <h3 class="footer-title">Contact</h3>
-          <div class="footer-links">
-            <a href="mailto:support@sitbit.co" class="footer-link">support@sitbit.co</a>
-            <a href="mailto:coaches@sitbit.co" class="footer-link">coaches@sitbit.co</a>
-            <a href="https://play.google.com/store/apps/details?id=co.sitbit.sitbit" target="_blank" rel="noopener" class="footer-link">Google Play</a>
-          </div>
-        </div>
+        <div><h3 class="footer-title">Product</h3><div class="footer-links"><a href="#features" class="footer-link">Features</a><a href="#how" class="footer-link">How it works</a><a href="#coaching" class="footer-link">Coaching</a><a href="#faq" class="footer-link">FAQ</a></div></div>
+        <div><h3 class="footer-title">Legal</h3><div class="footer-links"><a href="/privacy.html" class="footer-link">Privacy Policy</a><a href="/terms.html" class="footer-link">Terms of Service</a></div></div>
+        <div><h3 class="footer-title">Contact</h3><div class="footer-links"><a href="mailto:support@sitbit.co" class="footer-link">support@sitbit.co</a><a href="mailto:coaches@sitbit.co" class="footer-link">coaches@sitbit.co</a><a href="https://play.google.com/store/apps/details?id=co.sitbit.sitbit" target="_blank" rel="noopener" class="footer-link">Google Play</a></div></div>
       </div>
-      
-      <div class="footer-bottom">
-        © 2026 SitBit · Desk wellness, sports organizer & coaching marketplace · Available worldwide
-      </div>
+      <div class="footer-bottom">© 2026 SitBit · Desk wellness, sports organizer & coaching marketplace · Available worldwide</div>
     </div>
   </footer>
-  
-  <!-- ── SCRIPTS ──────────────────────────────────────── -->
   <script>
-    // Header scroll effect
-    const header = document.querySelector('.header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 10) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-    
-    // Mobile menu toggle
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    menuToggle.addEventListener('click', () => {
-      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-      menuToggle.setAttribute('aria-expanded', !isExpanded);
-      navMenu.style.display = isExpanded ? 'none' : 'flex';
-    });
-    
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href !== '#') {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }
-      });
-    });
+    const header=document.querySelector('.header');
+    window.addEventListener('scroll',()=>{header.classList.toggle('scrolled',window.scrollY>10)});
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const href=a.getAttribute('href');if(href!=='#'){e.preventDefault();document.querySelector(href)?.scrollIntoView({behavior:'smooth'})}})});
   </script>
 </body>
 </html>
