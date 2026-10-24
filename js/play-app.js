@@ -6,7 +6,9 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   signOut,
-  updateProfile
+  updateProfile,
+  sendEmailVerification,
+  reload
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 import {
   collection,
@@ -180,6 +182,16 @@ export function switchTab(tabName) {
   }
 }
 
+// Check if current user is email verified (password users require verification)
+export function isEmailVerifiedUser(user) {
+  if (!user) return false;
+  const isPassword = user.providerData && user.providerData.some(p => p.providerId === 'password');
+  if (isPassword && !user.emailVerified) {
+    return false;
+  }
+  return true;
+}
+
 // Authentication Handlers
 export function initAuth() {
   onAuthStateChanged(auth, async (user) => {
@@ -304,6 +316,11 @@ export function openAuthModal(onSuccessCallback = null) {
       if (isSignUp) {
         const cred = await createUserWithEmailAndPassword(auth, email, password);
         await updateProfile(cred.user, { displayName });
+        try {
+          await sendEmailVerification(cred.user);
+        } catch (e) {
+          console.warn('Verification email send:', e);
+        }
         await setDoc(doc(db, 'users', cred.user.uid), {
           displayName,
           name: displayName,
@@ -314,7 +331,7 @@ export function openAuthModal(onSuccessCallback = null) {
           currentXp: 50,
           createdAt: serverTimestamp()
         }, { merge: true });
-        showToast('Account created!');
+        showToast('Account created! Please verify your email.');
       } else {
         await signInWithEmailAndPassword(auth, email, password);
         showToast('Signed in successfully!');
@@ -771,6 +788,10 @@ async function handleJoinGame() {
     openAuthModal(() => handleJoinGame());
     return;
   }
+  if (!isEmailVerifiedUser(state.currentUser)) {
+    showToast(`Please verify your email (${state.currentUser.email}) before joining games. Check your inbox for the link.`, 'warning');
+    return;
+  }
   const session = state.currentSession;
   if (!session) return;
   const uid = state.currentUser.uid;
@@ -1220,6 +1241,14 @@ async function publishGameSession() {
 
   const draft = state.wizardDraft;
   const user = state.currentUser;
+  if (!isEmailVerifiedUser(user)) {
+    showToast(`Please verify your email (${user.email}) before publishing games. Check your inbox for the link.`, 'warning');
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = 'Publish Game';
+    }
+    return;
+  }
   const organizerName = state.userProfile?.displayName || user.displayName || 'Coach';
   const organizerAvatarUrl = state.userProfile?.avatarUrl || user.photoURL || null;
 
