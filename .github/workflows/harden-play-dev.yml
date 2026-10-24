@@ -1,0 +1,40 @@
+name: Harden Play development source
+on:
+  push:
+    branches: [play-web-redesign-2026-10-23]
+    paths:
+      - scripts/harden-play-dev.mjs
+      - js/web-safety.mjs
+      - .github/workflows/harden-play-dev.yml
+permissions:
+  contents: write
+concurrency:
+  group: play-development-hardening
+  cancel-in-progress: false
+jobs:
+  harden:
+    if: github.ref == 'refs/heads/play-web-redesign-2026-10-23'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: play-web-redesign-2026-10-23
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated development test tools
+        run: npm install --prefix "$RUNNER_TEMP/sitbit-tools" --ignore-scripts --no-audit --no-fund acorn@8.15.0 jsdom@26.1.0 dompurify@3.4.17
+      - name: Patch expected source and run DOM security tests
+        env:
+          SITBIT_TOOL_ROOT: ${{ runner.temp }}/sitbit-tools
+        run: |
+          node scripts/harden-play-dev.mjs
+          node --input-type=module --check < js/play-app.js
+          git diff --check
+      - name: Commit only reviewed generated development files
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- js/play-app.js vendor/dompurify/purify.es.mjs vendor/dompurify/LICENSE docs/web-hardening-report.json
+          git commit -m "fix(web): harden HTML sinks and enforce verified-user checks"
+          git push origin HEAD:play-web-redesign-2026-10-23
