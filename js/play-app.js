@@ -229,7 +229,7 @@ export function initAuth() {
       state.userProfile = null;
     }
     updateAuthUI();
-    if (state.activeTab === 'explore') initDiscoveryFeed();
+    if (state.activeTab === 'explore') renderExploreView();
     if (state.activeTab === 'my-games') renderMyGamesView();
     if (state.activeTab === 'detail' && state.currentSessionId) {
       renderDetailView();
