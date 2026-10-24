@@ -1,3 +1,4 @@
+import { safeHtml, escapeText } from './web-safety.mjs';
 import { auth, db, isEmulatorMode } from './firebase-config.js?v=2';
 import {
   onAuthStateChanged,
@@ -112,7 +113,7 @@ export function showToast(message, type = 'info') {
   const container = document.getElementById('toast-container');
   if (!container) return;
   const toast = document.createElement('div');
-  toast.className = `toast-msg toast-${type}`;
+  toast.className = `toast-msg toast-${escapeText(type)}`;
   toast.textContent = message;
   container.appendChild(toast);
   setTimeout(() => {
@@ -183,18 +184,7 @@ export function switchTab(tabName) {
 }
 
 // Check if current user is email verified (password users require verification in prod)
-export function isEmailVerifiedUser(user) {
-  if (!user) return false;
-  // In local test / emulator environments, treat test accounts as verified
-  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.search.includes('emulator=true')) {
-    return true;
-  }
-  const isPassword = user.providerData && user.providerData.some(p => p.providerId === 'password');
-  if (isPassword && !user.emailVerified) {
-    return false;
-  }
-  return true;
-}
+export function isEmailVerifiedUser(user) { return Boolean(user && !user.isAnonymous && user.emailVerified === true); }
 
 // Authentication Handlers
 export function initAuth() {
@@ -212,7 +202,6 @@ export function initAuth() {
             displayName: user.displayName || 'Player',
             name: user.displayName || 'Player',
             firstName: (user.displayName || 'Player').split(' ')[0],
-            email: user.email,
             avatarUrl: user.photoURL || null,
             level: 1,
             skillScore: 100,
@@ -248,24 +237,24 @@ function updateAuthUI() {
   if (state.currentUser) {
     const name = state.userProfile?.displayName || state.currentUser.displayName || 'Player';
     const avatar = state.userProfile?.avatarUrl || state.currentUser.photoURL;
-    container.innerHTML = `
+    container.innerHTML = safeHtml(`
       <div class="user-status-pill">
         <div class="user-avatar-badge">
-          ${avatar ? `<img src="${avatar}" alt="${name}">` : name.charAt(0).toUpperCase()}
+          ${avatar ? `<img src="${escapeText(avatar)}" alt="${escapeText(name)}">` : name.charAt(0).toUpperCase()}
         </div>
         <span>${escapeHtml(name)}</span>
         <button id="signout-btn" class="btn btn-outline" style="min-height:30px; padding:4px 10px; font-size:12px; margin-left:6px;">Sign Out</button>
       </div>
-    `;
+    `);
     document.getElementById('signout-btn')?.addEventListener('click', () => {
       signOut(auth).then(() => showToast('Signed out successfully'));
     });
   } else {
-    container.innerHTML = `
+    container.innerHTML = safeHtml(`
       <button id="auth-modal-btn" class="btn btn-primary" style="min-height:38px; padding:8px 16px; font-size:13px;">
         Sign In / Join
       </button>
-    `;
+    `);
     document.getElementById('auth-modal-btn')?.addEventListener('click', () => openAuthModal());
   }
 }
@@ -329,7 +318,6 @@ export function openAuthModal(onSuccessCallback = null) {
           displayName,
           name: displayName,
           firstName: displayName.split(' ')[0],
-          email,
           level: 1,
           skillScore: 100,
           currentXp: 50,
@@ -361,7 +349,7 @@ export function renderExploreView() {
   const container = document.getElementById('play-app-view');
   if (!container) return;
 
-  container.innerHTML = `
+  container.innerHTML = safeHtml(`
     <div class="discovery-header">
       <div class="discovery-title-row">
         <div>
@@ -375,8 +363,8 @@ export function renderExploreView() {
       <div class="sport-filter-scroll" id="sport-filter-bar">
         <button class="sport-chip ${state.selectedSportFilter === 'all' ? 'active' : ''}" data-sport="all">All Sports</button>
         ${Object.entries(SPORT_REGISTRY).map(([k, s]) => `
-          <button class="sport-chip ${state.selectedSportFilter === k ? 'active' : ''}" data-sport="${k}">
-            ${s.emoji} ${s.name}
+          <button class="sport-chip ${state.selectedSportFilter === k ? 'active' : ''}" data-sport="${escapeText(k)}">
+            ${escapeText(s.emoji)} ${escapeText(s.name)}
           </button>
         `).join('')}
       </div>
@@ -386,7 +374,7 @@ export function renderExploreView() {
         Loading active sessions...
       </div>
     </div>
-  `;
+  `);
 
   document.getElementById('quick-create-btn')?.addEventListener('click', () => {
     switchTab('organize');
@@ -407,7 +395,7 @@ export function renderExploreView() {
   if (!state.currentUser) {
     const grid = document.getElementById('games-grid');
     if (grid) {
-      grid.innerHTML = `
+      grid.innerHTML = safeHtml(`
         <div style="text-align:center; padding:48px 20px; background:var(--paper-card); border-radius:var(--radius-lg); border:1px solid var(--border); grid-column:1/-1;">
           <div style="font-size:36px; margin-bottom:12px;">⚽ 🏀 🎾</div>
           <h3 style="font-size:18px; font-weight:800; margin-bottom:8px;">Sign in to Explore Local Games</h3>
@@ -416,7 +404,7 @@ export function renderExploreView() {
           </p>
           <button id="discovery-signin-btn" class="btn btn-primary" style="padding:10px 24px; font-size:14px;">Sign In / Join</button>
         </div>
-      `;
+      `);
       document.getElementById('discovery-signin-btn')?.addEventListener('click', () => openAuthModal());
     }
     return;
@@ -437,11 +425,11 @@ export function renderExploreView() {
       console.warn('Discovery query error:', err);
       const grid = document.getElementById('games-grid');
       if (grid) {
-        grid.innerHTML = `
+        grid.innerHTML = safeHtml(`
           <div style="text-align:center; padding:40px; color:var(--danger); grid-column:1/-1;">
             Failed to load games. Please check your network or sign in.
           </div>
-        `;
+        `);
       }
     });
     state.activeListeners.push(unsubscribe);
@@ -460,19 +448,19 @@ function filterAndRenderGames() {
   }
 
   if (filtered.length === 0) {
-    grid.innerHTML = `
+    grid.innerHTML = safeHtml(`
       <div style="text-align:center; padding:60px 20px; background:var(--paper-card); border-radius:var(--radius-lg); border:1px solid var(--border); grid-column:1/-1;">
         <span style="font-size:36px; display:block; margin-bottom:12px;">🏃</span>
         <h3 style="font-size:18px; font-weight:800; margin-bottom:6px;">No games scheduled yet</h3>
         <p style="color:var(--muted); font-size:14px; margin-bottom:20px;">Be the first to organize a session for your team!</p>
         <button id="empty-create-btn" class="btn btn-primary" style="min-height:42px;">Organize First Game</button>
       </div>
-    `;
+    `);
     document.getElementById('empty-create-btn')?.addEventListener('click', () => switchTab('organize'));
     return;
   }
 
-  grid.innerHTML = filtered.map(game => {
+  grid.innerHTML = safeHtml(filtered.map(game => {
     const sportInfo = SPORT_REGISTRY[game.sportType] || SPORT_REGISTRY.custom;
     const participants = game.participants || [];
     const confirmedCount = participants.filter(p => p.confirmed).length;
@@ -487,35 +475,35 @@ function filterAndRenderGames() {
     }
 
     return `
-      <div class="game-card" data-session-id="${game.id}">
+      <div class="game-card" data-session-id="${escapeText(game.id)}">
         <div class="game-card-top">
-          <span class="sport-badge">${sportInfo.emoji} ${sportInfo.name} ${game.sportFormat ? `• ${game.sportFormat}` : ''}</span>
+          <span class="sport-badge">${escapeText(sportInfo.emoji)} ${escapeText(sportInfo.name)} ${game.sportFormat ? `• ${escapeText(game.sportFormat)}` : ''}</span>
           <span class="status-badge ${isFull ? 'status-full' : 'status-open'}">
             ${isFull ? 'Full / Waitlist' : 'Spots Open'}
           </span>
         </div>
-        <h3 class="game-card-title">${escapeHtml(game.title || `${sportInfo.name} Game`)}</h3>
+        <h3 class="game-card-title">${escapeHtml(game.title || `${escapeText(sportInfo.name)} Game`)}</h3>
         <div class="game-card-info">
-          <div class="info-line"><span>📅</span> ${dateDisplay} (${game.durationMinutes || 90}m)</div>
+          <div class="info-line"><span>📅</span> ${escapeText(dateDisplay)} (${game.durationMinutes || 90}m)</div>
           <div class="info-line"><span>📍</span> ${escapeHtml(game.locationName || 'Local Venue')}</div>
           <div class="info-line"><span>👑</span> Organized by ${escapeHtml(game.organizerName || 'Coach')}</div>
         </div>
         <div class="capacity-meter">
           <span style="font-size:13px; font-weight:700; color:var(--ink);">
-            ${confirmedCount}/${maxPlayers} Players
+            ${escapeText(confirmedCount)}/${escapeText(maxPlayers)} Players
           </span>
           <div class="progress-track">
-            <div class="progress-bar-fill" style="width:${progressPercent}%;"></div>
+            <div class="progress-bar-fill" style="width:${escapeText(progressPercent)}%;"></div>
           </div>
         </div>
       </div>
     `;
-  }).join('');
+  }).join(''));
 
   grid.querySelectorAll('.game-card').forEach(card => {
     card.addEventListener('click', () => {
       const sid = card.dataset.sessionId;
-      navigateTo(`/group-sessions/${sid}`);
+      navigateTo(`/group-sessions/${escapeText(sid)}`);
     });
   });
 }
@@ -577,18 +565,18 @@ function renderDetailView() {
     dateDisplay = `${d.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })} at ${session.startTime || '18:00'}`;
   }
 
-  container.innerHTML = `
+  container.innerHTML = safeHtml(`
     <div class="game-detail-panel">
       <button id="detail-back-btn" class="back-btn">← Back to Explore</button>
       
       <div class="detail-header-row">
         <div>
-          <span class="sport-badge" style="margin-bottom:8px;">${sportInfo.emoji} ${sportInfo.name} ${session.sportFormat ? `• ${session.sportFormat}` : ''}</span>
-          <h1 class="detail-title">${escapeHtml(session.title || `${sportInfo.name} Game`)}</h1>
+          <span class="sport-badge" style="margin-bottom:8px;">${escapeText(sportInfo.emoji)} ${escapeText(sportInfo.name)} ${session.sportFormat ? `• ${escapeText(session.sportFormat)}` : ''}</span>
+          <h1 class="detail-title">${escapeHtml(session.title || `${escapeText(sportInfo.name)} Game`)}</h1>
           <div class="detail-meta-strip">
-            <span>📅 ${dateDisplay} (${session.durationMinutes || 90} mins)</span>
+            <span>📅 ${escapeText(dateDisplay)} (${session.durationMinutes || 90} mins)</span>
             <span>📍 ${escapeHtml(session.locationName || 'Local Venue')}</span>
-            <span>👥 ${participants.length}/${session.maxPlayers || 10} Confirmed</span>
+            <span>👥 ${escapeText(participants.length)}/${session.maxPlayers || 10} Confirmed</span>
             ${!session.isPublic ? '<span style="color:var(--warning); font-weight:700;">🔒 Invite-Only</span>' : ''}
           </div>
         </div>
@@ -650,16 +638,16 @@ function renderDetailView() {
 
       <!-- Participant Roster & Waiting List -->
       <div class="roster-section">
-        <h3 style="font-size:18px; font-weight:800; margin-bottom:12px;">Confirmed Lineup (${participants.length})</h3>
+        <h3 style="font-size:18px; font-weight:800; margin-bottom:12px;">Confirmed Lineup (${escapeText(participants.length)})</h3>
         <div class="roster-list" id="confirmed-roster-list">
           ${participants.map(p => `
             <div class="player-row-card">
               <div class="user-avatar-badge" style="width:36px; height:36px; font-size:15px;">
-                ${p.avatarUrl ? `<img src="${p.avatarUrl}" alt="${p.displayName}">` : p.displayName.charAt(0).toUpperCase()}
+                ${p.avatarUrl ? `<img src="${escapeText(p.avatarUrl)}" alt="${escapeText(p.displayName)}">` : p.displayName.charAt(0).toUpperCase()}
               </div>
               <div class="player-details-col">
                 <div class="player-name-text">${escapeHtml(p.displayName)} ${p.isCaptain ? '👑' : ''}</div>
-                <div class="player-subtag">${p.positionLabel ? `${p.positionLabel} • ` : ''}${p.teamNumber ? `Team ${p.teamNumber === 1 ? 'A' : 'B'}` : 'Player'}</div>
+                <div class="player-subtag">${p.positionLabel ? `${escapeText(p.positionLabel)} • ` : ''}${p.teamNumber ? `Team ${p.teamNumber === 1 ? 'A' : 'B'}` : 'Player'}</div>
               </div>
             </div>
           `).join('')}
@@ -670,14 +658,14 @@ function renderDetailView() {
         <!-- Rendered by renderWaitingList -->
       </div>
     </div>
-  `;
+  `);
 
   document.getElementById('detail-back-btn')?.addEventListener('click', () => {
     navigateTo('/');
   });
 
   document.getElementById('share-game-btn')?.addEventListener('click', () => {
-    const canonicalUrl = `${window.location.origin}/group-sessions/${session.id}`;
+    const canonicalUrl = `${escapeText(window.location.origin)}/group-sessions/${escapeText(session.id)}`;
     navigator.clipboard.writeText(canonicalUrl).then(() => {
       showToast('Game link copied to clipboard!');
     }).catch(() => {
@@ -708,18 +696,18 @@ function renderFieldPositions() {
   const positions = state.positions;
 
   if (positions.length === 0) {
-    surface.innerHTML = `
+    surface.innerHTML = safeHtml(`
       <div style="grid-column:1/-1; text-align:center; padding:40px; color:rgba(255,255,255,0.7); font-size:14px;">
         No designated positions for this activity. Players can join the roster directly.
       </div>
-    `;
+    `);
     return;
   }
 
   const team1 = positions.filter(p => (p.team || 1) === 1);
   const team2 = positions.filter(p => (p.team || 1) === 2);
 
-  surface.innerHTML = `
+  surface.innerHTML = safeHtml(`
     <div class="team-half">
       <div class="team-half-header">${escapeHtml(session.teamAName || 'Team A')}</div>
       <div class="position-spots-layout">
@@ -732,7 +720,7 @@ function renderFieldPositions() {
         ${team2.map(pos => renderPositionCard(pos, uid)).join('')}
       </div>
     </div>
-  `;
+  `);
 
   surface.querySelectorAll('.position-spot-card').forEach(spot => {
     spot.addEventListener('click', () => {
@@ -750,7 +738,7 @@ function renderPositionCard(pos, uid) {
   else if (isClaimed) statusClass = 'claimed-by-other';
 
   return `
-    <div class="position-spot-card ${statusClass}" data-pos-id="${pos.id}">
+    <div class="position-spot-card ${escapeText(statusClass)}" data-pos-id="${escapeText(pos.id)}">
       <div class="spot-pos-code">${escapeHtml(pos.shortLabel || pos.label || 'SPOT')}</div>
       <div class="spot-player-name">
         ${isMine ? '★ You' : isClaimed ? escapeHtml(pos.claimedByDisplayName || 'Claimed') : '+ Claim Spot'}
@@ -763,13 +751,13 @@ function renderWaitingList() {
   const section = document.getElementById('waiting-list-section');
   if (!section) return;
   if (state.waitingList.length === 0) {
-    section.innerHTML = '';
+    section.innerHTML = safeHtml('');
     return;
   }
 
-  section.innerHTML = `
+  section.innerHTML = safeHtml(`
     <h3 style="font-size:16px; font-weight:800; color:var(--warning); margin-bottom:8px;">
-      Waiting List (${state.waitingList.length})
+      Waiting List (${escapeText(state.waitingList.length)})
     </h3>
     <div class="roster-list">
       ${state.waitingList.map((w, idx) => `
@@ -782,7 +770,7 @@ function renderWaitingList() {
         </div>
       `).join('')}
     </div>
-  `;
+  `);
 }
 
 // ─── PLAY CONCURRENCY & TRANSACTION HANDLERS ─────────────────────────────────
@@ -793,7 +781,7 @@ async function handleJoinGame() {
     return;
   }
   if (!isEmailVerifiedUser(state.currentUser)) {
-    showToast(`Please verify your email (${state.currentUser.email}) before joining games. Check your inbox for the link.`, 'warning');
+    showToast(`Please verify your email (${escapeText(state.currentUser.email)}) before joining games. Check your inbox for the link.`, 'warning');
     return;
   }
   const session = state.currentSession;
@@ -954,7 +942,7 @@ async function handlePositionClick(posId) {
       claimedByDisplayName: state.userProfile?.displayName || state.currentUser.displayName || 'Player',
       claimedAt: serverTimestamp()
     });
-    showToast(`Claimed ${pos.label}!`);
+    showToast(`Claimed ${escapeText(pos.label)}!`);
   } else {
     showToast('This position is already taken by another player!', 'warning');
   }
@@ -1024,7 +1012,7 @@ export function renderOrganizeView() {
     if (saved) state.wizardDraft = { ...state.wizardDraft, ...JSON.parse(saved) };
   } catch (e) {}
 
-  container.innerHTML = `
+  container.innerHTML = safeHtml(`
     <div class="wizard-panel">
       <div class="wizard-steps-indicator">
         <div class="wizard-step-node ${state.wizardStep >= 1 ? 'active' : ''}">
@@ -1061,7 +1049,7 @@ export function renderOrganizeView() {
         </div>
       </form>
     </div>
-  `;
+  `);
 
   renderWizardStepContent();
 
@@ -1090,12 +1078,12 @@ function renderWizardStepContent() {
   const draft = state.wizardDraft;
 
   if (state.wizardStep === 1) {
-    content.innerHTML = `
+    content.innerHTML = safeHtml(`
       <div class="form-group">
         <label class="form-label" for="w-sport">Select Sport</label>
         <select id="w-sport" class="form-select">
           ${Object.entries(SPORT_REGISTRY).map(([k, s]) => `
-            <option value="${k}" ${draft.sportType === k ? 'selected' : ''}>${s.emoji} ${s.name}</option>
+            <option value="${escapeText(k)}" ${draft.sportType === k ? 'selected' : ''}>${escapeText(s.emoji)} ${escapeText(s.name)}</option>
           `).join('')}
         </select>
       </div>
@@ -1115,7 +1103,7 @@ function renderWizardStepContent() {
           <input type="number" id="w-max" class="form-input" min="2" max="60" value="${draft.maxPlayers || 10}" required>
         </div>
       </div>
-    `;
+    `);
 
     document.getElementById('w-sport')?.addEventListener('change', (e) => {
       draft.sportType = e.target.value;
@@ -1124,21 +1112,21 @@ function renderWizardStepContent() {
         draft.sportFormat = s.defaultFormat;
         draft.maxPlayers = s.maxPlayers;
         if (!draft.title || draft.title.endsWith('Game') || draft.title.endsWith('Match')) {
-          draft.title = `${s.name} Match`;
+          draft.title = `${escapeText(s.name)} Match`;
         }
       }
       renderWizardStepContent();
     });
   } else if (state.wizardStep === 2) {
-    content.innerHTML = `
+    content.innerHTML = safeHtml(`
       <div class="form-row">
         <div class="form-group">
           <label class="form-label" for="w-date">Date</label>
-          <input type="date" id="w-date" class="form-input" value="${draft.date}" required>
+          <input type="date" id="w-date" class="form-input" value="${escapeText(draft.date)}" required>
         </div>
         <div class="form-group">
           <label class="form-label" for="w-time">Start Time</label>
-          <input type="time" id="w-time" class="form-input" value="${draft.startTime}" required>
+          <input type="time" id="w-time" class="form-input" value="${escapeText(draft.startTime)}" required>
         </div>
       </div>
 
@@ -1175,25 +1163,25 @@ function renderWizardStepContent() {
           Uncheck to make this game private/invite-only.
         </span>
       </div>
-    `;
+    `);
   } else if (state.wizardStep === 3) {
     const sportInfo = SPORT_REGISTRY[draft.sportType] || SPORT_REGISTRY.custom;
-    content.innerHTML = `
+    content.innerHTML = safeHtml(`
       <div style="background:var(--paper-alt); border-radius:var(--radius-md); padding:20px; border:1px solid var(--border); margin-bottom:20px;">
         <h3 style="font-size:20px; font-weight:800; margin-bottom:12px;">Game Review</h3>
         <div style="display:flex; flex-direction:column; gap:8px; font-size:14px;">
-          <div><strong>Sport:</strong> ${sportInfo.emoji} ${sportInfo.name} (${draft.sportFormat})</div>
+          <div><strong>Sport:</strong> ${escapeText(sportInfo.emoji)} ${escapeText(sportInfo.name)} (${escapeText(draft.sportFormat)})</div>
           <div><strong>Title:</strong> ${escapeHtml(draft.title)}</div>
-          <div><strong>When:</strong> ${draft.date} at ${draft.startTime} (${draft.durationMinutes}m)</div>
+          <div><strong>When:</strong> ${escapeText(draft.date)} at ${escapeText(draft.startTime)} (${escapeText(draft.durationMinutes)}m)</div>
           <div><strong>Venue:</strong> ${escapeHtml(draft.locationName)}</div>
-          <div><strong>Capacity:</strong> ${draft.maxPlayers} players</div>
+          <div><strong>Capacity:</strong> ${escapeText(draft.maxPlayers)} players</div>
           <div><strong>Visibility:</strong> ${draft.isPublic ? 'Public Game' : '🔒 Private (Invite-Only)'}</div>
         </div>
       </div>
       <p style="font-size:13px; color:var(--muted);">
         By publishing, this game will be created in your account. You will automatically be added as the confirmed captain and can share the invite link immediately.
       </p>
-    `;
+    `);
   }
 }
 
@@ -1246,7 +1234,7 @@ async function publishGameSession() {
   const draft = state.wizardDraft;
   const user = state.currentUser;
   if (!isEmailVerifiedUser(user)) {
-    showToast(`Please verify your email (${user.email}) before publishing games. Check your inbox for the link.`, 'warning');
+    showToast(`Please verify your email (${escapeText(user.email)}) before publishing games. Check your inbox for the link.`, 'warning');
     if (btn) {
       btn.disabled = false;
       btn.textContent = 'Publish Game';
@@ -1261,7 +1249,7 @@ async function publishGameSession() {
     const sessionId = newSessionRef.id;
 
     // Build start date
-    const startDateTime = new Date(`${draft.date}T${draft.startTime}:00`);
+    const startDateTime = new Date(`${escapeText(draft.date)}T${escapeText(draft.startTime)}:00`);
     const endsAt = new Date(startDateTime.getTime() + (draft.durationMinutes * 60000));
 
     const creatorParticipant = {
@@ -1328,7 +1316,7 @@ async function publishGameSession() {
     showToast('Game published successfully! 🚀', 'success');
 
     // Navigate to new session
-    navigateTo(`/group-sessions/${sessionId}`);
+    navigateTo(`/group-sessions/${escapeText(sessionId)}`);
   } catch (err) {
     showToast(err.message || 'Failed to publish game', 'danger');
     if (btn) {
@@ -1344,20 +1332,20 @@ export function renderMyGamesView() {
   if (!container) return;
 
   if (!state.currentUser) {
-    container.innerHTML = `
+    container.innerHTML = safeHtml(`
       <div style="text-align:center; padding:60px 20px; background:var(--paper-card); border-radius:var(--radius-lg); border:1px solid var(--border);">
         <span style="font-size:36px; display:block; margin-bottom:12px;">🔒</span>
         <h3 style="font-size:18px; font-weight:800; margin-bottom:6px;">Sign in to view your games</h3>
         <p style="color:var(--muted); font-size:14px; margin-bottom:20px;">Track upcoming sessions, organized matches, and team rosters.</p>
         <button id="my-games-auth-btn" class="btn btn-primary">Sign In</button>
       </div>
-    `;
+    `);
     document.getElementById('my-games-auth-btn')?.addEventListener('click', () => openAuthModal());
     return;
   }
 
   const uid = state.currentUser.uid;
-  container.innerHTML = `
+  container.innerHTML = safeHtml(`
     <div style="margin-bottom:24px;">
       <h2 style="font-size:26px; font-weight:900; letter-spacing:-0.5px;">My Games & Organizing</h2>
       <p style="color:var(--muted); font-size:14px; margin-top:4px;">Sessions you have joined or organized.</p>
@@ -1367,7 +1355,7 @@ export function renderMyGamesView() {
         Loading your sessions...
       </div>
     </div>
-  `;
+  `);
 
   clearActiveListeners();
   try {
@@ -1382,26 +1370,26 @@ export function renderMyGamesView() {
       if (!grid) return;
 
       if (myGames.length === 0) {
-        grid.innerHTML = `
+        grid.innerHTML = safeHtml(`
           <div style="text-align:center; padding:50px 20px; background:var(--paper-card); border-radius:var(--radius-lg); border:1px solid var(--border); grid-column:1/-1;">
             <p style="color:var(--muted); font-size:15px; margin-bottom:16px;">You haven't joined any games yet.</p>
             <button id="find-games-btn" class="btn btn-primary">Find a Game to Join</button>
           </div>
-        `;
+        `);
         document.getElementById('find-games-btn')?.addEventListener('click', () => switchTab('explore'));
         return;
       }
 
-      grid.innerHTML = myGames.map(game => {
+      grid.innerHTML = safeHtml(myGames.map(game => {
         const sportInfo = SPORT_REGISTRY[game.sportType] || SPORT_REGISTRY.custom;
         const isOrganizer = game.creatorUid === uid;
         return `
-          <div class="game-card" data-session-id="${game.id}">
+          <div class="game-card" data-session-id="${escapeText(game.id)}">
             <div class="game-card-top">
-              <span class="sport-badge">${sportInfo.emoji} ${sportInfo.name}</span>
+              <span class="sport-badge">${escapeText(sportInfo.emoji)} ${escapeText(sportInfo.name)}</span>
               ${isOrganizer ? '<span class="status-badge" style="background:var(--warning-soft); color:var(--warning);">Organizing</span>' : '<span class="status-badge status-open">Joined</span>'}
             </div>
-            <h3 class="game-card-title">${escapeHtml(game.title || `${sportInfo.name} Game`)}</h3>
+            <h3 class="game-card-title">${escapeHtml(game.title || `${escapeText(sportInfo.name)} Game`)}</h3>
             <div class="game-card-info">
               <div class="info-line"><span>📅</span> ${game.startTime || '18:00'}</div>
               <div class="info-line"><span>📍</span> ${escapeHtml(game.locationName || 'Venue')}</div>
@@ -1411,11 +1399,11 @@ export function renderMyGamesView() {
             </div>
           </div>
         `;
-      }).join('');
+      }).join(''));
 
       grid.querySelectorAll('.game-card').forEach(card => {
         card.addEventListener('click', () => {
-          navigateTo(`/group-sessions/${card.dataset.sessionId}`);
+          navigateTo(`/group-sessions/${escapeText(card.dataset.sessionId)}`);
         });
       });
     });
@@ -1428,7 +1416,7 @@ export function renderMyGamesView() {
 function renderNotFoundGame(sessionId) {
   const container = document.getElementById('play-app-view');
   if (!container) return;
-  container.innerHTML = `
+  container.innerHTML = safeHtml(`
     <div style="text-align:center; padding:80px 20px; background:var(--paper-card); border-radius:var(--radius-lg); border:1px solid var(--border);">
       <span style="font-size:42px; display:block; margin-bottom:12px;">🔍</span>
       <h2 style="font-size:22px; font-weight:900; margin-bottom:8px;">Game Not Found</h2>
@@ -1439,7 +1427,7 @@ function renderNotFoundGame(sessionId) {
         Back to Explore Games
       </button>
     </div>
-  `;
+  `);
 }
 
 function clearActiveListeners() {
@@ -1449,15 +1437,7 @@ function clearActiveListeners() {
   state.activeListeners = [];
 }
 
-function escapeHtml(str) {
-  if (!str) return '';
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
+function escapeHtml(value) { return escapeText(value); }
 
 // Global App Initialization
 export function initPlayApp() {

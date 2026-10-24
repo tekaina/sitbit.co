@@ -1,0 +1,8 @@
+{
+  "originalBlob": "aec72edce6cd7d8849abceb86be657d63270b393",
+  "htmlSinksWrapped": 21,
+  "profileEmailPropertiesRemoved": 2,
+  "testsPassed": 14,
+  "dompurify": "3.4.17",
+  "scope": "Development source and jsdom unit tests only; no Firebase/browser integration or production verification"
+}
