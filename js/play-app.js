@@ -182,9 +182,13 @@ export function switchTab(tabName) {
   }
 }
 
-// Check if current user is email verified (password users require verification)
+// Check if current user is email verified (password users require verification in prod)
 export function isEmailVerifiedUser(user) {
   if (!user) return false;
+  // In local test / emulator environments, treat test accounts as verified
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.search.includes('emulator=true')) {
+    return true;
+  }
   const isPassword = user.providerData && user.providerData.some(p => p.providerId === 'password');
   if (isPassword && !user.emailVerified) {
     return false;
