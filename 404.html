@@ -3,10 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SitBit</title>
-  <meta http-equiv="refresh" content="0; url=/">
+  <title>SitBit — Redirecting</title>
+  <style>
+    body{margin:0;background:#fafbf8;font:16px/1.6 system-ui,-apple-system,sans-serif;color:#182239;display:flex;align-items:center;justify-content:center;min-height:100vh}
+    .box{text-align:center;max-width:420px;padding:40px 24px}
+    h1{font-size:28px;margin:0 0 12px;letter-spacing:-0.03em}
+    p{color:#596579;margin:0 0 24px}
+    a{color:#5845d6;text-decoration:underline;text-underline-offset:4px}
+  </style>
+  <script>
+    // Handle deep links: /invite/*, /group-sessions/*, /play/*
+    // Redirect to the Flutter web app which handles hash-based routing.
+    (function() {
+      var path = window.location.pathname;
+      var search = window.location.search;
+
+      // Routes that should redirect to the app
+      var appPrefixes = ['/invite/', '/group-sessions/', '/play/', '/session/'];
+      var shouldRedirect = appPrefixes.some(function(p) { return path.startsWith(p); });
+
+      if (shouldRedirect) {
+        // Convert path-based URL to hash-based app URL
+        // e.g., /invite/abc123 → https://app.sitbit.co/#/invite/abc123
+        window.location.replace('https://app.sitbit.co/#' + path + search);
+      }
+    })();
+  </script>
 </head>
 <body>
-  <script>window.location.href = '/';</script>
+  <div class="box">
+    <h1>Page not found</h1>
+    <p>The page you're looking for doesn't exist on this site.</p>
+    <p><a href="/">Go to SitBit home</a> · <a href="https://app.sitbit.co/#/group-sessions">Find a game</a></p>
+  </div>
 </body>
 </html>
