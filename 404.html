@@ -19,13 +19,16 @@
       var search = window.location.search;
 
       // Routes that should redirect to the app
-      var appPrefixes = ['/invite/', '/group-sessions/', '/play/', '/session/'];
-      var shouldRedirect = appPrefixes.some(function(p) { return path.startsWith(p); });
+      var appPrefixes = ['/invite', '/group-sessions', '/play', '/sessions', '/session'];
+      var shouldRedirect = appPrefixes.some(function(p) {
+        return path === p || path.startsWith(p + '/');
+      });
 
       if (shouldRedirect) {
-        // Convert path-based URL to hash-based app URL
-        // e.g., /invite/abc123 → https://app.sitbit.co/#/invite/abc123
-        window.location.replace('https://app.sitbit.co/#' + path + search);
+        // Sanitize path: ensure single leading slash and no protocol-relative escape
+        var cleanPath = '/' + path.replace(/^\/+/, '');
+        // Convert path-based URL to hash-based app URL: e.g. /invite/abc -> https://app.sitbit.co/#/invite/abc
+        window.location.replace('https://app.sitbit.co/#' + cleanPath + search);
       }
     })();
   </script>
