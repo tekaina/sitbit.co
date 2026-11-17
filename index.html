@@ -63,32 +63,22 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .burger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;border-radius:10px;border:1px solid var(--sb-line)}
 .burger span{width:20px;height:2px;background:var(--sb-ink);border-radius:2px}
 
-/* ── HERO (Warm Light Editorial) ── */
-.hero{padding:64px 0 72px;background:radial-gradient(ellipse 80% 60% at 85% 15%,var(--sb-primary-soft) 0%,transparent 70%),var(--sb-paper)}
-.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center}
+/* ── HERO (Warm Light Editorial + Background Photo) ── */
+.hero{position:relative;overflow:hidden;padding:72px 0 80px;background-color:var(--sb-paper-2);border-bottom:1px solid var(--sb-line)}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 22%;pointer-events:none;user-select:none}
+.hero-scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(255,253,250,.96) 0%,rgba(255,253,250,.93) 38%,rgba(255,253,250,.68) 54%,rgba(255,253,250,.18) 76%,rgba(255,253,250,.05) 100%),linear-gradient(180deg,rgba(255,253,250,.22) 0%,transparent 18%,transparent 82%,rgba(255,253,250,.28) 100%)}
+.hero-inner{position:relative;z-index:1}
+.hero-copy{max-width:560px}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:var(--sb-r-pill);background:var(--sb-green-soft);border:1px solid var(--sb-green-line);color:var(--sb-green);font-size:12.5px;font-weight:700;margin-bottom:20px}
 .hero h1{font-size:clamp(36px,4.6vw,56px);line-height:1.08;font-weight:800;letter-spacing:-1.6px;color:var(--sb-ink);margin-bottom:18px}
 .hero h1 em{font-style:normal;color:var(--sb-primary-text)}
-.hero-lead{font-size:18px;line-height:1.65;color:var(--sb-ink-2);max-width:540px;margin-bottom:26px}
+.hero-lead{font-size:18px;line-height:1.65;color:var(--sb-ink-2);max-width:520px;margin-bottom:26px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:14px}
-.hero-secondary{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-bottom:16px;font-size:14px;font-weight:600;color:var(--sb-muted)}
+.hero-secondary{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-bottom:16px;font-size:14px;font-weight:600;color:var(--sb-ink-2)}
 .hero-secondary a{color:var(--sb-primary-text);text-decoration:underline;text-underline-offset:3px}
 .hero-secondary a:hover{color:var(--sb-ink)}
-.access-note{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:var(--sb-paper-2);border:1px solid var(--sb-line);border-radius:var(--sb-r-md);max-width:520px;font-size:13.5px;color:var(--sb-ink-2)}
+.access-note{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:rgba(250,246,241,.94);border:1px solid var(--sb-line);border-radius:var(--sb-r-md);max-width:500px;font-size:13.5px;color:var(--sb-ink-2)}
 .access-note-dot{width:8px;height:8px;border-radius:50%;background:var(--sb-green);margin-top:7px;flex-shrink:0}
-
-/* ── HERO WORKFLOW PREVIEW PANEL ── */
-.hero-panel{background:var(--sb-surface);border:1px solid var(--sb-line);border-radius:var(--sb-r-xl);padding:24px;box-shadow:var(--sb-sh-2)}
-.hero-panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--sb-line);margin-bottom:18px}
-.hero-panel-title{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:800;color:var(--sb-ink)}
-.hero-panel-dot{width:8px;height:8px;border-radius:50%;background:var(--sb-primary)}
-.hero-panel-tag{font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:var(--sb-r-pill);background:var(--sb-green-soft);color:var(--sb-green);border:1px solid var(--sb-green-line)}
-.hero-steps{display:grid;gap:12px}
-.hero-step{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;background:var(--sb-paper-2);border:1px solid var(--sb-line);border-radius:var(--sb-r-md)}
-.hero-step-num{width:28px;height:28px;border-radius:50%;background:var(--sb-primary-soft);border:1px solid var(--sb-primary-line);color:var(--sb-primary-text);font-size:12.5px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
-.hero-step strong{display:block;font-size:14.5px;font-weight:800;color:var(--sb-ink);margin-bottom:2px}
-.hero-step span{display:block;font-size:13px;color:var(--sb-muted);line-height:1.5}
-.hero-panel-foot{margin-top:16px;padding-top:14px;border-top:1px solid var(--sb-line);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;font-size:12.5px;color:var(--sb-muted);font-weight:600}
 
 /* ── SECTION HEADERS ── */
 .section-head{max-width:680px;margin-bottom:40px}
@@ -159,13 +149,17 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
   .menu.open{display:flex}
   .nav-sep{display:none}
   .burger{display:flex}
-  .hero-grid,.story-split,.ui-grid{grid-template-columns:1fr}
+  .story-split,.ui-grid{grid-template-columns:1fr}
   .fgrid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:860px){
+  .hero{padding:210px 0 48px;background-color:var(--sb-paper)}
+  .hero-bg{height:252px;object-position:56% 18%}
+  .hero-scrim{height:253px;background:linear-gradient(180deg,rgba(255,253,250,.06) 0%,rgba(255,253,250,.22) 55%,rgba(255,253,250,.85) 84%,#fffdfa 100%)}
+  .hero-copy{max-width:100%}
 }
 @media(max-width:640px){
   .section{padding:52px 0}
-  .hero{padding:40px 0 52px}
-  .hero-panel{padding:18px}
   .closing-card{padding:26px}
   .fgrid{grid-template-columns:1fr;gap:24px}
   .hero-actions .btn{width:100%}
@@ -207,8 +201,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 <main id="main">
   <!-- HERO -->
   <section class="hero">
-    <div class="container hero-grid">
-      <div>
+    <img class="hero-bg" src="./assets/photos/hero-background.jpg" alt="" aria-hidden="true" width="1536" height="1024" decoding="async" fetchpriority="high"/>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-copy">
         <span class="eyebrow">Recreational sports · Desk-break movement</span>
         <h1>Local games organized without the <em>group-chat spiral.</em></h1>
         <p class="hero-lead">Set up a local sports session in minutes, pick team format and location on a clean map, and keep an active rhythm during the workweek.</p>
@@ -226,40 +222,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
           <span>Sign in to browse games. Start organizing before you sign in.</span>
         </div>
       </div>
-
-      <aside class="hero-panel" aria-label="How organizing with SitBit works">
-        <div class="hero-panel-head">
-          <span class="hero-panel-title"><span class="hero-panel-dot" aria-hidden="true"></span>SitBit Web Flow</span>
-          <span class="hero-panel-tag">app.sitbit.co</span>
-        </div>
-        <div class="hero-steps">
-          <div class="hero-step">
-            <span class="hero-step-num" aria-hidden="true">1</span>
-            <div>
-              <strong>Choose your sport</strong>
-              <span>Pick a team sport, court game, or group activity with ready-to-edit team sizes.</span>
-            </div>
-          </div>
-          <div class="hero-step">
-            <span class="hero-step-num" aria-hidden="true">2</span>
-            <div>
-              <strong>Pick a time and place</strong>
-              <span>Set date, duration, and venue using location search or the interactive map.</span>
-            </div>
-          </div>
-          <div class="hero-step">
-            <span class="hero-step-num" aria-hidden="true">3</span>
-            <div>
-              <strong>Make a plan</strong>
-              <span>Name your session, sign in with email or Google, and share the link with players.</span>
-            </div>
-          </div>
-        </div>
-        <div class="hero-panel-foot">
-          <span>Browser organizing &amp; RSVP</span>
-          <span>Android companion for desk breaks</span>
-        </div>
-      </aside>
     </div>
   </section>
 
