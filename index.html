@@ -4,10 +4,12 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <meta name="theme-color" content="#ff6b35"/>
-<title>SitBit — Local Sports Sessions &amp; Daily Movement</title>
-<meta name="description" content="Organize local sports sessions in minutes, claim field spots, and keep moving through the workday. Play in your browser or get SitBit on Android."/>
-<meta property="og:title" content="SitBit — Local Sports Sessions &amp; Daily Movement"/>
-<meta property="og:description" content="Warm, straightforward recreational sports organizing in the browser paired with SitBit mobile movement and coaching tools."/>
+<title>SitBit — Less Sitting. More Living. | Daily Movement &amp; Sports App</title>
+<meta name="description" content="Make room for 40-second workday movement breaks, local sports games, XP and daily quests, and coach discovery. Get SitBit on Google Play or organize a game online."/>
+<meta property="og:title" content="SitBit — Less Sitting. More Living."/>
+<meta property="og:description" content="Daily 40-second movement breaks, local sports organizing, XP, quests, water and snack tracking, and coach discovery. Free to download on Google Play (18+)."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://sitbit.co/"/>
 <meta property="og:image" content="https://sitbit.co/SitBit_Logo-removebg-preview.png"/>
 <link rel="icon" href="/favicon.ico"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
@@ -47,10 +49,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .brand{display:inline-flex;align-items:center;gap:10px;padding:4px 0}
 .brand img{width:34px;height:34px;object-fit:contain}
 .brand-name{font-size:20px;font-weight:800;letter-spacing:-0.5px;color:var(--sb-ink)}
-.menu{display:flex;align-items:center;gap:8px}
+.menu{display:flex;align-items:center;gap:6px}
 .nav-link{padding:8px 12px;border-radius:10px;font-size:14px;font-weight:600;color:var(--sb-ink-2);transition:background var(--sb-t-fast),color var(--sb-t-fast);white-space:nowrap}
 .nav-link:hover{background:var(--sb-paper-2);color:var(--sb-ink)}
-.nav-link.support{color:var(--sb-green);background:var(--sb-green-soft);border:1px solid var(--sb-green-line)}
 .nav-sep{width:1px;height:20px;background:var(--sb-line);margin:0 6px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:11px 20px;border-radius:var(--sb-r-md);font-weight:700;font-size:14.5px;transition:transform var(--sb-t-fast),background var(--sb-t-fast),border-color var(--sb-t-fast);white-space:nowrap}
 .btn:hover{transform:translateY(-1px)}
@@ -59,85 +60,113 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .btn-outline{background:var(--sb-surface);color:var(--sb-ink);border:1px solid var(--sb-line-strong)}
 .btn-outline:hover{background:var(--sb-paper-2)}
 .btn-green{background:var(--sb-green-soft);color:var(--sb-green);border:1px solid var(--sb-green-line)}
+.btn-green:hover{background:#e2f1e8}
 .nav .btn{min-height:40px;padding:8px 16px;font-size:13.5px}
 .burger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;border-radius:10px;border:1px solid var(--sb-line)}
 .burger span{width:20px;height:2px;background:var(--sb-ink);border-radius:2px}
 
-/* ── HERO (Warm Light Editorial + Background Photo) ── */
+/* ── HERO (Warm Light Editorial + Owner Background Photo) ── */
 .hero{position:relative;overflow:hidden;padding:72px 0 80px;background-color:var(--sb-paper-2);border-bottom:1px solid var(--sb-line)}
 .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:64% 36%;pointer-events:none;user-select:none}
 .hero-scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(255,253,250,.97) 0%,rgba(255,253,250,.94) 37%,rgba(255,253,250,.72) 50%,rgba(255,253,250,.18) 70%,rgba(255,253,250,.04) 100%),linear-gradient(180deg,rgba(255,253,250,.20) 0%,transparent 18%,transparent 82%,rgba(255,253,250,.28) 100%)}
 .hero-inner{position:relative;z-index:1}
 .hero-copy{max-width:560px}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:var(--sb-r-pill);background:var(--sb-green-soft);border:1px solid var(--sb-green-line);color:var(--sb-green);font-size:12.5px;font-weight:700;margin-bottom:20px}
-.hero h1{font-size:clamp(36px,4.6vw,56px);line-height:1.08;font-weight:800;letter-spacing:-1.6px;color:var(--sb-ink);margin-bottom:18px}
+.hero h1{font-size:clamp(38px,4.8vw,58px);line-height:1.06;font-weight:800;letter-spacing:-1.6px;color:var(--sb-ink);margin-bottom:18px}
 .hero h1 em{font-style:normal;color:var(--sb-primary-text)}
-.hero-lead{font-size:18px;line-height:1.65;color:var(--sb-ink-2);max-width:520px;margin-bottom:26px}
-.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:14px}
-.hero-secondary{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-bottom:16px;font-size:14px;font-weight:600;color:var(--sb-ink-2)}
-.hero-secondary a{color:var(--sb-primary-text);text-decoration:underline;text-underline-offset:3px}
-.hero-secondary a:hover{color:var(--sb-ink)}
-.access-note{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:rgba(250,246,241,.94);border:1px solid var(--sb-line);border-radius:var(--sb-r-md);max-width:500px;font-size:13.5px;color:var(--sb-ink-2)}
-.access-note-dot{width:8px;height:8px;border-radius:50%;background:var(--sb-green);margin-top:7px;flex-shrink:0}
+.hero-lead{font-size:18px;line-height:1.65;color:var(--sb-ink-2);max-width:510px;margin-bottom:28px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:18px}
+.hero-context{font-size:14px;color:var(--sb-ink-2);line-height:1.55}
+.hero-context a{color:var(--sb-primary-text);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.hero-context a:hover{color:var(--sb-ink)}
 
 /* ── SECTION HEADERS ── */
-.section-head{max-width:680px;margin-bottom:40px}
+.section-head{max-width:680px;margin-bottom:44px}
 .section-tag{display:inline-block;padding:5px 12px;border-radius:var(--sb-r-pill);font-size:12px;font-weight:700;background:var(--sb-primary-soft);color:var(--sb-primary-text);border:1px solid var(--sb-primary-line);margin-bottom:12px}
 .section-tag.green{background:var(--sb-green-soft);color:var(--sb-green);border-color:var(--sb-green-line)}
 .section-title{font-size:clamp(26px,3.2vw,38px);line-height:1.14;font-weight:800;letter-spacing:-0.9px;color:var(--sb-ink);margin-bottom:10px}
 .section-sub{font-size:16.5px;color:var(--sb-muted);line-height:1.65}
 
-/* ── REAL PRODUCT UI PROOF ── */
-.ui-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.ui-card{background:var(--sb-surface);border:1px solid var(--sb-line);border-radius:var(--sb-r-lg);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--sb-sh-1)}
-.ui-chrome{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--sb-paper);border-bottom:1px solid var(--sb-line);font-size:12px;font-weight:700;color:var(--sb-ink)}
-.ui-chrome-brand{display:inline-flex;align-items:center;gap:6px}
-.ui-chrome-dot{width:8px;height:8px;border-radius:50%;background:var(--sb-primary)}
-.ui-chrome-route{font-weight:600;color:var(--sb-muted);font-size:11px}
-.ui-body{padding:18px;flex:1;display:flex;flex-direction:column;gap:12px}
-.ui-box{background:var(--sb-paper-2);border:1px solid var(--sb-line);border-radius:var(--sb-r-md);padding:12px}
-.ui-pills{display:flex;flex-wrap:wrap;gap:6px}
-.ui-pill{padding:5px 10px;border-radius:var(--sb-r-pill);border:1px solid var(--sb-line);background:var(--sb-surface);font-size:11.5px;font-weight:600;color:var(--sb-ink-2)}
-.ui-pill.active{background:var(--sb-primary-action);border-color:var(--sb-primary-action);color:#fff}
-.ui-pill.green{background:var(--sb-green-soft);border-color:var(--sb-green-line);color:var(--sb-green)}
-.ui-sports{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.ui-sport{padding:9px 10px;border-radius:10px;border:1px solid var(--sb-line);background:var(--sb-surface);font-size:12px;font-weight:700;color:var(--sb-ink)}
-.ui-sport.sel{background:var(--sb-primary-soft);border-color:var(--sb-primary-action);color:var(--sb-primary-text)}
-.ui-foot{padding:14px 18px;border-top:1px solid var(--sb-line);background:var(--sb-paper)}
-.ui-foot h3{font-size:15.5px;font-weight:800;margin-bottom:4px;color:var(--sb-ink)}
-.ui-foot p{font-size:13px;color:var(--sb-muted);line-height:1.5}
+/* ── 4C: EARLY APP EXPERIENCE (Ruled Editorial Index — no placeholder chrome) ── */
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.exp-col{padding-top:22px;border-top:2px solid var(--sb-ink);display:flex;flex-direction:column;gap:12px}
+.exp-col.accent-orange{border-top-color:var(--sb-primary-action)}
+.exp-col.accent-green{border-top-color:var(--sb-green)}
+.exp-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--sb-muted)}
+.exp-icon{width:34px;height:34px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:var(--sb-primary-soft);color:var(--sb-primary-text)}
+.exp-col.accent-green .exp-icon{background:var(--sb-green-soft);color:var(--sb-green)}
+.exp-col h3{font-size:20px;font-weight:800;letter-spacing:-0.4px;color:var(--sb-ink)}
+.exp-col p{font-size:15px;color:var(--sb-ink-2);line-height:1.65}
+.exp-details{margin-top:auto;padding-top:12px;border-top:1px solid var(--sb-line);list-style:none;display:grid;gap:6px;font-size:13.5px;color:var(--sb-muted)}
+.exp-details li{display:flex;align-items:flex-start;gap:8px}
+.exp-details li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--sb-primary-action);margin-top:8px;flex-shrink:0}
+.exp-col.accent-green .exp-details li::before{background:var(--sb-green)}
 
-/* ── TWO PILLARS ── */
-.story-split{display:grid;grid-template-columns:0.85fr 1.15fr;gap:40px;align-items:start}
-.pillar-stack{display:grid;gap:16px}
-.pillar-card{background:var(--sb-surface);border:1px solid var(--sb-line);border-radius:var(--sb-r-lg);padding:24px}
-.pillar-card h3{font-size:18px;font-weight:800;color:var(--sb-ink);margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.pillar-badge{font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:var(--sb-r-pill);background:var(--sb-primary-soft);color:var(--sb-primary-text)}
-.pillar-badge.green{background:var(--sb-green-soft);color:var(--sb-green)}
-.pillar-card p{font-size:14.5px;color:var(--sb-ink-2);line-height:1.6;margin-bottom:12px}
-.pillar-card ul{padding-left:18px;font-size:13.5px;color:var(--sb-muted);line-height:1.85}
+/* ── 4D: ONE DAY TIMELINE ── */
+.day-track{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative}
+.day-step{background:var(--sb-surface);border:1px solid var(--sb-line);border-radius:var(--sb-r-lg);padding:26px;display:flex;flex-direction:column;gap:10px}
+.day-time{font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--sb-green)}
+.day-step h3{font-size:19px;font-weight:800;color:var(--sb-ink);letter-spacing:-0.3px}
+.day-step p{font-size:14.5px;color:var(--sb-ink-2);line-height:1.65}
+.day-note{margin-top:20px;font-size:13.5px;color:var(--sb-muted)}
 
-/* ── FAQ ── */
-.faq{max-width:780px;display:grid;gap:10px}
-.faq details{background:var(--sb-surface);border:1px solid var(--sb-line);border-radius:var(--sb-r-md)}
-.faq summary{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 22px;font-weight:700;font-size:15.5px;cursor:pointer;list-style:none;color:var(--sb-ink)}
+/* ── 4E: THREE EDITORIAL BENEFIT ROWS ── */
+.benefit-stack{display:grid;gap:64px}
+.benefit-row{display:grid;grid-template-columns:1.05fr 0.95fr;gap:40px;align-items:center}
+.benefit-row.reverse .benefit-copy{order:2}
+.benefit-row.reverse .benefit-panel{order:1}
+.benefit-copy h3{font-size:clamp(22px,2.5vw,29px);font-weight:800;letter-spacing:-0.6px;color:var(--sb-ink);margin-bottom:12px}
+.benefit-copy p{font-size:15.5px;color:var(--sb-ink-2);line-height:1.7;margin-bottom:14px}
+.benefit-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.benefit-panel{background:var(--sb-paper-2);border:1px solid var(--sb-line);border-radius:var(--sb-r-lg);padding:24px 26px}
+.benefit-panel.surface{background:var(--sb-surface);box-shadow:var(--sb-sh-1)}
+.benefit-list{list-style:none;display:grid;gap:14px}
+.benefit-list li{padding-bottom:14px;border-bottom:1px solid var(--sb-line)}
+.benefit-list li:last-child{padding-bottom:0;border-bottom:0}
+.benefit-list strong{display:block;font-size:14.5px;font-weight:700;color:var(--sb-ink);margin-bottom:2px}
+.benefit-list span{display:block;font-size:13.5px;color:var(--sb-muted);line-height:1.55}
+.text-link{color:var(--sb-primary-text);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.text-link:hover{color:var(--sb-ink)}
+
+/* ── 4F: WEB ORGANIZER INVITATION ── */
+.invite-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:36px;align-items:start}
+.invite-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:24px 0 18px}
+.signin-note{padding:14px 16px;background:var(--sb-surface);border:1px solid var(--sb-line);border-left:3px solid var(--sb-green);border-radius:var(--sb-r-md);font-size:13.5px;color:var(--sb-ink-2);line-height:1.6}
+.bridge-box{background:var(--sb-surface);border:1px solid var(--sb-line);border-radius:var(--sb-r-lg);padding:26px}
+.bridge-box h3{font-size:17px;font-weight:800;color:var(--sb-ink);margin-bottom:8px}
+.bridge-box p{font-size:14px;color:var(--sb-muted);line-height:1.6;margin-bottom:14px}
+.bridge-points{list-style:none;display:grid;gap:8px;font-size:13.5px;color:var(--sb-ink-2)}
+.bridge-points li{display:flex;align-items:flex-start;gap:8px}
+.bridge-points li::before{content:"✓";color:var(--sb-green);font-weight:800;flex-shrink:0}
+
+/* ── 4G: DEDICATED DOWNLOAD + LOCAL QR ── */
+.download-band{background:var(--sb-surface);border:1px solid var(--sb-line);border-radius:var(--sb-r-xl);padding:42px;display:grid;grid-template-columns:1.25fr 0.75fr;gap:36px;align-items:center;box-shadow:var(--sb-sh-1)}
+.download-copy h2{font-size:clamp(26px,3vw,34px);font-weight:800;letter-spacing:-0.8px;color:var(--sb-ink);margin-bottom:12px}
+.download-copy p{font-size:15.5px;color:var(--sb-ink-2);line-height:1.65;margin-bottom:18px}
+.download-reasons{list-style:none;display:grid;gap:10px;margin-bottom:24px}
+.download-reasons li{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;color:var(--sb-ink-2);line-height:1.55}
+.download-reasons .dot{width:8px;height:8px;border-radius:50%;background:var(--sb-primary-action);margin-top:8px;flex-shrink:0}
+.download-meta{margin-top:12px;font-size:13px;color:var(--sb-muted)}
+.qr-card{background:var(--sb-paper-2);border:1px solid var(--sb-line);border-radius:var(--sb-r-lg);padding:24px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
+.qr-frame{background:#fff;padding:12px;border-radius:var(--sb-r-md);border:1px solid var(--sb-line);display:inline-flex}
+.qr-svg{display:block;width:144px;height:144px}
+.qr-title{font-size:14px;font-weight:700;color:var(--sb-ink)}
+.qr-sub{font-size:12px;color:var(--sb-muted);word-break:break-word;line-height:1.5}
+
+/* ── 4H: FAQ ── */
+.faq{max-width:800px;display:grid;border-top:1px solid var(--sb-line-strong)}
+.faq details{border-bottom:1px solid var(--sb-line-strong)}
+.faq summary{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 4px;font-weight:700;font-size:16px;cursor:pointer;list-style:none;color:var(--sb-ink)}
 .faq summary::-webkit-details-marker{display:none}
-.faq .plus{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--sb-paper-2);color:var(--sb-ink);font-size:18px;flex-shrink:0}
-.faq details[open] .plus{background:var(--sb-primary-action);color:#fff}
-.faq .ans{padding:0 22px 18px;font-size:14.5px;color:var(--sb-muted);line-height:1.7}
+.faq .plus{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--sb-paper-2);border:1px solid var(--sb-line);color:var(--sb-ink);font-size:18px;flex-shrink:0}
+.faq details[open] .plus{background:var(--sb-primary-action);border-color:var(--sb-primary-action);color:#fff}
+.faq .ans{padding:0 4px 20px;font-size:14.5px;color:var(--sb-muted);line-height:1.7}
 .faq .ans a{color:var(--sb-primary-text);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 
-/* ── CLOSING BAND ── */
-.closing-card{background:var(--sb-surface);border:1px solid var(--sb-line);border-radius:var(--sb-r-xl);padding:40px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px;box-shadow:var(--sb-sh-1)}
-.closing-copy{max-width:560px}
-.closing-copy h2{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-0.6px;margin-bottom:8px;color:var(--sb-ink)}
-.closing-copy p{font-size:15.5px;color:var(--sb-muted);line-height:1.6}
-.closing-actions{display:flex;flex-wrap:wrap;gap:10px}
-
-/* ── FOOTER ── */
+/* ── 4I: FOOTER ── */
 .footer{padding:48px 0 36px;background:var(--sb-paper-2);border-top:1px solid var(--sb-line)}
 .fgrid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:36px;margin-bottom:32px}
-.ftag{margin-top:10px;color:var(--sb-muted);font-size:13.5px;line-height:1.6;max-width:290px}
+.ftag{margin-top:10px;color:var(--sb-muted);font-size:13.5px;line-height:1.6;max-width:300px}
 .fh{font-size:11.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--sb-muted);margin-bottom:12px}
 .flinks{display:flex;flex-direction:column;gap:8px}
 .flinks a{color:var(--sb-ink-2);font-size:13.5px;font-weight:500}
@@ -149,7 +178,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
   .menu.open{display:flex}
   .nav-sep{display:none}
   .burger{display:flex}
-  .story-split,.ui-grid{grid-template-columns:1fr}
+  .exp-grid,.day-track,.benefit-row,.invite-grid,.download-band{grid-template-columns:1fr}
+  .benefit-row.reverse .benefit-copy,.benefit-row.reverse .benefit-panel{order:initial}
   .fgrid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:860px){
@@ -157,12 +187,14 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
   .hero-bg{height:252px;object-position:54% 34%}
   .hero-scrim{height:253px;background:linear-gradient(180deg,rgba(255,253,250,.05) 0%,rgba(255,253,250,.18) 54%,rgba(255,253,250,.85) 84%,#fffdfa 100%)}
   .hero-copy{max-width:100%}
+  .qr-desktop-only{display:none}
+  .download-band{padding:28px}
 }
 @media(max-width:640px){
   .section{padding:52px 0}
-  .closing-card{padding:26px}
+  .benefit-stack{gap:44px}
   .fgrid{grid-template-columns:1fr;gap:24px}
-  .hero-actions .btn{width:100%}
+  .hero-actions .btn,.invite-actions .btn{width:100%}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -182,14 +214,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
         <span class="brand-name">SitBit</span>
       </a>
       <div class="menu" id="nav-menu">
-        <a class="nav-link" href="#web-app">How it works</a>
-        <a class="nav-link support" href="#coaching">Sports &amp; Coaching</a>
-        <a class="nav-link" href="#faq">FAQ</a>
+        <a class="nav-link" href="#the-app">The app</a>
+        <a class="nav-link" href="https://app.sitbit.co/#/group-sessions" data-sb-cta="nav-play-together">Play together</a>
+        <a class="nav-link" href="#coaching">Coaching</a>
         <span class="nav-sep" aria-hidden="true"></span>
-        <a class="nav-link" href="https://app.sitbit.co/#/group-sessions">Find games</a>
-        <a class="nav-link" href="https://app.sitbit.co/#/group-sessions/create/sport">Create a game</a>
-        <a class="nav-link" href="https://app.sitbit.co/#/login?returnTo=%2Fgroup-sessions">Sign in</a>
-        <a class="btn btn-primary" href="https://app.sitbit.co/#/signup?returnTo=%2Fgroup-sessions">Create account</a>
+        <a class="nav-link" href="https://app.sitbit.co/#/login?returnTo=%2Fgroup-sessions" data-sb-cta="nav-sign-in">Sign in</a>
+        <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=co.sitbit.sitbit" target="_blank" rel="noopener" data-sb-cta="nav-google-play">Get the app</a>
       </div>
       <button class="burger" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
         <span></span><span></span><span></span>
@@ -199,204 +229,307 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 </header>
 
 <main id="main">
-  <!-- HERO -->
+  <!-- 4B: HERO — THE FULL PRODUCT PROMISE -->
   <section class="hero">
     <img class="hero-bg" src="./assets/photos/herobackground-web.jpg" alt="" aria-hidden="true" width="1536" height="1024" decoding="async" fetchpriority="high"/>
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="container hero-inner">
       <div class="hero-copy">
-        <span class="eyebrow">Recreational sports · Desk-break movement</span>
-        <h1>Local games organized without the <em>group-chat spiral.</em></h1>
-        <p class="hero-lead">Set up a local sports session in minutes, pick team format and location on a clean map, and keep an active rhythm during the workweek.</p>
+        <span class="eyebrow">Android app &amp; web game organizer</span>
+        <h1>Less sitting.<br/><em>More living.</em></h1>
+        <p class="hero-lead">Make room for movement in your workday, games with other people, and small wins that keep you going. Meet SitBit.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="https://app.sitbit.co/#/group-sessions/create/sport">Create a game</a>
-          <a class="btn btn-outline" href="https://app.sitbit.co/#/group-sessions">Find games</a>
+          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=co.sitbit.sitbit" target="_blank" rel="noopener" data-sb-cta="hero-google-play">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.61 1.814L13.793 12 3.61 22.186a1.75 1.75 0 0 1-.61-1.335V3.149c0-.517.224-.997.61-1.335zm1.425-.803L16.367 7.55l-2.99 2.99L5.035 1.011zm12.48 7.193l3.11 1.797a1.5 1.5 0 0 1 0 2.598l-3.11 1.797L14.5 12l3.015-3.796zM5.035 22.989l8.342-9.529 2.99 2.99-11.332 6.539z"/></svg>
+            Get SitBit on Google Play
+          </a>
+          <a class="btn btn-outline" href="https://app.sitbit.co/#/group-sessions/create/sport" data-sb-cta="hero-organize-web">Organize a game online</a>
         </div>
-        <div class="hero-secondary">
-          <span>Have a SitBit account? <a href="https://app.sitbit.co/#/login?returnTo=%2Fgroup-sessions">Sign in</a></span>
-          <span>New here? <a href="https://app.sitbit.co/#/signup?returnTo=%2Fgroup-sessions">Create account</a></span>
-          <span>On Android? <a href="https://play.google.com/store/apps/details?id=co.sitbit.sitbit" target="_blank" rel="noopener">Google Play</a></span>
-        </div>
-        <div class="access-note" role="note">
-          <span class="access-note-dot" aria-hidden="true"></span>
-          <span>Sign in to browse games. Start organizing before you sign in.</span>
-        </div>
+        <p class="hero-context">Want to try something first? Start with a game or <a href="https://app.sitbit.co/#/group-sessions" data-sb-cta="hero-find-games">browse open games</a> in your browser.</p>
       </div>
     </div>
   </section>
 
-  <!-- PRODUCT WORKFLOW -->
-  <section id="web-app" class="section section-alt">
+  <!-- 4C: SHOW THE APP EARLY -->
+  <section id="the-app" class="section">
     <div class="container">
       <div class="section-head">
-        <span class="section-tag">Inside the web app</span>
-        <h2 class="section-title">One continuous flow from sport choice to session link.</h2>
-        <p class="section-sub">Open SitBit Play in the browser to choose a format, set time and venue, and publish when you are ready.</p>
+        <span class="section-tag">Android app &amp; web organizer</span>
+        <h2 class="section-title">Move more. Play together. Keep growing.</h2>
+        <p class="section-sub">The SitBit Android app combines workday movement breaks, personal progress, group sports, and coach discovery; the web app at app.sitbit.co focuses on organizing and joining group games in a browser.</p>
       </div>
 
-      <div class="ui-grid">
-        <!-- Frame 1: Hub -->
-        <article class="ui-card">
-          <div class="ui-chrome">
-            <span class="ui-chrome-brand"><span class="ui-chrome-dot" aria-hidden="true"></span>SitBit Play</span>
-            <span class="ui-chrome-route">app.sitbit.co/#/group-sessions</span>
+      <div class="exp-grid">
+        <article class="exp-col accent-orange">
+          <div class="exp-meta">
+            <span>01 · Movement breaks</span>
+            <span class="exp-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg>
+            </span>
           </div>
-          <div class="ui-body">
-            <div class="ui-pills">
-              <span class="ui-pill active">Open Games</span>
-              <span class="ui-pill">My games</span>
-              <span class="ui-pill">My Hosting</span>
-            </div>
-            <div class="ui-box">
-              <div style="font-size:13px;font-weight:700;color:var(--sb-ink);margin-bottom:4px">Play Together</div>
-              <div style="font-size:12px;color:var(--sb-muted);margin-bottom:10px">Sign in to browse open public games near you, or start organizing your own right now.</div>
-              <div style="display:flex;gap:6px;flex-wrap:wrap">
-                <span class="ui-pill active">Sign In</span>
-                <span class="ui-pill">Create account</span>
-                <span class="ui-pill green">Organize a Game</span>
-              </div>
-            </div>
-          </div>
-          <div class="ui-foot">
-            <h3>Make a plan</h3>
-            <p>Track sessions you joined, browse open local games after signing in, or organize a new game right away.</p>
-          </div>
-        </article>
-
-        <!-- Frame 2: Sport Picker -->
-        <article class="ui-card">
-          <div class="ui-chrome">
-            <span class="ui-chrome-brand"><span class="ui-chrome-dot" aria-hidden="true"></span>Choose a sport</span>
-            <span class="ui-chrome-route">#/group-sessions/create/sport</span>
-          </div>
-          <div class="ui-body">
-            <div class="ui-sports">
-              <div class="ui-sport sel">⚽ Football</div>
-              <div class="ui-sport">🏀 Basketball</div>
-              <div class="ui-sport">🎾 Tennis</div>
-              <div class="ui-sport">🏸 Padel</div>
-              <div class="ui-sport">🏐 Volleyball</div>
-              <div class="ui-sport">🏃 Running</div>
-            </div>
-            <div class="ui-box" style="display:flex;justify-content:space-between;align-items:center">
-              <span style="font-size:12px;font-weight:700;color:var(--sb-ink)">Team · 10–22p</span>
-              <span class="ui-pill active">Set Up →</span>
-            </div>
-          </div>
-          <div class="ui-foot">
-            <h3>Choose your sport</h3>
-            <p>Start with sensible team formats, duration defaults, and player limits for over 20 sports.</p>
-          </div>
-        </article>
-
-        <!-- Frame 3: Create Game & Map -->
-        <article class="ui-card">
-          <div class="ui-chrome">
-            <span class="ui-chrome-brand"><span class="ui-chrome-dot" aria-hidden="true"></span>Step 1 · When &amp; Where</span>
-            <span class="ui-chrome-route">#/group-sessions/create/game</span>
-          </div>
-          <div class="ui-body">
-            <div class="ui-box">
-              <div style="font-size:11.5px;font-weight:700;color:var(--sb-muted);margin-bottom:6px">WHEN &amp; VENUE</div>
-              <div class="ui-pills" style="margin-bottom:8px">
-                <span class="ui-pill">Date picker</span>
-                <span class="ui-pill">Start time</span>
-                <span class="ui-pill green">60m duration</span>
-              </div>
-              <div style="font-size:12px;color:var(--sb-ink-2);background:var(--sb-surface);border:1px solid var(--sb-line);padding:8px 10px;border-radius:8px">Search venue or pick on map</div>
-            </div>
-            <div style="display:flex;justify-content:flex-end">
-              <span class="ui-pill active">Next →</span>
-            </div>
-          </div>
-          <div class="ui-foot">
-            <h3>Pick a time and place</h3>
-            <p>Set date, duration, and venue in one place, and publish as soon as you sign in.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- COACHING & DAILY MOVEMENT -->
-  <section id="coaching" class="section">
-    <div class="container story-split">
-      <div class="section-head" style="margin-bottom:0">
-        <span class="section-tag green">Full ecosystem</span>
-        <h2 class="section-title">Web organizing meets mobile habits and coaching.</h2>
-        <p class="section-sub">Use the browser to launch and join sessions quickly, and use the Android app for workday movement breaks and coach discovery.</p>
-      </div>
-
-      <div class="pillar-stack">
-        <article class="pillar-card">
-          <h3>Sports organizer <span class="pillar-badge">Web &amp; Android</span></h3>
-          <p>Built to turn a loose idea into a shareable session page without chasing replies across chat apps.</p>
-          <ul>
-            <li>Visual position claiming on supported team and court sports</li>
-            <li>Manual team names, balanced teams, or shuffle reveal</li>
-            <li>Start organizing before signing in with email or Google</li>
+          <h3>Guided 40-second breaks</h3>
+          <p>Short hourly movement missions designed around desk work—alongside postureMonk, SitBit’s desk posture companion (Android).</p>
+          <ul class="exp-details">
+            <li>Neck, shoulders, back, wrists, core, and eyes</li>
+            <li>No gym equipment needed</li>
+            <li>Accessible alongside workouts on Android</li>
           </ul>
         </article>
 
-        <article class="pillar-card">
-          <h3>Desk movement &amp; coaching marketplace <span class="pillar-badge green">Android app · iOS coming soon</span></h3>
-          <p>Short guided movement breaks during desk hours paired with an in-app coaching marketplace where coaches submit credentials for review.</p>
-          <ul>
-            <li>Chair-side neck, shoulder, back, wrist, and eye break routines</li>
-            <li>Hydration and snack tracking alongside movement streaks</li>
-            <li>Interested in coaching? Write <a href="mailto:coaches@sitbit.co" style="color:var(--sb-primary-text);font-weight:600;text-decoration:underline">coaches@sitbit.co</a></li>
+        <article class="exp-col accent-green">
+          <div class="exp-meta">
+            <span>02 · Personal progress</span>
+            <span class="exp-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </span>
+          </div>
+          <h3>Track wins &amp; daily habits</h3>
+          <p>Earn XP, level up, unlock badges, follow adaptive goals, and log water intake and healthy snacks on Android.</p>
+          <ul class="exp-details">
+            <li>Daily quests, XP, levels, and streaks</li>
+            <li>Water &amp; healthy-snack logs (Fuel tracking)</li>
+            <li>Adaptive daily targets based on recent activity</li>
+          </ul>
+        </article>
+
+        <article class="exp-col accent-orange">
+          <div class="exp-meta">
+            <span>03 · Playing together &amp; coaching</span>
+            <span class="exp-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20v-1a5 5 0 0 1 10 0v1"/><path d="M15 20v-1a4 4 0 0 1 6 0v1"/></svg>
+            </span>
+          </div>
+          <h3>Local games &amp; coaches</h3>
+          <p>Set up or join games on Android or in your browser, claim a field spot, shuffle teams, or browse coaches on Android.</p>
+          <ul class="exp-details">
+            <li>20+ sports including football, padel, tennis, basketball</li>
+            <li>Waiting lists, auto-join, and invite links</li>
+            <li>Browse coaches in the Android Trainers tab</li>
           </ul>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
+  <!-- 4D: ONE DAY WITH SITBIT -->
+  <section id="daily-rhythm" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag green">One day with SitBit</span>
+        <h2 class="section-title">Different ways to stay active, never a rigid checklist.</h2>
+        <p class="section-sub">Use SitBit on Android for a quick desk break, organize a game online or in the app, or combine both across your week.</p>
+      </div>
+
+      <div class="day-track">
+        <article class="day-step">
+          <span class="day-time">Between tasks</span>
+          <h3>Step back from the screen for 40 seconds</h3>
+          <p>Open the Android app between meetings for a short movement break—shoulders, neck, wrists, back, core, or eyes—and log a glass of water when you pause.</p>
+        </article>
+
+        <article class="day-step">
+          <span class="day-time">Through the week</span>
+          <h3>See small actions recorded</h3>
+          <p>Each break, healthy-snack log, or group game earns XP toward your level, unlocks badges, and moves daily quests, streaks, and adaptive goals forward.</p>
+        </article>
+
+        <article class="day-step">
+          <span class="day-time">After work</span>
+          <h3>Move with other people</h3>
+          <p>Set up a casual match yourself (Android or web) or receive an optional Bridge notification on Android when a nearby open game fits after desk hours.</p>
+        </article>
+      </div>
+      <p class="day-note">Every part works on its own: you can organize or join games in the browser without using Android break tools, or use movement breaks without joining team sports.</p>
+    </div>
+  </section>
+
+  <!-- 4E: THREE CLEAR BENEFIT SECTIONS -->
+  <section id="benefits" class="section">
+    <div class="container benefit-stack">
+      <!-- Benefit 1 -->
+      <div class="benefit-row">
+        <div class="benefit-copy">
+          <span class="section-tag">01 · Movement Breaks &amp; Progress (Android)</span>
+          <h3>Make movement part of your day.</h3>
+          <p>Long hours at a desk rarely leave energy for big evening routines. In the Android app, SitBit breaks movement into 40-second hourly missions beside your chair, with postureMonk—SitBit’s desk wellness companion—alongside posture breaks.</p>
+          <p>You can also track water intake and healthy snacks (Fuel tracking), while XP, levels, badges, daily quests, streaks, and adaptive goals log every completed break and check-in.</p>
+        </div>
+        <aside class="benefit-panel surface" aria-label="Included Android daily movement features">
+          <ul class="benefit-list">
+            <li>
+              <strong>Targeted workday body areas</strong>
+              <span>40-second missions cover neck, shoulders, back, wrists, core, and eye breaks.</span>
+            </li>
+            <li>
+              <strong>Water &amp; healthy-snack logs</strong>
+              <span>Optional daily check-ins for hydration and healthy snacks alongside movement breaks.</span>
+            </li>
+            <li>
+              <strong>Concrete progress milestones</strong>
+              <span>Earn XP, unlock badges, track streaks, and update adaptive daily quests as you log activity.</span>
+            </li>
+          </ul>
+        </aside>
+      </div>
+
+      <!-- Benefit 2 -->
+      <div class="benefit-row reverse">
+        <div class="benefit-copy">
+          <span class="section-tag green">02 · Playing Together (Android &amp; Web)</span>
+          <h3>Turn “we should play” into a plan.</h3>
+          <p>Getting people on a court or pitch shouldn’t take forty chat messages. Pick from more than twenty sports, choose a date, time, and map location, and share one invite link that works across WhatsApp, Instagram, or group chats.</p>
+          <p>Players can claim positions on a visual field picker, let SitBit shuffle teams with an animated reveal, or join a waiting list that fills openings automatically—in the Android app or the web organizer.</p>
+          <div class="benefit-actions">
+            <a class="btn btn-primary" href="https://app.sitbit.co/#/group-sessions/create/sport" data-sb-cta="benefit-create-game">Organize a game online</a>
+            <a class="btn btn-outline" href="https://app.sitbit.co/#/group-sessions" data-sb-cta="benefit-find-games">Browse open games</a>
+          </div>
+        </div>
+        <aside class="benefit-panel" aria-label="Included sports organizing features">
+          <ul class="benefit-list">
+            <li>
+              <strong>Visual spot picking</strong>
+              <span>Players choose positions directly on supported team and court layouts before kickoff.</span>
+            </li>
+            <li>
+              <strong>Team shuffle &amp; waiting list</strong>
+              <span>Auto-shuffle squads evenly and automatically promote waitlisted players if someone drops out.</span>
+            </li>
+            <li>
+              <strong>Nearby game alerts (Android)</strong>
+              <span>The Bridge alerts Android users to a nearby open game after hours of sitting—one tap from desk to pitch.</span>
+            </li>
+          </ul>
+        </aside>
+      </div>
+
+      <!-- Benefit 3 (Anchored as #coaching for main nav) -->
+      <div id="coaching" class="benefit-row">
+        <div class="benefit-copy">
+          <span class="section-tag">03 · Coaching (Android)</span>
+          <h3>Find your next step.</h3>
+          <p>Looking for form feedback in a sport or guidance building a steadier routine? The Trainers tab in SitBit’s main navigation on Android lets players find independent coaches directly inside the app.</p>
+          <p>Coaches can submit trainer application details right inside the Android app based on their profile status, or write to <a class="text-link" href="mailto:coaches@sitbit.co">coaches@sitbit.co</a>.</p>
+        </div>
+        <aside class="benefit-panel surface" aria-label="Coaching and trainer details">
+          <ul class="benefit-list">
+            <li>
+              <strong>Trainers tab in Android (v1.0.17)</strong>
+              <span>Discover and review independent coaches directly from main app navigation.</span>
+            </li>
+            <li>
+              <strong>Trainer-set coaching fees</strong>
+              <span>Core app download and group-game organizing are free; independent coaches set their own session fees separately with no subscription required by SitBit.</span>
+            </li>
+            <li>
+              <strong>Trainer applications welcome</strong>
+              <span>Apply in the Android app based on your profile status or email <a class="text-link" href="mailto:coaches@sitbit.co">coaches@sitbit.co</a>.</span>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4F: THE WEB ORGANIZER AS AN INVITATION -->
+  <section id="web-organizer" class="section section-alt">
+    <div class="container invite-grid">
+      <div>
+        <span class="section-tag">Web organizer · No download needed</span>
+        <h2 class="section-title">Start with a game. Discover the rest.</h2>
+        <p class="section-sub">Choose a sport, pick a time and place, and bring people together at app.sitbit.co. Then explore what SitBit can add to the rest of your week.</p>
+        <div class="invite-actions">
+          <a class="btn btn-primary" href="https://app.sitbit.co/#/group-sessions/create/sport" data-sb-cta="invite-create-game">Create a game online</a>
+          <a class="btn btn-outline" href="https://app.sitbit.co/#/group-sessions" data-sb-cta="invite-find-games">Find games</a>
+          <a class="text-link" href="https://app.sitbit.co/#/login?returnTo=%2Fgroup-sessions" data-sb-cta="invite-sign-in">Sign in</a>
+        </div>
+        <div class="signin-note" role="note">
+          <strong>Account details:</strong> You can pick a sport, draft a game, and view shared invite links without installing the Android app. Signing in with a free SitBit account is required to browse open game listings or publish your session.
+        </div>
+      </div>
+
+      <aside class="bridge-box">
+        <h3>Only in the Android app</h3>
+        <p>Your SitBit account keeps games you join or host accessible in both places, while the Android app adds daily habit and discovery tools:</p>
+        <ul class="bridge-points">
+          <li>40-second hourly movement breaks &amp; postureMonk (desk companion)</li>
+          <li>XP, levels, badges, daily quests, streaks, and adaptive goals</li>
+          <li>Water intake and healthy-snack logs (Fuel tracking)</li>
+          <li>Nearby open-game alerts after desk hours (The Bridge)</li>
+          <li>Coach discovery and trainer applications (Trainers tab)</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 4G: DEDICATED DOWNLOAD SECTION -->
+  <section id="download" class="section">
+    <div class="container">
+      <div class="download-band">
+        <div class="download-copy">
+          <span class="section-tag green">SitBit for Android · Google Play</span>
+          <h2>Bring a little more movement into every day.</h2>
+          <p>Download SitBit on Android to get daily 40-second movement breaks, personal progress tracking, nearby game alerts, and coaching discovery alongside the group organizer.</p>
+          <ul class="download-reasons">
+            <li><span class="dot" aria-hidden="true"></span><span><strong>40-second desk breaks:</strong> neck, back, shoulders, wrists, core, and eyes—without equipment.</span></li>
+            <li><span class="dot" aria-hidden="true"></span><span><strong>Personal progress &amp; daily logs:</strong> XP, levels, badges, streaks, adaptive quests, plus water and snack tracking.</span></li>
+            <li><span class="dot" aria-hidden="true"></span><span><strong>Games &amp; coaching on Android:</strong> visual field spots, waitlists, Bridge match alerts, and the Trainers tab.</span></li>
+          </ul>
+          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=co.sitbit.sitbit" target="_blank" rel="noopener" data-sb-cta="download-google-play">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.61 1.814L13.793 12 3.61 22.186a1.75 1.75 0 0 1-.61-1.335V3.149c0-.517.224-.997.61-1.335zm1.425-.803L16.367 7.55l-2.99 2.99L5.035 1.011zm12.48 7.193l3.11 1.797a1.5 1.5 0 0 1 0 2.598l-3.11 1.797L14.5 12l3.015-3.796zM5.035 22.989l8.342-9.529 2.99 2.99-11.332 6.539z"/></svg>
+            Get SitBit on Google Play
+          </a>
+          <p class="download-meta">Free to download · No subscription required for core features · Independent coaching may carry trainer-set fees · Adults 18+ · Android (v1.0.17)</p>
+        </div>
+
+        <div class="qr-card qr-desktop-only">
+          <div class="qr-frame">
+            <svg class="qr-svg" viewBox="0 0 37 37" width="144" height="144" role="img" aria-label="QR code linking to SitBit on Google Play" shape-rendering="crispEdges"><rect width="37" height="37" fill="#ffffff" rx="2"/><path d="M2,2h1v1h-1zM3,2h1v1h-1zM4,2h1v1h-1zM5,2h1v1h-1zM6,2h1v1h-1zM7,2h1v1h-1zM8,2h1v1h-1zM10,2h1v1h-1zM11,2h1v1h-1zM14,2h1v1h-1zM15,2h1v1h-1zM20,2h1v1h-1zM21,2h1v1h-1zM22,2h1v1h-1zM23,2h1v1h-1zM25,2h1v1h-1zM28,2h1v1h-1zM29,2h1v1h-1zM30,2h1v1h-1zM31,2h1v1h-1zM32,2h1v1h-1zM33,2h1v1h-1zM34,2h1v1h-1zM2,3h1v1h-1zM8,3h1v1h-1zM10,3h1v1h-1zM11,3h1v1h-1zM13,3h1v1h-1zM16,3h1v1h-1zM18,3h1v1h-1zM24,3h1v1h-1zM25,3h1v1h-1zM28,3h1v1h-1zM34,3h1v1h-1zM2,4h1v1h-1zM4,4h1v1h-1zM5,4h1v1h-1zM6,4h1v1h-1zM8,4h1v1h-1zM11,4h1v1h-1zM14,4h1v1h-1zM15,4h1v1h-1zM16,4h1v1h-1zM24,4h1v1h-1zM25,4h1v1h-1zM26,4h1v1h-1zM28,4h1v1h-1zM30,4h1v1h-1zM31,4h1v1h-1zM32,4h1v1h-1zM34,4h1v1h-1zM2,5h1v1h-1zM4,5h1v1h-1zM5,5h1v1h-1zM6,5h1v1h-1zM8,5h1v1h-1zM10,5h1v1h-1zM11,5h1v1h-1zM14,5h1v1h-1zM15,5h1v1h-1zM16,5h1v1h-1zM17,5h1v1h-1zM19,5h1v1h-1zM25,5h1v1h-1zM26,5h1v1h-1zM28,5h1v1h-1zM30,5h1v1h-1zM31,5h1v1h-1zM32,5h1v1h-1zM34,5h1v1h-1zM2,6h1v1h-1zM4,6h1v1h-1zM5,6h1v1h-1zM6,6h1v1h-1zM8,6h1v1h-1zM13,6h1v1h-1zM14,6h1v1h-1zM15,6h1v1h-1zM17,6h1v1h-1zM18,6h1v1h-1zM21,6h1v1h-1zM24,6h1v1h-1zM26,6h1v1h-1zM28,6h1v1h-1zM30,6h1v1h-1zM31,6h1v1h-1zM32,6h1v1h-1zM34,6h1v1h-1zM2,7h1v1h-1zM8,7h1v1h-1zM11,7h1v1h-1zM13,7h1v1h-1zM16,7h1v1h-1zM18,7h1v1h-1zM19,7h1v1h-1zM20,7h1v1h-1zM21,7h1v1h-1zM23,7h1v1h-1zM26,7h1v1h-1zM28,7h1v1h-1zM34,7h1v1h-1zM2,8h1v1h-1zM3,8h1v1h-1zM4,8h1v1h-1zM5,8h1v1h-1zM6,8h1v1h-1zM7,8h1v1h-1zM8,8h1v1h-1zM10,8h1v1h-1zM12,8h1v1h-1zM14,8h1v1h-1zM16,8h1v1h-1zM18,8h1v1h-1zM20,8h1v1h-1zM22,8h1v1h-1zM24,8h1v1h-1zM26,8h1v1h-1zM28,8h1v1h-1zM29,8h1v1h-1zM30,8h1v1h-1zM31,8h1v1h-1zM32,8h1v1h-1zM33,8h1v1h-1zM34,8h1v1h-1zM10,9h1v1h-1zM12,9h1v1h-1zM14,9h1v1h-1zM17,9h1v1h-1zM19,9h1v1h-1zM20,9h1v1h-1zM24,9h1v1h-1zM25,9h1v1h-1zM2,10h1v1h-1zM4,10h1v1h-1zM5,10h1v1h-1zM7,10h1v1h-1zM8,10h1v1h-1zM9,10h1v1h-1zM12,10h1v1h-1zM16,10h1v1h-1zM18,10h1v1h-1zM19,10h1v1h-1zM20,10h1v1h-1zM21,10h1v1h-1zM23,10h1v1h-1zM25,10h1v1h-1zM28,10h1v1h-1zM31,10h1v1h-1zM33,10h1v1h-1zM34,10h1v1h-1zM3,11h1v1h-1zM6,11h1v1h-1zM18,11h1v1h-1zM19,11h1v1h-1zM20,11h1v1h-1zM21,11h1v1h-1zM22,11h1v1h-1zM25,11h1v1h-1zM26,11h1v1h-1zM28,11h1v1h-1zM29,11h1v1h-1zM31,11h1v1h-1zM32,11h1v1h-1zM33,11h1v1h-1zM34,11h1v1h-1zM4,12h1v1h-1zM5,12h1v1h-1zM6,12h1v1h-1zM7,12h1v1h-1zM8,12h1v1h-1zM9,12h1v1h-1zM19,12h1v1h-1zM22,12h1v1h-1zM24,12h1v1h-1zM25,12h1v1h-1zM26,12h1v1h-1zM28,12h1v1h-1zM29,12h1v1h-1zM30,12h1v1h-1zM31,12h1v1h-1zM33,12h1v1h-1zM34,12h1v1h-1zM4,13h1v1h-1zM9,13h1v1h-1zM11,13h1v1h-1zM12,13h1v1h-1zM14,13h1v1h-1zM15,13h1v1h-1zM17,13h1v1h-1zM18,13h1v1h-1zM20,13h1v1h-1zM22,13h1v1h-1zM29,13h1v1h-1zM31,13h1v1h-1zM33,13h1v1h-1zM2,14h1v1h-1zM5,14h1v1h-1zM6,14h1v1h-1zM8,14h1v1h-1zM9,14h1v1h-1zM17,14h1v1h-1zM19,14h1v1h-1zM21,14h1v1h-1zM22,14h1v1h-1zM24,14h1v1h-1zM25,14h1v1h-1zM26,14h1v1h-1zM27,14h1v1h-1zM29,14h1v1h-1zM30,14h1v1h-1zM31,14h1v1h-1zM4,15h1v1h-1zM5,15h1v1h-1zM6,15h1v1h-1zM7,15h1v1h-1zM10,15h1v1h-1zM11,15h1v1h-1zM16,15h1v1h-1zM17,15h1v1h-1zM18,15h1v1h-1zM20,15h1v1h-1zM21,15h1v1h-1zM23,15h1v1h-1zM26,15h1v1h-1zM29,15h1v1h-1zM31,15h1v1h-1zM33,15h1v1h-1zM2,16h1v1h-1zM3,16h1v1h-1zM5,16h1v1h-1zM7,16h1v1h-1zM8,16h1v1h-1zM10,16h1v1h-1zM18,16h1v1h-1zM20,16h1v1h-1zM21,16h1v1h-1zM22,16h1v1h-1zM23,16h1v1h-1zM26,16h1v1h-1zM28,16h1v1h-1zM30,16h1v1h-1zM31,16h1v1h-1zM32,16h1v1h-1zM2,17h1v1h-1zM5,17h1v1h-1zM12,17h1v1h-1zM17,17h1v1h-1zM18,17h1v1h-1zM23,17h1v1h-1zM24,17h1v1h-1zM25,17h1v1h-1zM27,17h1v1h-1zM28,17h1v1h-1zM32,17h1v1h-1zM3,18h1v1h-1zM5,18h1v1h-1zM6,18h1v1h-1zM7,18h1v1h-1zM8,18h1v1h-1zM10,18h1v1h-1zM11,18h1v1h-1zM13,18h1v1h-1zM16,18h1v1h-1zM18,18h1v1h-1zM21,18h1v1h-1zM22,18h1v1h-1zM23,18h1v1h-1zM24,18h1v1h-1zM26,18h1v1h-1zM27,18h1v1h-1zM28,18h1v1h-1zM30,18h1v1h-1zM31,18h1v1h-1zM32,18h1v1h-1zM5,19h1v1h-1zM9,19h1v1h-1zM11,19h1v1h-1zM17,19h1v1h-1zM24,19h1v1h-1zM25,19h1v1h-1zM26,19h1v1h-1zM28,19h1v1h-1zM30,19h1v1h-1zM31,19h1v1h-1zM34,19h1v1h-1zM2,20h1v1h-1zM4,20h1v1h-1zM5,20h1v1h-1zM6,20h1v1h-1zM7,20h1v1h-1zM8,20h1v1h-1zM11,20h1v1h-1zM16,20h1v1h-1zM17,20h1v1h-1zM18,20h1v1h-1zM22,20h1v1h-1zM28,20h1v1h-1zM29,20h1v1h-1zM30,20h1v1h-1zM32,20h1v1h-1zM33,20h1v1h-1zM2,21h1v1h-1zM3,21h1v1h-1zM5,21h1v1h-1zM7,21h1v1h-1zM9,21h1v1h-1zM13,21h1v1h-1zM14,21h1v1h-1zM15,21h1v1h-1zM17,21h1v1h-1zM18,21h1v1h-1zM19,21h1v1h-1zM24,21h1v1h-1zM25,21h1v1h-1zM27,21h1v1h-1zM28,21h1v1h-1zM30,21h1v1h-1zM34,21h1v1h-1zM2,22h1v1h-1zM5,22h1v1h-1zM7,22h1v1h-1zM8,22h1v1h-1zM10,22h1v1h-1zM14,22h1v1h-1zM17,22h1v1h-1zM19,22h1v1h-1zM21,22h1v1h-1zM23,22h1v1h-1zM26,22h1v1h-1zM29,22h1v1h-1zM31,22h1v1h-1zM32,22h1v1h-1zM33,22h1v1h-1zM2,23h1v1h-1zM4,23h1v1h-1zM5,23h1v1h-1zM6,23h1v1h-1zM7,23h1v1h-1zM9,23h1v1h-1zM12,23h1v1h-1zM14,23h1v1h-1zM16,23h1v1h-1zM18,23h1v1h-1zM19,23h1v1h-1zM20,23h1v1h-1zM21,23h1v1h-1zM22,23h1v1h-1zM25,23h1v1h-1zM26,23h1v1h-1zM28,23h1v1h-1zM31,23h1v1h-1zM34,23h1v1h-1zM7,24h1v1h-1zM8,24h1v1h-1zM9,24h1v1h-1zM11,24h1v1h-1zM12,24h1v1h-1zM13,24h1v1h-1zM16,24h1v1h-1zM18,24h1v1h-1zM20,24h1v1h-1zM23,24h1v1h-1zM24,24h1v1h-1zM25,24h1v1h-1zM26,24h1v1h-1zM28,24h1v1h-1zM29,24h1v1h-1zM32,24h1v1h-1zM33,24h1v1h-1zM34,24h1v1h-1zM3,25h1v1h-1zM4,25h1v1h-1zM5,25h1v1h-1zM11,25h1v1h-1zM12,25h1v1h-1zM13,25h1v1h-1zM15,25h1v1h-1zM16,25h1v1h-1zM18,25h1v1h-1zM20,25h1v1h-1zM25,25h1v1h-1zM27,25h1v1h-1zM29,25h1v1h-1zM30,25h1v1h-1zM31,25h1v1h-1zM33,25h1v1h-1zM34,25h1v1h-1zM2,26h1v1h-1zM4,26h1v1h-1zM6,26h1v1h-1zM8,26h1v1h-1zM10,26h1v1h-1zM13,26h1v1h-1zM14,26h1v1h-1zM15,26h1v1h-1zM19,26h1v1h-1zM24,26h1v1h-1zM26,26h1v1h-1zM27,26h1v1h-1zM28,26h1v1h-1zM29,26h1v1h-1zM30,26h1v1h-1zM33,26h1v1h-1zM34,26h1v1h-1zM10,27h1v1h-1zM15,27h1v1h-1zM17,27h1v1h-1zM18,27h1v1h-1zM20,27h1v1h-1zM21,27h1v1h-1zM23,27h1v1h-1zM25,27h1v1h-1zM26,27h1v1h-1zM30,27h1v1h-1zM31,27h1v1h-1zM33,27h1v1h-1zM2,28h1v1h-1zM3,28h1v1h-1zM4,28h1v1h-1zM5,28h1v1h-1zM6,28h1v1h-1zM7,28h1v1h-1zM8,28h1v1h-1zM10,28h1v1h-1zM12,28h1v1h-1zM13,28h1v1h-1zM16,28h1v1h-1zM18,28h1v1h-1zM19,28h1v1h-1zM20,28h1v1h-1zM21,28h1v1h-1zM23,28h1v1h-1zM25,28h1v1h-1zM26,28h1v1h-1zM28,28h1v1h-1zM30,28h1v1h-1zM2,29h1v1h-1zM8,29h1v1h-1zM10,29h1v1h-1zM11,29h1v1h-1zM13,29h1v1h-1zM17,29h1v1h-1zM18,29h1v1h-1zM20,29h1v1h-1zM22,29h1v1h-1zM23,29h1v1h-1zM24,29h1v1h-1zM25,29h1v1h-1zM26,29h1v1h-1zM30,29h1v1h-1zM31,29h1v1h-1zM32,29h1v1h-1zM33,29h1v1h-1zM2,30h1v1h-1zM4,30h1v1h-1zM5,30h1v1h-1zM6,30h1v1h-1zM8,30h1v1h-1zM11,30h1v1h-1zM13,30h1v1h-1zM14,30h1v1h-1zM15,30h1v1h-1zM20,30h1v1h-1zM21,30h1v1h-1zM23,30h1v1h-1zM25,30h1v1h-1zM26,30h1v1h-1zM27,30h1v1h-1zM28,30h1v1h-1zM29,30h1v1h-1zM30,30h1v1h-1zM32,30h1v1h-1zM34,30h1v1h-1zM2,31h1v1h-1zM4,31h1v1h-1zM5,31h1v1h-1zM6,31h1v1h-1zM8,31h1v1h-1zM10,31h1v1h-1zM11,31h1v1h-1zM12,31h1v1h-1zM13,31h1v1h-1zM15,31h1v1h-1zM16,31h1v1h-1zM17,31h1v1h-1zM20,31h1v1h-1zM22,31h1v1h-1zM24,31h1v1h-1zM29,31h1v1h-1zM31,31h1v1h-1zM34,31h1v1h-1zM2,32h1v1h-1zM4,32h1v1h-1zM5,32h1v1h-1zM6,32h1v1h-1zM8,32h1v1h-1zM10,32h1v1h-1zM12,32h1v1h-1zM13,32h1v1h-1zM16,32h1v1h-1zM17,32h1v1h-1zM18,32h1v1h-1zM19,32h1v1h-1zM20,32h1v1h-1zM24,32h1v1h-1zM25,32h1v1h-1zM28,32h1v1h-1zM29,32h1v1h-1zM32,32h1v1h-1zM2,33h1v1h-1zM8,33h1v1h-1zM11,33h1v1h-1zM13,33h1v1h-1zM14,33h1v1h-1zM16,33h1v1h-1zM17,33h1v1h-1zM19,33h1v1h-1zM20,33h1v1h-1zM21,33h1v1h-1zM24,33h1v1h-1zM26,33h1v1h-1zM27,33h1v1h-1zM29,33h1v1h-1zM30,33h1v1h-1zM34,33h1v1h-1zM2,34h1v1h-1zM3,34h1v1h-1zM4,34h1v1h-1zM5,34h1v1h-1zM6,34h1v1h-1zM7,34h1v1h-1zM8,34h1v1h-1zM10,34h1v1h-1zM11,34h1v1h-1zM12,34h1v1h-1zM13,34h1v1h-1zM19,34h1v1h-1zM20,34h1v1h-1zM23,34h1v1h-1zM25,34h1v1h-1zM27,34h1v1h-1zM30,34h1v1h-1zM32,34h1v1h-1z" fill="#141210"/></svg>
+          </div>
+          <div class="qr-title">Scan to download on Android</div>
+          <div class="qr-sub">play.google.com/store/apps/details?id=co.sitbit.sitbit</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4H: FAQ -->
   <section id="faq" class="section section-alt">
     <div class="container">
       <div class="section-head">
         <span class="section-tag">Questions</span>
-        <h2 class="section-title">Straight answers before you jump in.</h2>
+        <h2 class="section-title">Straight answers before you start.</h2>
       </div>
       <div class="faq">
         <details>
-          <summary>Do I need an account to browse games on the web?<span class="plus" aria-hidden="true">+</span></summary>
-          <div class="ans">Yes — browsing open game listings and leaderboards currently requires signing in to a free SitBit account. You can still view individual shared session links, pick a sport, and draft a game before signing in to publish.</div>
+          <summary>What can I do in the SitBit app?<span class="plus" aria-hidden="true">+</span></summary>
+          <div class="ans">The Android app combines 40-second hourly desk movement breaks (neck, back, shoulders, wrists, core, and eyes, alongside postureMonk—SitBit’s desk wellness companion), personal progress through XP, levels, badges, daily quests, streaks, and adaptive goals, water and healthy-snack logs (Fuel tracking), group game organizing, nearby match alerts after long desk hours (The Bridge), and coach discovery in the Trainers tab.</div>
         </details>
         <details>
-          <summary>Who is SitBit for?<span class="plus" aria-hidden="true">+</span></summary>
-          <div class="ans">Adults (18+) balancing long desk hours with recreational sport — whether organizing a weekly game with friends or building regular movement breaks on mobile.</div>
+          <summary>Can I organize or join a game without downloading the app?<span class="plus" aria-hidden="true">+</span></summary>
+          <div class="ans">Yes for group sports: you can pick a sport, draft match timing and location, and open shared invite links in a browser at <a href="https://app.sitbit.co/#/group-sessions">app.sitbit.co</a> without installing Android first. Browsing public games and publishing your match require signing in with a free SitBit account. Movement breaks, progress quests, water/snack logs, nearby alerts, and coach discovery are Android app features.</div>
         </details>
         <details>
-          <summary>Where is SitBit available?<span class="plus" aria-hidden="true">+</span></summary>
-          <div class="ans">Session organizing and sign-in run directly in any modern browser at <a href="https://app.sitbit.co/#/group-sessions">app.sitbit.co</a>. The full companion app is free to download on <a href="https://play.google.com/store/apps/details?id=co.sitbit.sitbit" target="_blank" rel="noopener">Google Play</a>; iOS is coming soon.</div>
+          <summary>Do I need to be sporty or already have a team?<span class="plus" aria-hidden="true">+</span></summary>
+          <div class="ans">Not at all. You can start with 40-second desk breaks on your own in Android, join open recreational matches with team shuffle or waiting lists, or set up a game with friends across 20+ sports.</div>
         </details>
         <details>
-          <summary>How do I become a coach or contact support?<span class="plus" aria-hidden="true">+</span></summary>
-          <div class="ans">For coaching applications write to <a href="mailto:coaches@sitbit.co">coaches@sitbit.co</a>. For product questions or account help email <a href="mailto:support@sitbit.co">support@sitbit.co</a>.</div>
+          <summary>Which devices and ages are supported?<span class="plus" aria-hidden="true">+</span></summary>
+          <div class="ans">The full SitBit mobile app is available on Android via <a href="https://play.google.com/store/apps/details?id=co.sitbit.sitbit" target="_blank" rel="noopener">Google Play</a> (version 1.0.17, compatible through Android 16). Group-game organizing and account sign-in also run in modern desktop and mobile browsers at <a href="https://app.sitbit.co/#/group-sessions">app.sitbit.co</a>. SitBit is for adults aged 18+ and is not a medical app—stop any exercise that causes pain or discomfort.</div>
         </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- CLOSING CTA -->
-  <section class="section">
-    <div class="container">
-      <div class="closing-card">
-        <div class="closing-copy">
-          <h2>Ready to set up your next session?</h2>
-          <p>Start in the browser now — pick a sport, set time and venue, and share your invite link after signing in.</p>
-        </div>
-        <div class="closing-actions">
-          <a class="btn btn-primary" href="https://app.sitbit.co/#/group-sessions/create/sport">Create a game</a>
-          <a class="btn btn-outline" href="https://app.sitbit.co/#/group-sessions">Find games</a>
-          <a class="btn btn-green" href="https://app.sitbit.co/#/signup?returnTo=%2Fgroup-sessions">Create account</a>
-        </div>
+        <details>
+          <summary>What is free, and what costs money?<span class="plus" aria-hidden="true">+</span></summary>
+          <div class="ans">SitBit is free to download on Google Play, and using the app’s core movement, progress, and group-organizing features—as well as the browser organizer at app.sitbit.co—requires no subscription. If you arrange coaching with an independent trainer listed in Android’s Trainers tab, independent trainers set their own session fees separately outside SitBit.</div>
+        </details>
+        <details>
+          <summary>How do coaching and trainer applications work?<span class="plus" aria-hidden="true">+</span></summary>
+          <div class="ans">In the Android app, players can browse coaches from the Trainers tab, and coaches can submit applications based on their profile status or contact <a href="mailto:coaches@sitbit.co">coaches@sitbit.co</a>. Local trainer listings depend on active coaches in your area. For account help or deletion, go to Settings → Delete Account in the app or email <a href="mailto:support@sitbit.co">support@sitbit.co</a>.</div>
+        </details>
       </div>
     </div>
   </section>
 </main>
 
+<!-- 4I: FOOTER -->
 <footer class="footer">
   <div class="container">
     <div class="fgrid">
@@ -405,36 +538,39 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
           <img src="/SitBit_Logo-removebg-preview.png" alt="SitBit logo" width="32" height="32"/>
           <span class="brand-name">SitBit</span>
         </a>
-        <p class="ftag">Warm recreational sports organizing in the browser paired with daily movement tools on mobile.</p>
+        <p class="ftag">Daily movement breaks, recreational sports organizing, personal progress, and coach discovery for adults 18+.</p>
       </div>
       <div>
-        <div class="fh">Web App</div>
+        <div class="fh">The App</div>
         <div class="flinks">
-          <a href="https://app.sitbit.co/#/group-sessions">Find games</a>
-          <a href="https://app.sitbit.co/#/group-sessions/create/sport">Create a game</a>
-          <a href="https://app.sitbit.co/#/login?returnTo=%2Fgroup-sessions">Sign in</a>
-          <a href="https://app.sitbit.co/#/signup?returnTo=%2Fgroup-sessions">Create account</a>
+          <a href="https://play.google.com/store/apps/details?id=co.sitbit.sitbit" target="_blank" rel="noopener" data-sb-cta="footer-google-play">Google Play (Android)</a>
+          <a href="#the-app">Inside SitBit</a>
+          <a href="#daily-rhythm">One day with SitBit</a>
+          <a href="#coaching">Coaching</a>
         </div>
       </div>
       <div>
-        <div class="fh">Mobile &amp; Legal</div>
+        <div class="fh">Web Organizer</div>
         <div class="flinks">
-          <a href="https://play.google.com/store/apps/details?id=co.sitbit.sitbit" target="_blank" rel="noopener">Google Play (Android)</a>
+          <a href="https://app.sitbit.co/#/group-sessions" data-sb-cta="footer-find-games">Find games</a>
+          <a href="https://app.sitbit.co/#/group-sessions/create/sport" data-sb-cta="footer-create-game">Create a game</a>
+          <a href="https://app.sitbit.co/#/login?returnTo=%2Fgroup-sessions" data-sb-cta="footer-sign-in">Sign in</a>
+          <a href="https://app.sitbit.co/#/signup?returnTo=%2Fgroup-sessions" data-sb-cta="footer-create-account">Create account</a>
+        </div>
+      </div>
+      <div>
+        <div class="fh">Support &amp; Legal</div>
+        <div class="flinks">
+          <a href="mailto:support@sitbit.co">support@sitbit.co</a>
+          <a href="mailto:coaches@sitbit.co">coaches@sitbit.co</a>
           <a href="/privacy.html">Privacy Policy</a>
           <a href="/terms.html">Terms of Service</a>
         </div>
       </div>
-      <div>
-        <div class="fh">Contact</div>
-        <div class="flinks">
-          <a href="mailto:support@sitbit.co">support@sitbit.co</a>
-          <a href="mailto:coaches@sitbit.co">coaches@sitbit.co</a>
-        </div>
-      </div>
     </div>
     <div class="fbottom">
-      <span>&copy; 2026 SitBit</span>
-      <span>Web Play App &amp; Android Companion</span>
+      <span>&copy; 2026 SitBit · TekainaM</span>
+      <span>Android App on Google Play &amp; Web Organizer at app.sitbit.co</span>
     </div>
   </div>
 </footer>
